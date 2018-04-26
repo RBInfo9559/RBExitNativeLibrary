@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <dimen name="exit_home_static_app_icon_width">55dp</dimen>
+    <dimen name="exit_home_static_app_icon_height">55dp</dimen>
+
+    <dimen name="exit_static_item_height">150dp</dimen>
+
+    <dimen name="exit_static_app_icon_width">70dp</dimen>
+    <dimen name="exit_static_app_icon_height">70dp</dimen>
+
+    <dimen name="exit_home_static_item_height">100dp</dimen>
+
+</resources>

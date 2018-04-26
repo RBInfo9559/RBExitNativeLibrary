@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/exit_background_color"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/app_exit_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="20dp" >
+
+        <RelativeLayout
+            android:id="@+id/app_exit_fixlink_lay"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <rb.exit.myexitviewlibrary.exit_MyTextView
+                android:id="@+id/app_exit_lbl_header_exit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Exit?"
+                android:textColor="@drawable/exit_app_text_selector"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <rb.exit.myexitviewlibrary.exit_MyTextView
+                android:id="@+id/app_exit_lbl_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/app_exit_lbl_header_exit"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dip"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Do you want to exit?"
+                android:textColor="@color/exit_gray"
+                android:textSize="18sp" />
+
+            <rb.exit.myexitviewlibrary.exit_MyTextView
+                android:id="@+id/app_exit_lbl_Yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/app_exit_lbl_header"
+                android:layout_marginRight="20dip"
+                android:layout_marginTop="30dip"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Yes"
+                android:textColor="@drawable/exit_app_text_selector"
+                android:textSize="22sp" />
+
+            <rb.exit.myexitviewlibrary.exit_MyTextView
+                android:id="@+id/app_exit_lbl_No"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/app_exit_lbl_header"
+                android:layout_marginRight="30dip"
+                android:layout_marginTop="30dip"
+                android:layout_toLeftOf="@+id/app_exit_lbl_Yes"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="No"
+                android:textColor="@drawable/exit_app_no_text_selector"
+                android:textSize="22sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/app_exit_list_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/app_exit_fixlink_lay"
+            android:gravity="center"
+            android:paddingLeft="5dip"
+            android:paddingRight="5dip" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/exit_border" >
+
+                <RelativeLayout
+                    android:id="@+id/exit_static_ad_lbl"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dip"
+                    android:gravity="center" >
+
+                    <rb.exit.myexitviewlibrary.exit_MyTextView
+                        android:id="@+id/app_exit_lbl_footer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="12dip"
+                        android:autoLink="web"
+                        android:text="@string/exit_ads_footer"
+                        android:textColor="@drawable/exit_app_text_selector"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/homestatic_img_footer"
+                        android:layout_width="14dip"
+                        android:layout_height="14dip"
+                        android:layout_marginLeft="8dip"
+                        android:layout_marginTop="17dip"
+                        android:layout_toRightOf="@+id/app_exit_lbl_footer"
+                        android:autoLink="web"
+                        android:background="@drawable/exit_ad_info_exit" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/app_exit_middle_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/exit_static_item_height"
+                    android:layout_below="@+id/exit_static_ad_lbl"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="16dip"
+                    android:orientation="horizontal"
+                    android:weightSum="4" >
+
+                    <RelativeLayout
+                        android:id="@+id/app_exit_app_layout_1"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="2dp"
+                        android:layout_weight="1"
+                        android:gravity="center" >
+
+                        <ImageView
+                            android:id="@+id/app_exit_img_icon_1"
+                            android:layout_width="@dimen/exit_static_app_icon_width"
+                            android:layout_height="@dimen/exit_static_app_icon_width"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="2dp"
+                            android:src="@drawable/exit_sample_loading" />
+
+                        <rb.exit.myexitviewlibrary.exit_MyTextView
+                            android:id="@+id/app_exit_txt_app_name_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/app_exit_img_icon_1"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="2dp"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:lines="2"
+                            android:text="App Name"
+                            android:textColor="@color/exit_white"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/app_exit_app_layout_2"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="2dp"
+                        android:layout_weight="1"
+                        android:gravity="center" >
+
+                        <ImageView
+                            android:id="@+id/app_exit_img_icon_2"
+                            android:layout_width="@dimen/exit_static_app_icon_width"
+                            android:layout_height="@dimen/exit_static_app_icon_width"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="2dp"
+                            android:src="@drawable/exit_sample_loading" />
+
+                        <rb.exit.myexitviewlibrary.exit_MyTextView
+                            android:id="@+id/app_exit_txt_app_name_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/app_exit_img_icon_2"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="2dp"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:lines="2"
+                            android:text="App Name"
+                            android:textColor="@color/exit_white"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/app_exit_app_layout_3"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="2dp"
+                        android:layout_weight="1"
+                        android:gravity="center" >
+
+                        <ImageView
+                            android:id="@+id/app_exit_img_icon_3"
+                            android:layout_width="@dimen/exit_static_app_icon_width"
+                            android:layout_height="@dimen/exit_static_app_icon_width"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="2dp"
+                            android:src="@drawable/exit_sample_loading" />
+
+                        <rb.exit.myexitviewlibrary.exit_MyTextView
+                            android:id="@+id/app_exit_txt_app_name_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/app_exit_img_icon_3"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="2dp"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:lines="2"
+                            android:text="App Name"
+                            android:textColor="@color/exit_white"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/app_exit_app_layout_4"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="2dp"
+                        android:layout_weight="1"
+                        android:gravity="center" >
+
+                        <ImageView
+                            android:id="@+id/app_exit_img_icon_4"
+                            android:layout_width="@dimen/exit_static_app_icon_width"
+                            android:layout_height="@dimen/exit_static_app_icon_width"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="2dp"
+                            android:src="@drawable/exit_sample_loading" />
+
+                        <rb.exit.myexitviewlibrary.exit_MyTextView
+                            android:id="@+id/app_exit_txt_app_name_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/app_exit_img_icon_4"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="2dp"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:lines="2"
+                            android:text="App Name"
+                            android:textColor="@color/exit_white"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

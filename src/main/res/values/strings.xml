@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SetExitLook</string>
+
+    <string name="exit_ads_heder">Try These Apps :</string>
+    <string name="exit_ads_footer"><u>Ads by AdTube</u></string>
+    <string name="exit_tips_quit">Press back again to quit</string>
+
+</resources>
