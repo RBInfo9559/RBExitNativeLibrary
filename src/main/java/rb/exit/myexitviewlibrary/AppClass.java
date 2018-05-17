@@ -84,7 +84,7 @@ public class AppClass
 		try
 		{
 			mContext = ctx;
-			String app_name = mContext.getResources().getString(R.string.exit_app_name) + " :";
+			String app_name = mContext.getResources().getString(R.string.app_name) + " :";
 			String shareUrl = AppHelper.rate_url + mContext.getPackageName();
 
 			Intent sharingIntent = new Intent(Intent.ACTION_SEND);

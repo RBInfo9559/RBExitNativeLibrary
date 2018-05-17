@@ -24,4 +24,9 @@
 
     <color name="exit_text_color">#ffffff</color>
     <color name="exit_text_select_color">#f44336</color>
+    <color name="exit_background_color">#252525</color>
+    <color name="exit_yes_text_color">#5be5fa</color>
+    <color name="exit_yes_text_select_color">#ff5a4e</color>
+    <color name="exit_no_text_color">#FFFFFF</color>
+    <color name="exit_no_text_select_color">#ff5a4e</color>
 </resources>
