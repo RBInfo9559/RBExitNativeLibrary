@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SetExitLook</string>
+    <string name="exit_app_name">SetExitLook</string>
 
     <string name="exit_ads_heder">Try These Apps :</string>
     <string name="exit_ads_footer"><u>Ads by AdTube</u></string>

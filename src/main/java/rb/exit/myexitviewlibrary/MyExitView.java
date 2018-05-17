@@ -59,7 +59,6 @@ public class MyExitView extends Application
     {
         if (doubleBackToExitPressedOnce)
         {
-
             ((Activity)exit_CommonHelper.mActivity).finish();
             ((Activity)exit_CommonHelper.mActivity).overridePendingTransition(R.anim.exit_slide_in_left, R.anim.exit_slide_out_right);
             return;
@@ -103,7 +102,7 @@ public class MyExitView extends Application
         try
         {
             mContext = ctx;
-            String app_name = mContext.getResources().getString(R.string.app_name) + " :";
+            String app_name = mContext.getResources().getString(R.string.exit_app_name) + " :";
             String shareUrl = AppHelper.rate_url + mContext.getPackageName();
 
             Intent sharingIntent = new Intent(Intent.ACTION_SEND);
@@ -131,9 +130,9 @@ public class MyExitView extends Application
 
     public static void ConformRateDialog(final Context mContext, final String appUrl, final String header, final String message)
     {
-        conform_dialog = new Dialog(mContext,R.style.TransparentBackground);
+        conform_dialog = new Dialog(mContext,R.style.TransparentBackground_Exit);
         conform_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        conform_dialog.setContentView(R.layout.dialog_conform);
+        conform_dialog.setContentView(R.layout.exit_dialog_rate);
 
         conform_dialog_btn_yes = (Button) conform_dialog.findViewById(R.id.dialog_conform_btn_yes);
         conform_dialog_btn_no = (Button) conform_dialog.findViewById(R.id.dialog_conform_btn_no);

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="TransparentBackground" parent="@android:style/Theme.Dialog">
+    <style name="TransparentBackground_Exit" parent="@android:style/Theme.Dialog">
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowBackground">@color/exit_transparent</item>
     </style>
     
 </resources>

@@ -7,7 +7,6 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Handler;
@@ -493,15 +492,15 @@ public class exit_HomeadView extends RelativeLayout {
 
     public static void GotoAppStoreDialog(String appName, final String pakageName)
     {
-        ad_conform_dialog = new Dialog(myContext,R.style.exit_TransparentBackground);
+        ad_conform_dialog = new Dialog(myContext,R.style.TransparentBackground_Exit);
         ad_conform_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        ad_conform_dialog.setContentView(R.layout.exit_dialog_conform_playstore);
+        ad_conform_dialog.setContentView(R.layout.exit_dialog_rate);
 
-        btn_ad_yes = (Button) ad_conform_dialog.findViewById(R.id.dialog_clear_btn_yes);
-        btn_ad_no = (Button) ad_conform_dialog.findViewById(R.id.dialog_clear_btn_no);
+        btn_ad_yes = (Button) ad_conform_dialog.findViewById(R.id.dialog_conform_btn_yes);
+        btn_ad_no = (Button) ad_conform_dialog.findViewById(R.id.dialog_conform_btn_no);
 
-        txt_ad_header = (TextView) ad_conform_dialog.findViewById(R.id.dialog_clear_txt_header);
-        txt_ad_message = (TextView) ad_conform_dialog.findViewById(R.id.dialog_clear_txt_message);
+        txt_ad_header = (TextView) ad_conform_dialog.findViewById(R.id.dialog_conform_txt_header);
+        txt_ad_message = (TextView) ad_conform_dialog.findViewById(R.id.dialog_conform_txt_message);
 
         ad_header = appName;
         ad_message = "Are you sure you want to open " + appName + " in Play Store?";
