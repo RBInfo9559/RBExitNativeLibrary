@@ -149,9 +149,9 @@ public class exit_ListActivity extends Activity
 					{
 						rel_exit_app_left1.setVisibility(View.GONE);
 					}
-					//--------------------------------2
 
-					if(array_exit_app_left.size() > 0)
+					//--------------------------------2
+					if(array_exit_app_left.size() > 1)
 					{
 						rel_exit_app_main.setVisibility(View.VISIBLE);
 
@@ -179,8 +179,7 @@ public class exit_ListActivity extends Activity
 					}
 					//--------------------------------
 					//--------------------------------3
-
-					if(array_exit_app_left.size() > 0)
+					if(array_exit_app_left.size() > 2)
 					{
 						rel_exit_app_main.setVisibility(View.VISIBLE);
 
@@ -209,8 +208,7 @@ public class exit_ListActivity extends Activity
 					//--------------------------------
 
 					//--------------------------------4
-
-					if(array_exit_app_left.size() > 0)
+					if(array_exit_app_left.size() > 3)
 					{
 						rel_exit_app_main.setVisibility(View.VISIBLE);
 
@@ -609,9 +607,6 @@ public class exit_ListActivity extends Activity
 		moveTaskToBack(true);
 		finish();
 		overridePendingTransition(R.anim.exit_slide_in_left, R.anim.exit_slide_out_right);
-		/*int pid = android.os.Process.myPid();
-		android.os.Process.killProcess(pid);
-		System.exit(0);*/
 	}
 
 	Dialog internet_dialog;

@@ -148,8 +148,7 @@ public class exit_HomeadView extends RelativeLayout {
                         }
 
                         //--------------------2
-
-                        if(array_home_static_left.size() > 0)
+                        if(array_home_static_left.size() > 1)
                         {
                             rel_home_static_main.setVisibility(View.VISIBLE);
 
@@ -177,8 +176,7 @@ public class exit_HomeadView extends RelativeLayout {
                         }
 
                         //--------------------3
-
-                        if(array_home_static_left.size() > 0)
+                        if(array_home_static_left.size() > 2)
                         {
                             rel_home_static_main.setVisibility(View.VISIBLE);
 
@@ -206,8 +204,7 @@ public class exit_HomeadView extends RelativeLayout {
                         }
 
                         //--------------------4
-
-                        if(array_home_static_left.size() > 0)
+                        if(array_home_static_left.size() > 3)
                         {
                             rel_home_static_main.setVisibility(View.VISIBLE);
 
