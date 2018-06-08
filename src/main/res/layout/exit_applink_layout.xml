@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/home_static_layout"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="12dip" >
+    android:padding="5dp" >
 
     <RelativeLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/exit_border_shadow" >
 
         <RelativeLayout
             android:id="@+id/homestatic_main_layout"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
             <RelativeLayout
                 android:id="@+id/homestatic_header_layout"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
 
                 <rb.exit.myexitviewlibrary.exit_MyTextView
                     android:id="@+id/homestatic_lbl_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
                     android:layout_marginLeft="8dip"
                     android:text="@string/exit_ads_heder"
                     android:textColor="@drawable/exit_text_selector"
@@ -41,7 +42,7 @@
                         android:layout_width="10dip"
                         android:layout_height="10dip"
                         android:layout_alignParentRight="true"
-                        android:layout_marginTop="2dip"
+                        android:layout_marginTop="3dp"
                         android:autoLink="web"
                         android:background="@drawable/exit_ad_info" />
 
@@ -49,6 +50,7 @@
                         android:id="@+id/homestatic_lbl_footer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
                         android:layout_marginRight="4dip"
                         android:layout_toLeftOf="@+id/homestatic_img_footer"
                         android:text="@string/exit_ads_footer"
@@ -59,7 +61,7 @@
 
             <LinearLayout
                 android:id="@+id/homestatic_middle_layout"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/homestatic_header_layout"
                 android:layout_marginTop="4dip"
@@ -69,7 +71,7 @@
                 <RelativeLayout
                     android:id="@+id/homestatic_app_layout_1"
                     android:layout_width="0dp"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/exit_home_static_app_bg_selector" >
@@ -98,7 +100,7 @@
                 <RelativeLayout
                     android:id="@+id/homestatic_app_layout_2"
                     android:layout_width="0dp"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/exit_home_static_app_bg_selector" >
@@ -127,7 +129,7 @@
                 <RelativeLayout
                     android:id="@+id/homestatic_app_layout_3"
                     android:layout_width="0dp"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/exit_home_static_app_bg_selector" >
@@ -156,7 +158,7 @@
                 <RelativeLayout
                     android:id="@+id/homestatic_app_layout_4"
                     android:layout_width="0dp"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/exit_home_static_app_bg_selector" >

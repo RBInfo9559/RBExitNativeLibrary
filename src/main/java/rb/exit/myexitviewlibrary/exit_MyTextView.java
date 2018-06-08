@@ -3,9 +3,10 @@ package rb.exit.myexitviewlibrary;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
+import android.widget.TextView;
 
 
-public class exit_MyTextView extends android.support.v7.widget.AppCompatTextView {
+public class exit_MyTextView extends TextView {
 
     public exit_MyTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
