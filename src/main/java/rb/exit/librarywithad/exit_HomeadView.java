@@ -1,4 +1,4 @@
-package rb.exit.myexitviewlibrary;
+package rb.exit.librarywithad;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

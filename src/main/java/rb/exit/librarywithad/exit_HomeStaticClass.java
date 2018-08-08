@@ -1,4 +1,4 @@
-package rb.exit.myexitviewlibrary;
+package rb.exit.librarywithad;
 
 public class exit_HomeStaticClass
 {

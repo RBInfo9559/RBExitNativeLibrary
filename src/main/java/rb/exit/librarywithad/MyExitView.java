@@ -1,4 +1,4 @@
-package rb.exit.myexitviewlibrary;
+package rb.exit.librarywithad;
 
 
 import android.app.Activity;
@@ -32,9 +32,15 @@ public class MyExitView extends Application
 
     }
 
-    public static void OpenExitScreen()
+    public static void OpenExitScreen(boolean isHideAds,boolean isEEAUser,boolean isConsentSet,boolean isShowNonPersonalize,String nativeAdID)
     {
         // TODO Auto-generated method stub
+        exit_CommonHelper.is_hide_ad = isHideAds;
+        exit_CommonHelper.is_eea_user = isEEAUser;
+        exit_CommonHelper.is_consent_set = isConsentSet;
+        exit_CommonHelper.is_show_non_personalize = isShowNonPersonalize;
+        exit_CommonHelper.native_ad_id = nativeAdID.trim();
+
         if(exit_CommonClass.isOnline(exit_CommonHelper.mActivity))
         {
             ExitScreen();
@@ -118,27 +124,17 @@ public class MyExitView extends Application
         }
     }
 
-    private static Dialog conform_dialog;
-    private static Button conform_dialog_btn_yes;
-    private static Button conform_dialog_btn_no;
-
-    private static TextView conform_dialog_txt_header;
-    private static TextView conform_dialog_txt_message;
-
-    private static String conform_dialog_header;
-    private static String conform_dialog_message;
-
     public static void ConformRateDialog(final Context mContext, final String appUrl, final String header, final String message)
     {
-        conform_dialog = new Dialog(mContext,R.style.TransparentBackground_Exit);
+        final Dialog conform_dialog = new Dialog(mContext,R.style.TransparentBackground_Exit);
         conform_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         conform_dialog.setContentView(R.layout.exit_dialog_rate);
 
-        conform_dialog_btn_yes = (Button) conform_dialog.findViewById(R.id.dialog_conform_btn_yes);
-        conform_dialog_btn_no = (Button) conform_dialog.findViewById(R.id.dialog_conform_btn_no);
+        Button conform_dialog_btn_yes = (Button) conform_dialog.findViewById(R.id.dialog_conform_btn_yes);
+        Button conform_dialog_btn_no = (Button) conform_dialog.findViewById(R.id.dialog_conform_btn_no);
 
-        conform_dialog_txt_header = (TextView)conform_dialog.findViewById(R.id.dialog_conform_txt_header);
-        conform_dialog_txt_message = (TextView)conform_dialog.findViewById(R.id.dialog_conform_txt_message);
+        TextView conform_dialog_txt_header = (TextView)conform_dialog.findViewById(R.id.dialog_conform_txt_header);
+        TextView conform_dialog_txt_message = (TextView)conform_dialog.findViewById(R.id.dialog_conform_txt_message);
 
         Typeface font_type = Typeface.createFromAsset(mContext.getAssets(), AppHelper.roboto_font_path);
 
@@ -151,8 +147,8 @@ public class MyExitView extends Application
         conform_dialog_btn_yes.setText("Rate now");
         conform_dialog_btn_no.setText("Cancel");
 
-        conform_dialog_header = header;
-        conform_dialog_message = message;
+        String conform_dialog_header = header;
+        String conform_dialog_message = message;
 
         conform_dialog_txt_header.setText(conform_dialog_header);
         conform_dialog_txt_message.setText(conform_dialog_message);

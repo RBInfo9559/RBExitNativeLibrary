@@ -1,4 +1,4 @@
-package rb.exit.myexitviewlibrary;
+package rb.exit.librarywithad;
 
 import org.junit.Test;
 

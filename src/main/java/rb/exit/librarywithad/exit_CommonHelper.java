@@ -1,4 +1,4 @@
-package rb.exit.myexitviewlibrary;
+package rb.exit.librarywithad;
 
 import android.app.Activity;
 import android.app.Application;
@@ -20,6 +20,11 @@ public class exit_CommonHelper extends Application
 	public static String ad_policy_link="http://rbinfotech.in/NewWayAdShow/AdPolicyLink/ad_p_link.php";
 	
 	public static String static_ad_link = null,static_ad_name = null;
-	
+
+	public static boolean is_hide_ad = false;
+	public static boolean is_eea_user = false;
+	public static boolean is_consent_set = false;
+	public static boolean is_show_non_personalize = false;
+	public static String native_ad_id = "";
 	
 }
