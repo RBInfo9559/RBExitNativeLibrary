@@ -333,6 +333,8 @@ public class Exit_ListActivity extends Activity
 
 			font_type = Typeface.createFromAsset(getAssets(), Exit_AppHelper.roboto_font_path);
 
+			AdMobConsent();
+
 			rel_exit_yes = (RelativeLayout)findViewById(R.id.app_exit_btn_yes);
 			rel_exit_no = (RelativeLayout)findViewById(R.id.app_exit_btn_no);
 
@@ -838,7 +840,6 @@ public class Exit_ListActivity extends Activity
 	protected void onResume()
 	{
 		super.onResume();
-		AdMobConsent();
 	}
 
 	private void AdMobConsent()
