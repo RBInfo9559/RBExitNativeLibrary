@@ -878,27 +878,6 @@ public class Exit_ListActivity extends Activity
 			rel_native_ad = (RelativeLayout)findViewById(R.id.ad_layout);
 			rel_native_ad.setVisibility(View.GONE);
 		}
-
-		/*if(!Exit_CommonHelper.is_hide_ad)
-		{
-			boolean is_online = Exit_CommonClass.isOnline(this);
-			if(is_online)
-			{
-				LoadAd();
-			}
-			else
-			{
-				// Hide Ads
-				rel_native_ad = (RelativeLayout)findViewById(R.id.ad_layout);
-				rel_native_ad.setVisibility(View.GONE);
-			}
-		}
-		else
-		{
-			// Hide Ads
-			rel_native_ad = (RelativeLayout)findViewById(R.id.ad_layout);
-			rel_native_ad.setVisibility(View.GONE);
-		}*/
 	}
 
 	private void LoadAd()
@@ -926,7 +905,7 @@ public class Exit_ListActivity extends Activity
 			return;
 		}
 
-		AdLoader.Builder builder = new AdLoader.Builder(this, native_ad_id);
+		AdLoader.Builder builder = new AdLoader.Builder(Exit_ListActivity.this, native_ad_id);
 		if (requestAppInstallAds)
 		{
 			builder.forAppInstallAd(new NativeAppInstallAd.OnAppInstallAdLoadedListener()
