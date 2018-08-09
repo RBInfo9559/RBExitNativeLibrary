@@ -1,4 +1,4 @@
-package rb.exit.librarywithad;
+package rb.exit.nativelibrary;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -34,16 +34,16 @@ import java.util.Random;
 import java.util.TimeZone;
 
 
-public class exit_HomeadView extends RelativeLayout {
+public class Exit_HomeadView extends RelativeLayout {
 
     static GetHomeStaticLeftTask get_home_static_left_task;
     static GetAdStaticLinkTask get_Ad_static_link_task;
 
-    static exit_HomeStaticClass home_static_left_data;
-    static ArrayList<exit_HomeStaticClass> array_home_static_left = new ArrayList<exit_HomeStaticClass>();
+    static Exit_HomeStaticClass home_static_left_data;
+    static ArrayList<Exit_HomeStaticClass> array_home_static_left = new ArrayList<Exit_HomeStaticClass>();
 
-    static exit_AdStaticLink home_ad_left_link;
-    static ArrayList<exit_AdStaticLink> array_ad_static_link = new ArrayList<exit_AdStaticLink>();
+    static Exit_AdStaticLink home_ad_left_link;
+    static ArrayList<Exit_AdStaticLink> array_ad_static_link = new ArrayList<Exit_AdStaticLink>();
 
     static String static_app_name1;
     static String static_app_pakage1;
@@ -237,7 +237,7 @@ public class exit_HomeadView extends RelativeLayout {
 
                     try
                     {
-                        if(exit_CommonClass.isOnline(myContext))
+                        if(Exit_CommonClass.isOnline(myContext))
                         {
                             get_Ad_static_link_task = new GetAdStaticLinkTask();
                             get_Ad_static_link_task.execute();
@@ -261,8 +261,8 @@ public class exit_HomeadView extends RelativeLayout {
 
                         if(array_ad_static_link.size() > 0)
                         {
-                            exit_CommonHelper.static_ad_name = array_ad_static_link.get(0).ad_name.trim();
-                            exit_CommonHelper.static_ad_link = array_ad_static_link.get(0).ad_link.trim();
+                            Exit_CommonHelper.static_ad_name = array_ad_static_link.get(0).ad_name.trim();
+                            Exit_CommonHelper.static_ad_link = array_ad_static_link.get(0).ad_link.trim();
                         }
                     }
                     catch (Exception e) {
@@ -277,21 +277,21 @@ public class exit_HomeadView extends RelativeLayout {
 
     LayoutInflater mInflater;
     static Context myContext;
-    public exit_HomeadView(Context context) {
+    public Exit_HomeadView(Context context) {
         super(context);
         mInflater = LayoutInflater.from(context);
         myContext = context;
         init();
 
     }
-    public exit_HomeadView(Context context, AttributeSet attrs, int defStyle)
+    public Exit_HomeadView(Context context, AttributeSet attrs, int defStyle)
     {
         super(context, attrs, defStyle);
         mInflater = LayoutInflater.from(context);
         myContext = context;
         init();
     }
-    public exit_HomeadView(Context context, AttributeSet attrs) {
+    public Exit_HomeadView(Context context, AttributeSet attrs) {
         super(context, attrs);
         mInflater = LayoutInflater.from(context);
         myContext = context;
@@ -315,7 +315,7 @@ public class exit_HomeadView extends RelativeLayout {
         // Universal Image Loader end //
         setupBottomView(v);
         Get_Link();
-        if(exit_CommonClass.isOnline(myContext))
+        if(Exit_CommonClass.isOnline(myContext))
         {
             get_home_static_left_task = new GetHomeStaticLeftTask();
             get_home_static_left_task.execute();
@@ -332,7 +332,7 @@ public class exit_HomeadView extends RelativeLayout {
         if(mobileTimeZone.equals("Asia/Kolkata") || mobileTimeZone.equals("Asia/Calcutta"))
         {
             Log.e("Time Zone :: ", mobileTimeZone);
-            Set_Link = exit_CommonHelper.home_static_Indai;
+            Set_Link = Exit_CommonHelper.home_static_Indai;
         }
         else
         {
@@ -340,22 +340,22 @@ public class exit_HomeadView extends RelativeLayout {
             if(Contl.equals("Asia"))
             {
                 Log.e("Time Zone :: ", Contl);
-                Set_Link = exit_CommonHelper.home_static_Asia;
+                Set_Link = Exit_CommonHelper.home_static_Asia;
             }
             else if(Contl.equals("America"))
             {
                 Log.e("Time Zone :: ", Contl);
-                Set_Link = exit_CommonHelper.home_static_USA;
+                Set_Link = Exit_CommonHelper.home_static_USA;
             }
             else if(Contl.equals("Europe"))
             {
                 Log.e("Time Zone :: ", Contl);
-                Set_Link = exit_CommonHelper.home_static_Europe;
+                Set_Link = Exit_CommonHelper.home_static_Europe;
             }
             else
             {
                 Log.e("Time Zone :: ", Contl);
-                Set_Link = exit_CommonHelper.home_static_Common;
+                Set_Link = Exit_CommonHelper.home_static_Common;
             }
         }
     }
@@ -464,7 +464,7 @@ public class exit_HomeadView extends RelativeLayout {
                 //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 try
                 {
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(exit_CommonHelper.static_ad_link));
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(Exit_CommonHelper.static_ad_link));
                     myContext.startActivity(browserIntent);
                     ((Activity)myContext).overridePendingTransition(R.anim.exit_slide_in_right, R.anim.exit_slide_out_left);
                 }
@@ -556,7 +556,7 @@ public class exit_HomeadView extends RelativeLayout {
 
                 String responseString = null;
 
-                exit_RestClient client = new exit_RestClient(Set_Link);
+                Exit_RestClient client = new Exit_RestClient(Set_Link);
                 client.execute(0);
                 responseString = client.getResponse();
                 //Log.e(TAG, responseString);
@@ -590,7 +590,7 @@ public class exit_HomeadView extends RelativeLayout {
 
                     JSONObject jsonObj = jsonResultArr.optJSONObject(i);
 
-                    home_static_left_data = new exit_HomeStaticClass();
+                    home_static_left_data = new Exit_HomeStaticClass();
 
                     String app_name = jsonObj.optString("app_name");
                     String pakage_name = jsonObj.optString("package_name");
@@ -640,7 +640,7 @@ public class exit_HomeadView extends RelativeLayout {
 
                 String responseString = null;
 
-                exit_RestClient client = new exit_RestClient(exit_CommonHelper.ad_policy_link);
+                Exit_RestClient client = new Exit_RestClient(Exit_CommonHelper.ad_policy_link);
                 client.execute(0);
                 responseString = client.getResponse();
                 //Log.e(TAG, responseString);
@@ -674,7 +674,7 @@ public class exit_HomeadView extends RelativeLayout {
 
                     JSONObject jsonObj = jsonResultArr.optJSONObject(i);
 
-                    home_ad_left_link = new exit_AdStaticLink();
+                    home_ad_left_link = new Exit_AdStaticLink();
 
                     String get_ad_name = jsonObj.optString("ad_name");
                     String get_ad_link = jsonObj.optString("ad_link");

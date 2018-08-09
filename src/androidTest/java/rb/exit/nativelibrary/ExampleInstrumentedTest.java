@@ -1,4 +1,4 @@
-package rb.exit.librarywithad;
+package rb.exit.nativelibrary;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("rb.exit.librarywithad.test", appContext.getPackageName());
+        assertEquals("rb.exit.nativelibrary.test", appContext.getPackageName());
     }
 }

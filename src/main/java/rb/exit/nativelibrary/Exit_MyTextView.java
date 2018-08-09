@@ -1,4 +1,4 @@
-package rb.exit.librarywithad;
+package rb.exit.nativelibrary;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -6,19 +6,19 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 
 
-public class exit_MyTextView extends TextView {
+public class Exit_MyTextView extends TextView {
 
-    public exit_MyTextView(Context context, AttributeSet attrs, int defStyle) {
+    public Exit_MyTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init();
     }
 
-    public exit_MyTextView(Context context, AttributeSet attrs) {
+    public Exit_MyTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public exit_MyTextView(Context context) {
+    public Exit_MyTextView(Context context) {
         super(context);
         init();
     }

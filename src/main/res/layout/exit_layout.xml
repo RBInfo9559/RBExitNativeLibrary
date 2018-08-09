@@ -6,7 +6,7 @@
     android:orientation="vertical" >
 
     <RelativeLayout
-        android:id="@+id/app_exit_fixlink_lay"
+        android:id="@+id/app_exit_rel_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
@@ -83,7 +83,7 @@
         android:id="@+id/app_exit_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/app_exit_fixlink_lay"
+        android:layout_below="@+id/app_exit_rel_top"
         android:layout_above="@+id/ad_layout">
 
         <RelativeLayout

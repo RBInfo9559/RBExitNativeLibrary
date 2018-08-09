@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
 
-                <rb.exit.librarywithad.exit_MyTextView
+                <rb.exit.nativelibrary.Exit_MyTextView
                     android:id="@+id/homestatic_lbl_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
                         android:layout_centerHorizontal="true"
                         android:src="@drawable/exit_sample_loading" />
 
-                    <rb.exit.librarywithad.exit_MyTextView
+                    <rb.exit.nativelibrary.Exit_MyTextView
                         android:id="@+id/homestatic_txt_app_name_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -112,7 +112,7 @@
                         android:layout_centerHorizontal="true"
                         android:src="@drawable/exit_sample_loading" />
 
-                    <rb.exit.librarywithad.exit_MyTextView
+                    <rb.exit.nativelibrary.Exit_MyTextView
                         android:id="@+id/homestatic_txt_app_name_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -141,7 +141,7 @@
                         android:layout_centerHorizontal="true"
                         android:src="@drawable/exit_sample_loading" />
 
-                    <rb.exit.librarywithad.exit_MyTextView
+                    <rb.exit.nativelibrary.Exit_MyTextView
                         android:id="@+id/homestatic_txt_app_name_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -170,7 +170,7 @@
                         android:layout_centerHorizontal="true"
                         android:src="@drawable/exit_sample_loading" />
 
-                    <rb.exit.librarywithad.exit_MyTextView
+                    <rb.exit.nativelibrary.Exit_MyTextView
                         android:id="@+id/homestatic_txt_app_name_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

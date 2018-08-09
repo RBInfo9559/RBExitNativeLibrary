@@ -6,10 +6,7 @@
          android:endColor="@color/exit_dialog_bg_color"
          android:angle="270"/> 
 
-    <corners android:bottomRightRadius="2dp" 
-        android:bottomLeftRadius="2dp" 
-     	android:topLeftRadius="2dp" 
-     	android:topRightRadius="2dp"/>
+    <corners android:radius="8dp"/>
     
     <stroke android:width="0sp"
         android:color="@color/exit_white"/>

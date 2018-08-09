@@ -1,4 +1,4 @@
-package rb.exit.librarywithad;
+package rb.exit.nativelibrary;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -47,9 +47,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.TimeZone;
 
-public class exit_ListActivity extends Activity
+public class Exit_ListActivity extends Activity
 {
-	String TAG = "exit_ListActivity";
+	String TAG = "Exit_ListActivity";
 
 	Typeface font_type;
 
@@ -66,11 +66,11 @@ public class exit_ListActivity extends Activity
 	GetHomeStaticLeftTask get_exit_app_left_task;
 	GetAdStaticLinkTask get_Ad_static_link_task;
 
-	exit_ExitAppClass exit_app_left_data;
-	ArrayList<exit_ExitAppClass> array_exit_app_left = new ArrayList<exit_ExitAppClass>();
+	Exit_ExitAppClass exit_app_left_data;
+	ArrayList<Exit_ExitAppClass> array_exit_app_left = new ArrayList<Exit_ExitAppClass>();
 
-	exit_AdStaticLink home_ad_left_link;
-	ArrayList<exit_AdStaticLink> array_ad_static_link = new ArrayList<exit_AdStaticLink>();
+	Exit_AdStaticLink home_ad_left_link;
+	ArrayList<Exit_AdStaticLink> array_ad_static_link = new ArrayList<Exit_AdStaticLink>();
 
 	String static_app_name1;
 	String static_app_pakage1;
@@ -264,7 +264,7 @@ public class exit_ListActivity extends Activity
 
 				try
 				{
-					if(exit_CommonClass.isOnline(exit_ListActivity.this))
+					if(Exit_CommonClass.isOnline(Exit_ListActivity.this))
 					{
 						get_Ad_static_link_task = new GetAdStaticLinkTask();
 						get_Ad_static_link_task.execute();
@@ -272,7 +272,7 @@ public class exit_ListActivity extends Activity
 				}
 				catch(Exception e)
 				{
-					Toast.makeText(exit_ListActivity.this, e.toString(), Toast.LENGTH_LONG).show();
+					Toast.makeText(Exit_ListActivity.this, e.toString(), Toast.LENGTH_LONG).show();
 				}
 
 
@@ -283,8 +283,8 @@ public class exit_ListActivity extends Activity
 
 				if(array_ad_static_link.size() > 0)
 				{
-					exit_CommonHelper.static_ad_name = array_ad_static_link.get(0).ad_name.trim();
-					exit_CommonHelper.static_ad_link = array_ad_static_link.get(0).ad_link.trim();
+					Exit_CommonHelper.static_ad_name = array_ad_static_link.get(0).ad_name.trim();
+					Exit_CommonHelper.static_ad_link = array_ad_static_link.get(0).ad_link.trim();
 				}
 			}
 			break;
@@ -319,7 +319,7 @@ public class exit_ListActivity extends Activity
 			setContentView(R.layout.exit_layout);
 
 			// Universal Image Loader start //
-			image_loader.init(ImageLoaderConfiguration.createDefault(exit_ListActivity.this));
+			image_loader.init(ImageLoaderConfiguration.createDefault(Exit_ListActivity.this));
 
 			image_loader_options = new DisplayImageOptions.Builder()
 					.showImageOnLoading(R.drawable.exit_sample_loading)
@@ -331,7 +331,7 @@ public class exit_ListActivity extends Activity
 					.bitmapConfig(Bitmap.Config.RGB_565).build();
 			// Universal Image Loader end //
 
-			font_type = Typeface.createFromAsset(getAssets(), AppHelper.roboto_font_path);
+			font_type = Typeface.createFromAsset(getAssets(), Exit_AppHelper.roboto_font_path);
 
 			rel_exit_yes = (RelativeLayout)findViewById(R.id.app_exit_btn_yes);
 			rel_exit_no = (RelativeLayout)findViewById(R.id.app_exit_btn_no);
@@ -346,7 +346,7 @@ public class exit_ListActivity extends Activity
 			if(mobileTimeZone.equals("Asia/Kolkata") || mobileTimeZone.equals("Asia/Calcutta"))
 			{
 				Log.e("Time Zone :: ", mobileTimeZone);
-				Set_Link = exit_CommonHelper.home_static_Indai;
+				Set_Link = Exit_CommonHelper.home_static_Indai;
 			}
 			else
 			{
@@ -354,27 +354,27 @@ public class exit_ListActivity extends Activity
 				if(Contl.equals("Asia"))
 				{
 					Log.e("Time Zone :: ", Contl);
-					Set_Link = exit_CommonHelper.home_static_Asia;
+					Set_Link = Exit_CommonHelper.home_static_Asia;
 				}
 				else if(Contl.equals("America"))
 				{
 					Log.e("Time Zone :: ", Contl);
-					Set_Link = exit_CommonHelper.home_static_USA;
+					Set_Link = Exit_CommonHelper.home_static_USA;
 				} 
 				else if(Contl.equals("Europe"))
 				{
 					Log.e("Time Zone :: ", Contl);
-					Set_Link = exit_CommonHelper.home_static_Europe;
+					Set_Link = Exit_CommonHelper.home_static_Europe;
 				} 
 				else
 				{
 					Log.e("Time Zone :: ", Contl);
-					Set_Link = exit_CommonHelper.home_static_Common;
+					Set_Link = Exit_CommonHelper.home_static_Common;
 				}
 			}
 
 
-			if(exit_CommonClass.isOnline(exit_ListActivity.this))
+			if(Exit_CommonClass.isOnline(Exit_ListActivity.this))
 			{
 				get_exit_app_left_task = new GetHomeStaticLeftTask();
 				get_exit_app_left_task.execute();
@@ -427,7 +427,7 @@ public class exit_ListActivity extends Activity
 	protected void HomeScreen() 
 	{
 		// TODO Auto-generated method stub
-		Intent i = new Intent(getApplicationContext(), exit_CommonHelper.mActivity.getClass());
+		Intent i = new Intent(getApplicationContext(), Exit_CommonHelper.mActivity.getClass());
 		startActivity(i);
 		finish();
 		overridePendingTransition(R.anim.exit_slide_in_right, R.anim.exit_slide_out_left);
@@ -525,7 +525,7 @@ public class exit_ListActivity extends Activity
 				// TODO Auto-generated method stub
 				try
 				{
-					Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(exit_CommonHelper.static_ad_link));
+					Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(Exit_CommonHelper.static_ad_link));
 					startActivity(browserIntent);
 					overridePendingTransition(R.anim.exit_slide_in_right, R.anim.exit_slide_out_left);
 				}
@@ -556,7 +556,7 @@ public class exit_ListActivity extends Activity
 
 				String responseString = null;
 
-				exit_RestClient client = new exit_RestClient(exit_CommonHelper.ad_policy_link);
+				Exit_RestClient client = new Exit_RestClient(Exit_CommonHelper.ad_policy_link);
 				client.execute(0);
 				responseString = client.getResponse();
 				//Log.e(TAG, responseString);
@@ -590,7 +590,7 @@ public class exit_ListActivity extends Activity
 
 					JSONObject jsonObj = jsonResultArr.optJSONObject(i);
 
-					home_ad_left_link = new exit_AdStaticLink();
+					home_ad_left_link = new Exit_AdStaticLink();
 
 					String get_ad_name = jsonObj.optString("ad_name");
 					String get_ad_link = jsonObj.optString("ad_link");
@@ -649,7 +649,7 @@ public class exit_ListActivity extends Activity
 
 	public void InternetCheckDialog()
 	{
-		internet_dialog = new Dialog(exit_ListActivity.this,R.style.TransparentBackground_Exit);
+		internet_dialog = new Dialog(Exit_ListActivity.this,R.style.TransparentBackground_Exit);
 		internet_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		internet_dialog.setContentView(R.layout.exit_dialog_rate);
 
@@ -701,7 +701,7 @@ public class exit_ListActivity extends Activity
 
 				String responseString = null;
 
-				exit_RestClient client = new exit_RestClient(Set_Link);
+				Exit_RestClient client = new Exit_RestClient(Set_Link);
 				client.execute(0);
 				responseString = client.getResponse();
 
@@ -734,7 +734,7 @@ public class exit_ListActivity extends Activity
 
 					JSONObject jsonObj = jsonResultArr.optJSONObject(i);
 
-					exit_app_left_data = new exit_ExitAppClass();
+					exit_app_left_data = new Exit_ExitAppClass();
 
 					String app_name = jsonObj.optString("app_name");
 					String pakage_name = jsonObj.optString("package_name");
@@ -782,7 +782,7 @@ public class exit_ListActivity extends Activity
 
 	public void GotoAppStoreDialog(String appName, final String pakageName)
 	{
-		ad_conform_dialog = new Dialog(exit_ListActivity.this,R.style.TransparentBackground_Exit);
+		ad_conform_dialog = new Dialog(Exit_ListActivity.this,R.style.TransparentBackground_Exit);
 		ad_conform_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		ad_conform_dialog.setContentView(R.layout.exit_dialog_rate);
 
@@ -843,14 +843,14 @@ public class exit_ListActivity extends Activity
 
 	private void AdMobConsent()
 	{
-		if(!exit_CommonHelper.is_hide_ad)
+		if(!Exit_CommonHelper.is_hide_ad)
 		{
-			boolean is_online = exit_CommonClass.isOnline(this);
+			boolean is_online = Exit_CommonClass.isOnline(this);
 			if(is_online)
 			{
-				if(exit_CommonHelper.is_eea_user)
+				if(Exit_CommonHelper.is_eea_user)
 				{
-					if (exit_CommonHelper.is_consent_set)
+					if (Exit_CommonHelper.is_consent_set)
 					{
 						LoadAd();
 					}
@@ -879,9 +879,9 @@ public class exit_ListActivity extends Activity
 			rel_native_ad.setVisibility(View.GONE);
 		}
 
-		/*if(!exit_CommonHelper.is_hide_ad)
+		/*if(!Exit_CommonHelper.is_hide_ad)
 		{
-			boolean is_online = exit_CommonClass.isOnline(this);
+			boolean is_online = Exit_CommonClass.isOnline(this);
 			if(is_online)
 			{
 				LoadAd();
@@ -909,7 +909,7 @@ public class exit_ListActivity extends Activity
 			//Native Ad Start //
 			rel_native_ad = (RelativeLayout)findViewById(R.id.ad_layout);
 			rel_native_ad.setVisibility(View.VISIBLE);
-			DisplayNativeAd(true,exit_CommonHelper.is_show_non_personalize,exit_CommonHelper.native_ad_id);
+			DisplayNativeAd(true, Exit_CommonHelper.is_show_non_personalize, Exit_CommonHelper.native_ad_id);
 			//Native Ad End //
 		}
 		catch (Exception e)

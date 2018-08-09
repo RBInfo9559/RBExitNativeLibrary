@@ -1,4 +1,4 @@
-package rb.exit.librarywithad;
+package rb.exit.nativelibrary;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -27,7 +27,7 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 @SuppressWarnings("deprecation")
-public class exit_RestClient
+public class Exit_RestClient
 {
 	byte[] data = null;
     private ArrayList<NameValuePair> params;
@@ -58,7 +58,7 @@ public class exit_RestClient
         return responseCode;
     }
  
-    public exit_RestClient(String url)
+    public Exit_RestClient(String url)
     {
         this.url = url;
         params = new ArrayList<NameValuePair>();

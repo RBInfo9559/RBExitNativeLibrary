@@ -1,4 +1,4 @@
-package rb.exit.librarywithad;
+package rb.exit.nativelibrary;
 
 
 import android.app.Activity;
@@ -28,20 +28,20 @@ public class MyExitView extends Application
     public static void init(Context homeActivity)
     {
         mContext = homeActivity;
-        exit_CommonHelper.mActivity = homeActivity;
+        Exit_CommonHelper.mActivity = homeActivity;
 
     }
 
     public static void OpenExitScreen(boolean isHideAds,boolean isEEAUser,boolean isConsentSet,boolean isShowNonPersonalize,String nativeAdID)
     {
         // TODO Auto-generated method stub
-        exit_CommonHelper.is_hide_ad = isHideAds;
-        exit_CommonHelper.is_eea_user = isEEAUser;
-        exit_CommonHelper.is_consent_set = isConsentSet;
-        exit_CommonHelper.is_show_non_personalize = isShowNonPersonalize;
-        exit_CommonHelper.native_ad_id = nativeAdID.trim();
+        Exit_CommonHelper.is_hide_ad = isHideAds;
+        Exit_CommonHelper.is_eea_user = isEEAUser;
+        Exit_CommonHelper.is_consent_set = isConsentSet;
+        Exit_CommonHelper.is_show_non_personalize = isShowNonPersonalize;
+        Exit_CommonHelper.native_ad_id = nativeAdID.trim();
 
-        if(exit_CommonClass.isOnline(exit_CommonHelper.mActivity))
+        if(Exit_CommonClass.isOnline(Exit_CommonHelper.mActivity))
         {
             ExitScreen();
         }
@@ -55,23 +55,23 @@ public class MyExitView extends Application
     private static void ExitScreen()
     {
         // TODO Auto-generated method stub
-        Intent i = new Intent(exit_CommonHelper.mActivity, exit_ListActivity.class);
-        exit_CommonHelper.mActivity.startActivity(i);
-        ((Activity)exit_CommonHelper.mActivity).finish();
-        ((Activity)exit_CommonHelper.mActivity).overridePendingTransition(R.anim.exit_slide_in_left, R.anim.exit_slide_out_right);
+        Intent i = new Intent(Exit_CommonHelper.mActivity, Exit_ListActivity.class);
+        Exit_CommonHelper.mActivity.startActivity(i);
+        ((Activity) Exit_CommonHelper.mActivity).finish();
+        ((Activity) Exit_CommonHelper.mActivity).overridePendingTransition(R.anim.exit_slide_in_left, R.anim.exit_slide_out_right);
     }
 
     private static void OnBackSelect()
     {
         if (doubleBackToExitPressedOnce)
         {
-            ((Activity)exit_CommonHelper.mActivity).finish();
-            ((Activity)exit_CommonHelper.mActivity).overridePendingTransition(R.anim.exit_slide_in_left, R.anim.exit_slide_out_right);
+            ((Activity) Exit_CommonHelper.mActivity).finish();
+            ((Activity) Exit_CommonHelper.mActivity).overridePendingTransition(R.anim.exit_slide_in_left, R.anim.exit_slide_out_right);
             return;
         }
 
         doubleBackToExitPressedOnce = true;
-        Toast.makeText(exit_CommonHelper.mActivity, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+        Toast.makeText(Exit_CommonHelper.mActivity, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
 
         new Handler().postDelayed(new Runnable()
         {
@@ -89,7 +89,7 @@ public class MyExitView extends Application
         try
         {
             mContext = ctx;
-            String rateUrl = AppHelper.rate_url + mContext.getPackageName();
+            String rateUrl = Exit_AppHelper.rate_url + mContext.getPackageName();
 
             String dialog_header = "Rate App";
             String dialog_message = "Are you sure you want to rate my app?" + "\n" + "Thanks for support!";
@@ -109,7 +109,7 @@ public class MyExitView extends Application
         {
             mContext = ctx;
             String app_name = mContext.getResources().getString(R.string.app_name) + " :";
-            String shareUrl = AppHelper.rate_url + mContext.getPackageName();
+            String shareUrl = Exit_AppHelper.rate_url + mContext.getPackageName();
 
             Intent sharingIntent = new Intent(Intent.ACTION_SEND);
             sharingIntent.setType("text/plain");
@@ -136,7 +136,7 @@ public class MyExitView extends Application
         TextView conform_dialog_txt_header = (TextView)conform_dialog.findViewById(R.id.dialog_conform_txt_header);
         TextView conform_dialog_txt_message = (TextView)conform_dialog.findViewById(R.id.dialog_conform_txt_message);
 
-        Typeface font_type = Typeface.createFromAsset(mContext.getAssets(), AppHelper.roboto_font_path);
+        Typeface font_type = Typeface.createFromAsset(mContext.getAssets(), Exit_AppHelper.roboto_font_path);
 
         conform_dialog_btn_yes.setTypeface(font_type);
         conform_dialog_btn_no.setTypeface(font_type);

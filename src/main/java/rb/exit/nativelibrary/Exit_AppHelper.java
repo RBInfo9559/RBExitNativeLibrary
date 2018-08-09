@@ -1,9 +1,9 @@
-package rb.exit.librarywithad;
+package rb.exit.nativelibrary;
 
 import android.app.Application;
 
 
-public class AppHelper extends Application
+public class Exit_AppHelper extends Application
 {
 	public static String roboto_font_path = "Roboto-Regular.ttf";
 

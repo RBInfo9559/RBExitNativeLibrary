@@ -1,11 +1,11 @@
-package rb.exit.librarywithad;
+package rb.exit.nativelibrary;
 
-public class exit_AdStaticLink
+public class Exit_AdStaticLink
 {
 	public String ad_name;
 	public String ad_link;
 	
-	public exit_AdStaticLink()
+	public Exit_AdStaticLink()
 	{
 		ad_name = "";
 		ad_link = "";

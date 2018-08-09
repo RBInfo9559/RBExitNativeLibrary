@@ -1,4 +1,4 @@
-package rb.exit.librarywithad;
+package rb.exit.nativelibrary;
 
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
@@ -21,7 +21,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-public class AppClass
+public class Exit_AppClass
 {
 	private static Context mContext;
 
@@ -29,7 +29,7 @@ public class AppClass
 	
 	public static boolean is_online;
 
-	public AppClass(Context ctx)
+	public Exit_AppClass(Context ctx)
 	{
 		// TODO Auto-generated constructor stub
 		mContext = ctx;
@@ -41,7 +41,7 @@ public class AppClass
 		try
 		{
 			mContext = ctx;
-			String rateUrl = AppHelper.rate_url + mContext.getPackageName();
+			String rateUrl = Exit_AppHelper.rate_url + mContext.getPackageName();
 
 			String dialog_header = "Rate App";
 			String dialog_message = "Are you sure you want to rate my app?" + "\n" + "Thanks for support!";
@@ -85,7 +85,7 @@ public class AppClass
 		{
 			mContext = ctx;
 			String app_name = mContext.getResources().getString(R.string.app_name) + " :";
-			String shareUrl = AppHelper.rate_url + mContext.getPackageName();
+			String shareUrl = Exit_AppHelper.rate_url + mContext.getPackageName();
 
 			Intent sharingIntent = new Intent(Intent.ACTION_SEND);
 			sharingIntent.setType("text/plain");
@@ -107,7 +107,7 @@ public class AppClass
 		{
 			mContext = ctx;
 			Intent more_intent = new Intent(Intent.ACTION_VIEW);
-			more_intent.setData(Uri.parse(AppHelper.more_url));
+			more_intent.setData(Uri.parse(Exit_AppHelper.more_url));
 			mContext.startActivity(more_intent);
 		} 
 		catch (Exception e)
@@ -198,7 +198,7 @@ public class AppClass
 		conform_dialog_txt_header = (TextView)conform_dialog.findViewById(R.id.dialog_conform_txt_header);
 		conform_dialog_txt_message = (TextView)conform_dialog.findViewById(R.id.dialog_conform_txt_message);
 
-		font_type = Typeface.createFromAsset(mContext.getAssets(), AppHelper.roboto_font_path);
+		font_type = Typeface.createFromAsset(mContext.getAssets(), Exit_AppHelper.roboto_font_path);
 
 		conform_dialog_btn_yes.setTypeface(font_type);
 		conform_dialog_btn_no.setTypeface(font_type);

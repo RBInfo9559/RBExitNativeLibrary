@@ -5,6 +5,6 @@
         android:state_enabled="true" 
         android:state_pressed="true"/>
     
-    <item android:drawable="@drawable/exit_native_install_btn_normal" />
+    <item android:drawable="@drawable/exit_native_install_btn" />
 		
 </selector>

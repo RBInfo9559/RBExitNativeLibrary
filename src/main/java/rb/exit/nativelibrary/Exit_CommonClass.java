@@ -1,4 +1,4 @@
-package rb.exit.librarywithad;
+package rb.exit.nativelibrary;
 
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -9,7 +9,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 
 
-public class exit_CommonClass
+public class Exit_CommonClass
 {
 	private static Context mContext;
 
@@ -17,7 +17,7 @@ public class exit_CommonClass
 	
 	public static boolean is_online;
 
-	public exit_CommonClass(Context ctx)
+	public Exit_CommonClass(Context ctx)
 	{
 		// TODO Auto-generated constructor stub
 		mContext = ctx;
@@ -29,7 +29,7 @@ public class exit_CommonClass
 		try 
 		{
 			mContext = ctx;
-			String rateUrl = exit_CommonHelper.rate_url + mContext.getPackageName();
+			String rateUrl = Exit_CommonHelper.rate_url + mContext.getPackageName();
 
 			Uri uri = Uri.parse(rateUrl);
 			Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
@@ -79,7 +79,7 @@ public class exit_CommonClass
 		{
 			mContext = ctx;
 			String app_name = mContext.getResources().getString(R.string.app_name) + " :";
-			String shareUrl = exit_CommonHelper.rate_url + mContext.getPackageName();
+			String shareUrl = Exit_CommonHelper.rate_url + mContext.getPackageName();
 
 			Intent sharingIntent = new Intent(Intent.ACTION_SEND);
 			sharingIntent.setType("text/plain");
@@ -101,7 +101,7 @@ public class exit_CommonClass
 		{
 			mContext = ctx;
 			Intent more_intent = new Intent(Intent.ACTION_VIEW);
-			more_intent.setData(Uri.parse(exit_CommonHelper.more_url));
+			more_intent.setData(Uri.parse(Exit_CommonHelper.more_url));
 			mContext.startActivity(more_intent);
 		} 
 		catch (Exception e)

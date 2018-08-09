@@ -1,10 +1,10 @@
-package rb.exit.librarywithad;
+package rb.exit.nativelibrary;
 
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 
-public class exit_CommonHelper extends Application
+public class Exit_CommonHelper extends Application
 {
 
 	public static Context mActivity;

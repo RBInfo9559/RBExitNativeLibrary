@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/RBExitLibraryWithNative.iml" filepath="$PROJECT_DIR$/RBExitLibraryWithNative.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RBExitNativeLibrary.iml" filepath="$PROJECT_DIR$/RBExitNativeLibrary.iml" />
     </modules>
   </component>
 </project>

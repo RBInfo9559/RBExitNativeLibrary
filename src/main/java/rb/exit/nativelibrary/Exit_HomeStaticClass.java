@@ -1,12 +1,12 @@
-package rb.exit.librarywithad;
+package rb.exit.nativelibrary;
 
-public class exit_HomeStaticClass
+public class Exit_HomeStaticClass
 {
 	public String app_name;
 	public String app_pakage_name;
 	public String app_icon_url;
 	
-	public exit_HomeStaticClass()
+	public Exit_HomeStaticClass()
 	{
 		app_name = "";
 		app_pakage_name = "";

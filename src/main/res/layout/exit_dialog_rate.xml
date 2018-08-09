@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:text="Are you sure you want to open App in Play Store?"
                 android:textColor="@color/exit_dialog_message_color"
-                android:textSize="15sp" />
+                android:textSize="16sp" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -68,10 +68,11 @@
                 android:layout_marginRight="16dp"
                 android:background="@drawable/exit_dialog_button_selector"
                 android:padding="8dp"
-                android:text="YES"
+                android:text="Yes"
                 android:textColor="@drawable/exit_dialog_button_text_selector"
                 android:textSize="18sp"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                android:textAllCaps="false"/>
 
             <Button
                 android:id="@+id/dialog_conform_btn_no"
@@ -82,11 +83,11 @@
                 android:layout_toLeftOf="@+id/dialog_conform_btn_yes"
                 android:background="@drawable/exit_dialog_button_selector"
                 android:padding="8dp"
-                android:text="NO"
+                android:text="No"
                 android:textColor="@drawable/exit_dialog_button_text_selector"
                 android:textSize="18sp"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                android:textAllCaps="false"/>
         </RelativeLayout>
     </RelativeLayout>
-
 </RelativeLayout>
