@@ -42,7 +42,7 @@
             android:layout_below="@+id/app_exit_lbl_header"
             android:layout_marginRight="5dp"
             android:layout_marginBottom="2dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:background="@drawable/exit_button_selector">
 
             <TextView
@@ -62,7 +62,7 @@
             android:layout_height="35dp"
             android:layout_below="@+id/app_exit_lbl_header"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="2dp"
             android:layout_toLeftOf="@+id/app_exit_btn_no"
             android:background="@drawable/exit_button_selector">
@@ -104,7 +104,9 @@
                     android:id="@+id/exit_static_ad_lbl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dip"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
                     android:gravity="center" >
 
                     <TextView
@@ -137,7 +139,10 @@
                     android:layout_below="@+id/exit_static_ad_lbl"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginTop="16dip"
+                    android:layout_marginTop="5dip"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginBottom="2dp"
                     android:orientation="horizontal"
                     android:weightSum="4" >
 
