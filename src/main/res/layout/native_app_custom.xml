@@ -136,11 +136,11 @@
             <Button
                 android:id="@+id/native_ad_call_to_action"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:background="@drawable/exit_native_install_btn_selector"
                 android:gravity="center"
                 android:text=""
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textColor="@color/exit_white"/>
         </LinearLayout>
     </android.support.v7.widget.CardView>

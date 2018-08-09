@@ -333,8 +333,6 @@ public class Exit_ListActivity extends Activity
 
 			font_type = Typeface.createFromAsset(getAssets(), Exit_AppHelper.roboto_font_path);
 
-			AdMobConsent();
-
 			rel_exit_yes = (RelativeLayout)findViewById(R.id.app_exit_btn_yes);
 			rel_exit_no = (RelativeLayout)findViewById(R.id.app_exit_btn_no);
 
@@ -840,9 +838,10 @@ public class Exit_ListActivity extends Activity
 	protected void onResume()
 	{
 		super.onResume();
+        NativeAdProcess();
 	}
 
-	private void AdMobConsent()
+	private void NativeAdProcess()
 	{
 		if(!Exit_CommonHelper.is_hide_ad)
 		{
@@ -956,7 +955,8 @@ public class Exit_ListActivity extends Activity
 		{
 			native_ad_request = new AdRequest.Builder().build();
 		}
-		adLoader.loadAd(native_ad_request);
+
+        adLoader.loadAd(native_ad_request);
 	}
 
 	private void PopulateAppInstallAdView(NativeAppInstallAd nativeAppInstallAd,NativeAppInstallAdView adView)
