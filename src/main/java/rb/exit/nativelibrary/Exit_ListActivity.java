@@ -35,6 +35,8 @@ import com.google.android.gms.ads.formats.NativeAd;
 import com.google.android.gms.ads.formats.NativeAdOptions;
 import com.google.android.gms.ads.formats.NativeAppInstallAd;
 import com.google.android.gms.ads.formats.NativeAppInstallAdView;
+import com.google.android.gms.ads.formats.UnifiedNativeAd;
+import com.google.android.gms.ads.formats.UnifiedNativeAdView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -54,7 +56,7 @@ public class Exit_ListActivity extends Activity
 	Typeface font_type;
 
 	RelativeLayout rel_native_ad;
-	AdRequest native_adRequest;
+	AdRequest native_ad_request;
 
 	RelativeLayout rel_exit_yes;
 	RelativeLayout rel_exit_no;
@@ -73,19 +75,19 @@ public class Exit_ListActivity extends Activity
 	ArrayList<Exit_AdStaticLink> array_ad_static_link = new ArrayList<Exit_AdStaticLink>();
 
 	String static_app_name1;
-	String static_app_pakage1;
+	String static_app_package1;
 	String static_app_icon_url1;
 
 	String static_app_name2;
-	String static_app_pakage2;
+	String static_app_package2;
 	String static_app_icon_url2;
 
 	String static_app_name3;
-	String static_app_pakage3;
+	String static_app_package3;
 	String static_app_icon_url3;
 
 	String static_app_name4;
-	String static_app_pakage4;
+	String static_app_package4;
 	String static_app_icon_url4;
 
 
@@ -152,7 +154,7 @@ public class Exit_ListActivity extends Activity
 						Log.e("Left Random No ::", String.valueOf(arr.get(0)));
 
 						static_app_name1 = array_exit_app_left.get(arr.get(0)).app_name.trim();
-						static_app_pakage1 = array_exit_app_left.get(arr.get(0)).app_pakage_name.trim();
+						static_app_package1 = array_exit_app_left.get(arr.get(0)).app_pakage_name.trim();
 						static_app_icon_url1 = array_exit_app_left.get(arr.get(0)).app_icon_url.trim();
 
 						txt_exit_app_left1.setText(static_app_name1);
@@ -180,7 +182,7 @@ public class Exit_ListActivity extends Activity
 						Log.e("Left Random No ::", String.valueOf(arr.get(1)));
 
 						static_app_name2 = array_exit_app_left.get(arr.get(1)).app_name.trim();
-						static_app_pakage2 = array_exit_app_left.get(arr.get(1)).app_pakage_name.trim();
+						static_app_package2 = array_exit_app_left.get(arr.get(1)).app_pakage_name.trim();
 						static_app_icon_url2 = array_exit_app_left.get(arr.get(1)).app_icon_url.trim();
 
 						txt_exit_app_left2.setText(static_app_name2);
@@ -208,7 +210,7 @@ public class Exit_ListActivity extends Activity
 						Log.e("Left Random No ::", String.valueOf(arr.get(2)));
 
 						static_app_name3 = array_exit_app_left.get(arr.get(2)).app_name.trim();
-						static_app_pakage3 = array_exit_app_left.get(arr.get(2)).app_pakage_name.trim();
+						static_app_package3 = array_exit_app_left.get(arr.get(2)).app_pakage_name.trim();
 						static_app_icon_url3 = array_exit_app_left.get(arr.get(2)).app_icon_url.trim();
 
 						txt_exit_app_left3.setText(static_app_name3);
@@ -237,7 +239,7 @@ public class Exit_ListActivity extends Activity
 						Log.e("Left Random No ::", String.valueOf(arr.get(3)));
 
 						static_app_name4 = array_exit_app_left.get(arr.get(3)).app_name.trim();
-						static_app_pakage4 = array_exit_app_left.get(arr.get(3)).app_pakage_name.trim();
+						static_app_package4 = array_exit_app_left.get(arr.get(3)).app_pakage_name.trim();
 						static_app_icon_url4 = array_exit_app_left.get(arr.get(3)).app_icon_url.trim();
 
 						txt_exit_app_left4.setText(static_app_name4);
@@ -313,7 +315,6 @@ public class Exit_ListActivity extends Activity
 	private void setview()
 	{
 		// TODO Auto-generated method stub
-
 		try
 		{
 			setContentView(R.layout.exit_layout);
@@ -476,7 +477,7 @@ public class Exit_ListActivity extends Activity
 			{
 				// TODO Auto-generated method stub
 				String app_name = static_app_name1.trim();
-				String app_package = static_app_pakage1.trim();
+				String app_package = static_app_package1.trim();
 				GotoAppStoreDialog(app_name, app_package);
 			}
 		});
@@ -488,7 +489,7 @@ public class Exit_ListActivity extends Activity
 			{
 				// TODO Auto-generated method stub
 				String app_name = static_app_name2.trim();
-				String app_package = static_app_pakage2.trim();
+				String app_package = static_app_package2.trim();
 				GotoAppStoreDialog(app_name, app_package);
 			}
 		});
@@ -500,7 +501,7 @@ public class Exit_ListActivity extends Activity
 			{
 				// TODO Auto-generated method stub
 				String app_name = static_app_name3.trim();
-				String app_package = static_app_pakage3.trim();
+				String app_package = static_app_package3.trim();
 				GotoAppStoreDialog(app_name, app_package);
 			}
 		});
@@ -512,7 +513,7 @@ public class Exit_ListActivity extends Activity
 			{
 				// TODO Auto-generated method stub
 				String app_name = static_app_name4.trim();
-				String app_package = static_app_pakage4.trim();
+				String app_package = static_app_package4.trim();
 				GotoAppStoreDialog(app_name, app_package);
 			}
 		});
@@ -888,7 +889,8 @@ public class Exit_ListActivity extends Activity
 			//Native Ad Start //
 			rel_native_ad = (RelativeLayout)findViewById(R.id.ad_layout);
 			rel_native_ad.setVisibility(View.VISIBLE);
-			DisplayNativeAd(true, Exit_CommonHelper.is_show_non_personalize, Exit_CommonHelper.native_ad_id);
+			LoadUnifiedNativeAd(Exit_CommonHelper.is_show_non_personalize, Exit_CommonHelper.native_ad_id);
+			//DisplayNativeAd(true, Exit_CommonHelper.is_show_non_personalize, Exit_CommonHelper.native_ad_id);
 			//Native Ad End //
 		}
 		catch (Exception e)
@@ -898,7 +900,198 @@ public class Exit_ListActivity extends Activity
 		}
 	}
 
-	private void DisplayNativeAd(boolean requestAppInstallAds,boolean is_show_non_personalize,String native_ad_id)
+	private void LoadUnifiedNativeAd(boolean is_show_non_personalize,String native_ad_id)
+	{
+		AdLoader.Builder builder = new AdLoader.Builder(this, native_ad_id);
+		builder.forUnifiedNativeAd(new UnifiedNativeAd.OnUnifiedNativeAdLoadedListener()
+		{
+			// OnUnifiedNativeAdLoadedListener implementation.
+			@Override
+			public void onUnifiedNativeAdLoaded(UnifiedNativeAd unifiedNativeAd)
+			{
+				FrameLayout frameLayout = (FrameLayout) findViewById(R.id.native_ad_layout);
+				UnifiedNativeAdView adView = (UnifiedNativeAdView) getLayoutInflater().inflate(R.layout.exit_native_ad_unified, null);
+				PopulateUnifiedNativeAdView(unifiedNativeAd, adView);
+				frameLayout.removeAllViews();
+				frameLayout.addView(adView);
+			}
+		});
+
+		VideoOptions videoOptions = new VideoOptions.Builder()
+				.setStartMuted(true)
+				.build();
+
+		NativeAdOptions adOptions = new NativeAdOptions.Builder()
+				.setVideoOptions(videoOptions)
+				.build();
+
+		builder.withNativeAdOptions(adOptions);
+
+		AdLoader adLoader = builder.withAdListener(new AdListener()
+		{
+			@Override
+			public void onAdFailedToLoad(int errorCode)
+			{
+				Log.e("Unified Native:","Failed to load native ad!");
+			}
+		}).build();
+
+		Bundle non_personalize_bundle = new Bundle();
+		non_personalize_bundle.putString("npa", "1");
+
+		if(is_show_non_personalize)
+		{
+			native_ad_request = new AdRequest.Builder().addNetworkExtrasBundle(AdMobAdapter.class, non_personalize_bundle).build();
+		}
+		else
+		{
+			native_ad_request = new AdRequest.Builder().build();
+		}
+
+		adLoader.loadAd(native_ad_request);
+
+	}
+
+	private void PopulateUnifiedNativeAdView(UnifiedNativeAd nativeAd, UnifiedNativeAdView adView)
+	{
+		// Get the video controller for the ad. One will always be provided, even if the ad doesn't
+		// have a video asset.
+		VideoController vc = nativeAd.getVideoController();
+		vc.mute(true);
+		// Create a new VideoLifecycleCallbacks object and pass it to the VideoController. The
+		// VideoController will call methods on this object when events occur in the video
+		// lifecycle.
+		vc.setVideoLifecycleCallbacks(new VideoController.VideoLifecycleCallbacks()
+		{
+			public void onVideoEnd()
+			{
+				// Publishers should allow native ads to complete video playback before refreshing
+				// or replacing them with another ad in the same UI location.
+				//refresh.setEnabled(true);
+				//videoStatus.setText("Video status: Video playback has ended.");
+				super.onVideoEnd();
+			}
+		});
+
+		View icon_view = adView.findViewById(R.id.ad_app_icon);
+		View headline_view = adView.findViewById(R.id.ad_headline);
+		View body_view = adView.findViewById(R.id.ad_body);
+		View rating_view = adView.findViewById(R.id.ad_stars);
+		View price_view = adView.findViewById(R.id.ad_price);
+		View store_view = adView.findViewById(R.id.ad_store);
+		View advertiser_view = adView.findViewById(R.id.ad_advertiser);
+		View call_to_action_view = adView.findViewById(R.id.ad_call_to_action);
+
+		adView.setIconView(icon_view);
+		adView.setHeadlineView(headline_view);
+		adView.setBodyView(body_view);
+		adView.setStarRatingView(rating_view);
+		adView.setPriceView(price_view);
+		adView.setStoreView(store_view);
+		adView.setAdvertiserView(advertiser_view);
+		adView.setCallToActionView(call_to_action_view);
+
+		MediaView mediaView = adView.findViewById(R.id.ad_media);
+		adView.setMediaView(mediaView);
+
+		ImageView mainImageView = adView.findViewById(R.id.ad_image);
+		mainImageView.setVisibility(View.GONE);
+
+		// Apps can check the VideoController's hasVideoContent property to determine if the
+		// NativeAppInstallAd has a video asset.
+        /*if (vc.hasVideoContent())
+        {
+            adView.setMediaView(mediaView);
+            mainImageView.setVisibility(View.GONE);
+            Log.e("Native Ad:","Video status: Ad contains a %.2f:1 video asset.");
+        }
+        else
+        {
+            try
+            {
+                adView.setImageView(mainImageView);
+                mediaView.setVisibility(View.GONE);
+
+                // At least one image is guaranteed.
+                List<NativeAd.Image> images = nativeAd.getImages();
+                mainImageView.setImageDrawable(images.get(0).getDrawable());
+                Log.e("Native Ad:","Video status: Ad does not contain a video asset.");
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }*/
+
+		// Some assets are guaranteed to be in every UnifiedNativeAd.
+		((TextView) headline_view).setText(nativeAd.getHeadline());
+		((TextView) body_view).setText(nativeAd.getBody());
+		((Button) call_to_action_view).setText(nativeAd.getCallToAction());
+
+		// These assets aren't guaranteed to be in every UnifiedNativeAd, so it's important to
+		// check before trying to display them.
+		if (nativeAd.getIcon() == null)
+		{
+			icon_view.setVisibility(View.GONE);
+		}
+		else
+		{
+			((ImageView) icon_view).setImageDrawable(nativeAd.getIcon().getDrawable());
+			icon_view.setVisibility(View.VISIBLE);
+		}
+
+		if (nativeAd.getPrice() == null)
+		{
+			price_view.setVisibility(View.INVISIBLE);
+		}
+		else
+		{
+			price_view.setVisibility(View.VISIBLE);
+			((TextView) price_view).setText(nativeAd.getPrice());
+		}
+
+		if (nativeAd.getStore() == null)
+		{
+			store_view.setVisibility(View.INVISIBLE);
+		}
+		else
+		{
+			store_view.setVisibility(View.VISIBLE);
+			((TextView) store_view).setText(nativeAd.getStore());
+		}
+
+		if (nativeAd.getStarRating() == null)
+		{
+			rating_view.setVisibility(View.INVISIBLE);
+		}
+		else
+		{
+			((RatingBar) rating_view).setRating(nativeAd.getStarRating().floatValue());
+			rating_view.setVisibility(View.VISIBLE);
+		}
+
+		if (nativeAd.getAdvertiser() == null)
+		{
+			advertiser_view.setVisibility(View.INVISIBLE);
+		}
+		else
+		{
+			((TextView) advertiser_view).setText(nativeAd.getAdvertiser());
+			advertiser_view.setVisibility(View.VISIBLE);
+		}
+
+		//mediaView.setVisibility(View.VISIBLE);
+		//mainImageView.setVisibility(View.VISIBLE);
+		body_view.setVisibility(View.VISIBLE);
+		rating_view.setVisibility(View.VISIBLE);
+		advertiser_view.setVisibility(View.VISIBLE);
+		store_view.setVisibility(View.GONE);
+		price_view.setVisibility(View.GONE);
+
+		adView.setNativeAd(nativeAd);
+	}
+
+	/*private void DisplayNativeAd(boolean requestAppInstallAds,boolean is_show_non_personalize,String native_ad_id)
 	{
 		if (!requestAppInstallAds)
 		{
@@ -1012,7 +1205,7 @@ public class Exit_ListActivity extends Activity
 
 		// Apps can check the VideoController's hasVideoContent property to determine if the
 		// NativeAppInstallAd has a video asset.
-        /*if (vc.hasVideoContent())
+        *//*if (vc.hasVideoContent())
         {
             mVideoStatus.setText(String.format(Locale.getDefault(),
                     "Video status: Ad contains a %.2f:1 video asset.",
@@ -1022,7 +1215,7 @@ public class Exit_ListActivity extends Activity
         {
             mRefresh.setEnabled(true);
             mVideoStatus.setText("Video status: Ad does not contain a video asset.");
-        }*/
+        }*//*
 
 		List<NativeAd.Image> images = nativeAppInstallAd.getImages();
 
@@ -1069,5 +1262,5 @@ public class Exit_ListActivity extends Activity
 
 		// Assign native ad object to the native view.
 		adView.setNativeAd(nativeAppInstallAd);
-	}
+	}*/
 }

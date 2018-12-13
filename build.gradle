@@ -16,7 +16,7 @@ buildscript {
 }
 
 allprojects {
-    version = '1.0'
+    version = '1.6'
     group = 'rb.exit.nativelibrary'
 
     repositories {
@@ -34,8 +34,8 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        versionCode 6
+        versionName "1.6"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -63,7 +63,8 @@ dependencies {
 
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:cardview-v7:27.1.1'
-    implementation 'com.google.android.gms:play-services-ads:15.0.1'
+
+    implementation 'com.google.android.gms:play-services-ads:17.1.2'
 
     implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 }
