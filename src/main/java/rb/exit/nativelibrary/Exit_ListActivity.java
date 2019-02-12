@@ -7,12 +7,10 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -24,6 +22,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.ads.mediation.admob.AdMobAdapter;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdLoader;
@@ -31,10 +36,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.VideoController;
 import com.google.android.gms.ads.VideoOptions;
 import com.google.android.gms.ads.formats.MediaView;
-import com.google.android.gms.ads.formats.NativeAd;
 import com.google.android.gms.ads.formats.NativeAdOptions;
-import com.google.android.gms.ads.formats.NativeAppInstallAd;
-import com.google.android.gms.ads.formats.NativeAppInstallAdView;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
 import com.google.android.gms.ads.formats.UnifiedNativeAdView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -45,7 +47,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.TimeZone;
 
@@ -65,8 +66,8 @@ public class Exit_ListActivity extends Activity
 
 	RelativeLayout exit_static_ad_lbl;
 
-	GetHomeStaticLeftTask get_exit_app_left_task;
-	GetAdStaticLinkTask get_Ad_static_link_task;
+	//GetHomeStaticLeftTask get_exit_app_left_task;
+	//GetPrivacyLinkTask get_Ad_static_link_task;
 
 	Exit_ExitAppClass exit_app_left_data;
 	ArrayList<Exit_ExitAppClass> array_exit_app_left = new ArrayList<Exit_ExitAppClass>();
@@ -120,12 +121,13 @@ public class Exit_ListActivity extends Activity
 	ArrayList<Integer> arr;
 	String Set_Link;
 
+	RequestQueue requestQueue;
 
-	private Handler data_handler = new Handler() 
+	private Handler data_handler = new Handler()
 	{
-		public void handleMessage(Message message) 
+		public void handleMessage(Message message)
 		{
-			switch (message.what) 
+			switch (message.what)
 			{
 			case 0: // Succeeded
 			{
@@ -268,8 +270,10 @@ public class Exit_ListActivity extends Activity
 				{
 					if(Exit_CommonClass.isOnline(Exit_ListActivity.this))
 					{
-						get_Ad_static_link_task = new GetAdStaticLinkTask();
-						get_Ad_static_link_task.execute();
+						/*get_Ad_static_link_task = new GetPrivacyLinkTask();
+						get_Ad_static_link_task.execute();*/
+
+						GetPrivacyLinkVolleyProcess();
 					}
 				}
 				catch(Exception e)
@@ -301,7 +305,7 @@ public class Exit_ListActivity extends Activity
 	};
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) 
+	protected void onCreate(Bundle savedInstanceState)
 	{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
@@ -318,6 +322,9 @@ public class Exit_ListActivity extends Activity
 		try
 		{
 			setContentView(R.layout.exit_layout);
+
+			// Creates the Volley request queue
+			requestQueue = Volley.newRequestQueue(this);
 
 			// Universal Image Loader start //
 			image_loader.init(ImageLoaderConfiguration.createDefault(Exit_ListActivity.this));
@@ -361,12 +368,12 @@ public class Exit_ListActivity extends Activity
 				{
 					Log.e("Time Zone :: ", Contl);
 					Set_Link = Exit_CommonHelper.home_static_USA;
-				} 
+				}
 				else if(Contl.equals("Europe"))
 				{
 					Log.e("Time Zone :: ", Contl);
 					Set_Link = Exit_CommonHelper.home_static_Europe;
-				} 
+				}
 				else
 				{
 					Log.e("Time Zone :: ", Contl);
@@ -377,8 +384,10 @@ public class Exit_ListActivity extends Activity
 
 			if(Exit_CommonClass.isOnline(Exit_ListActivity.this))
 			{
-				get_exit_app_left_task = new GetHomeStaticLeftTask();
-				get_exit_app_left_task.execute();
+				/*get_exit_app_left_task = new GetHomeStaticLeftTask();
+				get_exit_app_left_task.execute();*/
+
+				GetAppListVolleyProcess();
 			}
 			else
 			{
@@ -388,7 +397,7 @@ public class Exit_ListActivity extends Activity
 			rel_exit_yes.setOnClickListener(new OnClickListener()
 			{
 				@Override
-				public void onClick(View v) 
+				public void onClick(View v)
 				{
 					// TODO Auto-generated method stub
 					GoToHome();
@@ -398,7 +407,7 @@ public class Exit_ListActivity extends Activity
 			rel_exit_no.setOnClickListener(new OnClickListener()
 			{
 				@Override
-				public void onClick(View v) 
+				public void onClick(View v)
 				{
 					// TODO Auto-generated method stub
 					HomeScreen();
@@ -414,7 +423,8 @@ public class Exit_ListActivity extends Activity
 
 	}
 
-	static String stripExtension (String str) {
+	static String stripExtension (String str)
+	{
 		// Handle null case specially.
 		if (str == null) return null;
 		// Get position of last '.'.
@@ -425,7 +435,7 @@ public class Exit_ListActivity extends Activity
 		return str.substring(0, pos);
 	}
 
-	protected void HomeScreen() 
+	protected void HomeScreen()
 	{
 		// TODO Auto-generated method stub
 		Intent i = new Intent(getApplicationContext(), Exit_CommonHelper.mActivity.getClass());
@@ -434,7 +444,7 @@ public class Exit_ListActivity extends Activity
 		overridePendingTransition(R.anim.exit_slide_in_right, R.anim.exit_slide_out_left);
 	}
 
-	private void setUpAppsLayout() 
+	private void setUpAppsLayout()
 	{
 		// TODO Auto-generated method stub
 		rel_exit_app_main = findViewById(R.id.app_exit_list_layout);
@@ -443,7 +453,7 @@ public class Exit_ListActivity extends Activity
 		txt_ads_footer = findViewById(R.id.app_exit_lbl_footer);
 
 		exit_static_ad_lbl = findViewById(R.id.exit_static_ad_lbl);
-		
+
 		rel_exit_app_left1 = findViewById(R.id.app_exit_app_layout_1);
 		img_exit_app_left1 = findViewById(R.id.app_exit_img_icon_1);
 		txt_exit_app_left1 = findViewById(R.id.app_exit_txt_app_name_1);
@@ -470,10 +480,10 @@ public class Exit_ListActivity extends Activity
 
 		rel_exit_app_main.setVisibility(View.GONE);
 
-		rel_exit_app_left1.setOnClickListener(new OnClickListener() 
+		rel_exit_app_left1.setOnClickListener(new OnClickListener()
 		{
 			@Override
-			public void onClick(View v) 
+			public void onClick(View v)
 			{
 				// TODO Auto-generated method stub
 				String app_name = static_app_name1.trim();
@@ -482,10 +492,10 @@ public class Exit_ListActivity extends Activity
 			}
 		});
 
-		rel_exit_app_left2.setOnClickListener(new OnClickListener() 
+		rel_exit_app_left2.setOnClickListener(new OnClickListener()
 		{
 			@Override
-			public void onClick(View v) 
+			public void onClick(View v)
 			{
 				// TODO Auto-generated method stub
 				String app_name = static_app_name2.trim();
@@ -494,10 +504,10 @@ public class Exit_ListActivity extends Activity
 			}
 		});
 
-		rel_exit_app_left3.setOnClickListener(new OnClickListener() 
+		rel_exit_app_left3.setOnClickListener(new OnClickListener()
 		{
 			@Override
-			public void onClick(View v) 
+			public void onClick(View v)
 			{
 				// TODO Auto-generated method stub
 				String app_name = static_app_name3.trim();
@@ -506,10 +516,10 @@ public class Exit_ListActivity extends Activity
 			}
 		});
 
-		rel_exit_app_left4.setOnClickListener(new OnClickListener() 
+		rel_exit_app_left4.setOnClickListener(new OnClickListener()
 		{
 			@Override
-			public void onClick(View v) 
+			public void onClick(View v)
 			{
 				// TODO Auto-generated method stub
 				String app_name = static_app_name4.trim();
@@ -518,10 +528,10 @@ public class Exit_ListActivity extends Activity
 			}
 		});
 
-		exit_static_ad_lbl.setOnClickListener(new OnClickListener() 
+		exit_static_ad_lbl.setOnClickListener(new OnClickListener()
 		{
 			@Override
-			public void onClick(View v) 
+			public void onClick(View v)
 			{
 				// TODO Auto-generated method stub
 				try
@@ -536,12 +546,73 @@ public class Exit_ListActivity extends Activity
 				}
 
 			}
-		}); 
+		});
 
 	}
 
-	//---------
-	public class GetAdStaticLinkTask extends AsyncTask<String, Void, String>
+	@Override
+	public void onBackPressed()
+	{
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+		GoToHome();
+	}
+
+	protected void GoToHome()
+	{
+		// TODO Auto-generated method stub
+		moveTaskToBack(true);
+		finish();
+		overridePendingTransition(R.anim.exit_slide_in_left, R.anim.exit_slide_out_right);
+	}
+
+	Dialog internet_dialog;
+	Button btn_yes;
+	Button btn_no;
+
+	TextView txt_dialog_header;
+	TextView txt_dialog_message;
+
+	String header;
+	String message;
+
+	public void InternetCheckDialog()
+	{
+		internet_dialog = new Dialog(Exit_ListActivity.this,R.style.TransparentBackground_Exit);
+		internet_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		internet_dialog.setContentView(R.layout.exit_dialog_rate);
+
+		btn_yes = internet_dialog.findViewById(R.id.dialog_conform_btn_yes);
+		btn_no = internet_dialog.findViewById(R.id.dialog_conform_btn_no);
+		btn_no.setVisibility(View.GONE);
+
+		txt_dialog_header = internet_dialog.findViewById(R.id.dialog_conform_txt_header);
+		txt_dialog_message = internet_dialog.findViewById(R.id.dialog_conform_txt_message);
+
+
+		btn_yes.setText("OK");
+
+
+		header = "Internet issue";
+		message = "Please check your internet connection!!!";
+
+		txt_dialog_header.setText(header);
+		txt_dialog_message.setText(message);
+
+		btn_yes.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				internet_dialog.dismiss();
+			}
+		});
+
+		internet_dialog.show();
+
+	}
+
+	/*public class GetPrivacyLinkTask extends AsyncTask<String, Void, String>
 	{
 		protected void onPreExecute()
 		{
@@ -620,81 +691,92 @@ public class Exit_ListActivity extends Activity
 		{
 
 		}
-	}
+	}*/
 
-	@Override
-	public void onBackPressed() 
+	private void GetPrivacyLinkVolleyProcess()
 	{
-		// TODO Auto-generated method stub
-		super.onBackPressed();
-		GoToHome();
-	}
+		requestQueue.getCache().remove(Exit_CommonHelper.ad_policy_link);
 
-	protected void GoToHome() 
-	{
-		// TODO Auto-generated method stub
-		moveTaskToBack(true);
-		finish();
-		overridePendingTransition(R.anim.exit_slide_in_left, R.anim.exit_slide_out_right);
-	}
-
-	Dialog internet_dialog;
-	Button btn_yes;
-	Button btn_no;
-
-	TextView txt_dialog_header;
-	TextView txt_dialog_message;
-
-	String header;
-	String message;
-
-	public void InternetCheckDialog()
-	{
-		internet_dialog = new Dialog(Exit_ListActivity.this,R.style.TransparentBackground_Exit);
-		internet_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		internet_dialog.setContentView(R.layout.exit_dialog_rate);
-
-		btn_yes = internet_dialog.findViewById(R.id.dialog_conform_btn_yes);
-		btn_no = internet_dialog.findViewById(R.id.dialog_conform_btn_no);
-		btn_no.setVisibility(View.GONE);
-
-		txt_dialog_header = internet_dialog.findViewById(R.id.dialog_conform_txt_header);
-		txt_dialog_message = internet_dialog.findViewById(R.id.dialog_conform_txt_message);
-
-
-		btn_yes.setText("OK");
-
-
-		header = "Internet issue";
-		message = "Please check your internet connection!!!";
-
-		txt_dialog_header.setText(header);
-		txt_dialog_message.setText(message);
-
-		btn_yes.setOnClickListener(new OnClickListener() 
+		StringRequest strReq = new StringRequest(Request.Method.GET, Exit_CommonHelper.ad_policy_link, new Response.Listener<String>()
 		{
 			@Override
-			public void onClick(View v) 
+			public void onResponse(String response)
 			{
-				internet_dialog.dismiss();
+				array_ad_static_link.clear();
+
+				String responseString = null;
+				responseString = response.toString();
+				//Log.e(TAG, responseString);
+
+				JSONObject jsonResultObj = null;
+				// we assume that the response body contains the error
+				// message
+				try
+				{
+					jsonResultObj = new JSONObject(responseString);
+				}
+				catch (Exception e)
+				{
+					Log.e("JSON", e.toString());
+				}
+
+				if (jsonResultObj == null)
+				{
+					data_handler.sendMessage(data_handler.obtainMessage(99));
+				}
+
+				JSONArray jsonResultArr = jsonResultObj.optJSONArray("data");
+				if (jsonResultArr == null)
+				{
+					data_handler.sendMessage(data_handler.obtainMessage(99));
+				}
+
+				for (int i = 0; i < jsonResultArr.length(); i++)
+				{
+					JSONObject jsonObj = jsonResultArr.optJSONObject(i);
+
+					home_ad_left_link = new Exit_AdStaticLink();
+
+					String get_ad_name = jsonObj.optString("ad_name");
+					String get_ad_link = jsonObj.optString("ad_link");
+
+					home_ad_left_link.ad_name = get_ad_name;
+					home_ad_left_link.ad_link = get_ad_link;
+
+					array_ad_static_link.add(home_ad_left_link);
+
+				}
+				data_handler.sendMessage(data_handler.obtainMessage(1));
 			}
-		});
+		}, new Response.ErrorListener()
+		{
+			@Override
+			public void onErrorResponse(VolleyError error)
+			{
+				VolleyLog.d(TAG, "Error: " + error.getMessage());
+				data_handler.sendMessage(data_handler.obtainMessage(99));
+			}
+		})
+		{
 
-		internet_dialog.show();
+		};
 
+		// Adding request to request queue
+		//AppController.getInstance().addToRequestQueue(strReq,tag_string_request);
+		requestQueue.add(strReq);
 	}
 
 
-	public class GetHomeStaticLeftTask extends AsyncTask<String, Void, String> 
+	/*public class GetHomeStaticLeftTask extends AsyncTask<String, Void, String>
 	{
-		protected void onPreExecute() 
+		protected void onPreExecute()
 		{
 			app_package_name = getApplicationContext().getPackageName().trim();
 		}
 
-		public String doInBackground(final String... args) 
+		public String doInBackground(final String... args)
 		{
-			try 
+			try
 			{
 				array_exit_app_left.clear();
 
@@ -709,22 +791,22 @@ public class Exit_ListActivity extends Activity
 				JSONObject jsonResultObj = null;
 
 				// we assume that the response body contains the error message
-				try 
+				try
 				{
 					jsonResultObj = new JSONObject(responseString);
-				} 
-				catch (Exception e) 
+				}
+				catch (Exception e)
 				{
 					Log.e("JSON", e.toString());
 				}
 
-				if (jsonResultObj == null) 
+				if (jsonResultObj == null)
 				{
 					data_handler.sendMessage(data_handler.obtainMessage(99));
 				}
 
 				JSONArray jsonResultArr = jsonResultObj.optJSONArray("data");
-				if (jsonResultArr == null) 
+				if (jsonResultArr == null)
 				{
 					data_handler.sendMessage(data_handler.obtainMessage(99));
 				}
@@ -754,8 +836,8 @@ public class Exit_ListActivity extends Activity
 
 				data_handler.sendMessage(data_handler.obtainMessage(0));
 
-			} 
-			catch (final Exception e) 
+			}
+			catch (final Exception e)
 			{
 				e.printStackTrace();
 			}
@@ -764,12 +846,93 @@ public class Exit_ListActivity extends Activity
 		}
 
 		// can use UI thread here
-		protected void onPostExecute(final String result) 
+		protected void onPostExecute(final String result)
 		{
 
 		}
-	}
+	}*/
 
+	private void GetAppListVolleyProcess()
+	{
+		app_package_name = getApplicationContext().getPackageName().trim();
+		requestQueue.getCache().remove(Set_Link);
+
+		StringRequest strReq = new StringRequest(Request.Method.GET, Set_Link, new Response.Listener<String>()
+		{
+			@Override
+			public void onResponse(String response)
+			{
+				array_exit_app_left.clear();
+
+				String responseString = null;
+				responseString = response.toString();
+				//Log.e(TAG, responseString);
+
+				JSONObject jsonResultObj = null;
+				// we assume that the response body contains the error
+				// message
+				try
+				{
+					jsonResultObj = new JSONObject(responseString);
+				}
+				catch (Exception e)
+				{
+					Log.e("JSON", e.toString());
+				}
+
+				if (jsonResultObj == null)
+				{
+					data_handler.sendMessage(data_handler.obtainMessage(99));
+				}
+
+				JSONArray jsonResultArr = jsonResultObj.optJSONArray("data");
+				if (jsonResultArr == null)
+				{
+					data_handler.sendMessage(data_handler.obtainMessage(99));
+				}
+
+
+				for (int i = 0; i < jsonResultArr.length(); i++)
+				{
+
+					JSONObject jsonObj = jsonResultArr.optJSONObject(i);
+
+					exit_app_left_data = new Exit_ExitAppClass();
+
+					String app_name = jsonObj.optString("app_name");
+					String pakage_name = jsonObj.optString("package_name");
+					String icon_url = jsonObj.optString("app_icon");
+
+					if(!app_package_name.equals(pakage_name))
+					{
+						exit_app_left_data.app_name = app_name;
+						exit_app_left_data.app_pakage_name = pakage_name;
+						exit_app_left_data.app_icon_url = icon_url;
+
+						array_exit_app_left.add(exit_app_left_data);
+					}
+
+				}
+
+				data_handler.sendMessage(data_handler.obtainMessage(0));
+			}
+		}, new Response.ErrorListener()
+		{
+			@Override
+			public void onErrorResponse(VolleyError error)
+			{
+				VolleyLog.d(TAG, "Error: " + error.getMessage());
+				data_handler.sendMessage(data_handler.obtainMessage(99));
+			}
+		})
+		{
+
+		};
+
+		// Adding request to request queue
+		//AppController.getInstance().addToRequestQueue(strReq,tag_string_request);
+		requestQueue.add(strReq);
+	}
 
 	Dialog ad_conform_dialog;
 	Button btn_ad_yes;
@@ -800,10 +963,10 @@ public class Exit_ListActivity extends Activity
 		txt_ad_header.setText(ad_header);
 		txt_ad_message.setText(ad_message);
 
-		btn_ad_yes.setOnClickListener(new OnClickListener() 
+		btn_ad_yes.setOnClickListener(new OnClickListener()
 		{
 			@Override
-			public void onClick(View v) 
+			public void onClick(View v)
 			{
 				try
 				{
@@ -811,7 +974,7 @@ public class Exit_ListActivity extends Activity
 
 					ad_conform_dialog.dismiss();
 					return;
-				} 
+				}
 				catch (ActivityNotFoundException localActivityNotFoundException)
 				{
 					startActivity(new Intent("android.intent.action.VIEW",Uri.parse("http://play.google.com/store/apps/details?id="+ pakageName)));
@@ -821,10 +984,10 @@ public class Exit_ListActivity extends Activity
 			}
 		});
 
-		btn_ad_no.setOnClickListener(new OnClickListener() 
+		btn_ad_no.setOnClickListener(new OnClickListener()
 		{
 			@Override
-			public void onClick(View v) 
+			public void onClick(View v)
 			{
 				ad_conform_dialog.dismiss();
 			}
