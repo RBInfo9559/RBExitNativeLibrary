@@ -3,6 +3,7 @@ package rb.exit.nativelibrary;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
@@ -47,6 +48,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.TimeZone;
 
@@ -1016,7 +1019,16 @@ public class Exit_ListActivity extends Activity
 				{
 					if (Exit_CommonHelper.is_consent_set)
 					{
-						LoadAd();
+						boolean check_play_store_user = verifyInstallerId(getApplicationContext());
+						if(check_play_store_user)
+						{
+							LoadAd();
+						}
+						else
+						{
+							rel_native_ad = (RelativeLayout)findViewById(R.id.ad_layout);
+							rel_native_ad.setVisibility(View.GONE);
+						}
 					}
 					else
 					{
@@ -1026,7 +1038,16 @@ public class Exit_ListActivity extends Activity
 				}
 				else
 				{
-					LoadAd();
+					boolean check_play_store_user = verifyInstallerId(getApplicationContext());
+					if(check_play_store_user)
+					{
+						LoadAd();
+					}
+					else
+					{
+						rel_native_ad = (RelativeLayout)findViewById(R.id.ad_layout);
+						rel_native_ad.setVisibility(View.GONE);
+					}
 				}
 			}
 			else
@@ -1061,6 +1082,16 @@ public class Exit_ListActivity extends Activity
 			// TODO: handle exception
 			e.printStackTrace();
 		}
+	}
+
+	public static boolean verifyInstallerId(Context context)
+	{
+		// A list with valid installers package name
+		List<String> validInstallers = new ArrayList<>(Arrays.asList("com.android.vending", "com.google.android.feedback"));
+		// The package name of the app that has installed your app
+		final String installer = context.getPackageManager().getInstallerPackageName(context.getPackageName());
+		// true if your app has been downloaded from Play Store
+		return installer != null && validInstallers.contains(installer);
 	}
 
 	private void LoadUnifiedNativeAd(boolean is_show_non_personalize,String native_ad_id)
@@ -1253,177 +1284,4 @@ public class Exit_ListActivity extends Activity
 
 		adView.setNativeAd(nativeAd);
 	}
-
-	/*private void DisplayNativeAd(boolean requestAppInstallAds,boolean is_show_non_personalize,String native_ad_id)
-	{
-		if (!requestAppInstallAds)
-		{
-			return;
-		}
-
-		AdLoader.Builder builder = new AdLoader.Builder(Exit_ListActivity.this, native_ad_id);
-		if (requestAppInstallAds)
-		{
-			builder.forAppInstallAd(new NativeAppInstallAd.OnAppInstallAdLoadedListener()
-			{
-				@Override
-				public void onAppInstallAdLoaded(NativeAppInstallAd ad)
-				{
-					FrameLayout frameLayout = (FrameLayout) findViewById(R.id.native_ad_layout);
-
-					LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-					NativeAppInstallAdView adView = (NativeAppInstallAdView) inflater.inflate(R.layout.native_app_custom, null);
-					PopulateAppInstallAdView(ad, adView);
-					frameLayout.removeAllViews();
-					frameLayout.addView(adView);
-				}
-			});
-		}
-
-		VideoOptions videoOptions = new VideoOptions.Builder()
-				.setStartMuted(true)
-				.build();
-
-		NativeAdOptions adOptions = new NativeAdOptions.Builder()
-				.setVideoOptions(videoOptions)
-				.build();
-
-		builder.withNativeAdOptions(adOptions);
-
-		AdLoader adLoader = builder.withAdListener(new AdListener()
-		{
-			@Override
-			public void onAdFailedToLoad(int errorCode)
-			{
-				//mRefresh.setEnabled(true);
-			}
-		}).build();
-
-		AdRequest native_ad_request;
-		Bundle non_personalize_bundle = new Bundle();
-		non_personalize_bundle.putString("npa", "1");
-
-		if(is_show_non_personalize)
-		{
-			native_ad_request = new AdRequest.Builder().addNetworkExtrasBundle(AdMobAdapter.class, non_personalize_bundle).build();
-		}
-		else
-		{
-			native_ad_request = new AdRequest.Builder().build();
-		}
-
-        adLoader.loadAd(native_ad_request);
-	}
-
-	private void PopulateAppInstallAdView(NativeAppInstallAd nativeAppInstallAd,NativeAppInstallAdView adView)
-	{
-		// Get the video controller for the ad. One will always be provided, even if the ad doesn't
-		// have a video asset.
-		VideoController vc = nativeAppInstallAd.getVideoController();
-
-		// Create a new VideoLifecycleCallbacks object and pass it to the VideoController. The
-		// VideoController will call methods on this object when events occur in the video
-		// lifecycle.
-		vc.setVideoLifecycleCallbacks(new VideoController.VideoLifecycleCallbacks()
-		{
-			public void onVideoEnd()
-			{
-				// Publishers should allow native ads to complete video playback before refreshing
-				// or replacing them with another ad in the same UI location.
-				//mRefresh.setEnabled(true);
-				//mVideoStatus.setText("Video status: Video playback has ended.");
-				super.onVideoEnd();
-			}
-		});
-
-		View icon_view = adView.findViewById(R.id.native_ad_app_icon);
-		View headline_view = adView.findViewById(R.id.native_ad_headline);
-		View body_view = adView.findViewById(R.id.native_ad_body);
-		View rating_view = adView.findViewById(R.id.native_ad_stars);
-		View price_view = adView.findViewById(R.id.native_ad_price);
-		View store_view = adView.findViewById(R.id.native_ad_store);
-		View install_view = adView.findViewById(R.id.native_ad_call_to_action);
-
-		adView.setIconView(icon_view);
-		adView.setHeadlineView(headline_view);
-		adView.setBodyView(body_view);
-		adView.setStarRatingView(rating_view);
-		adView.setPriceView(price_view);
-		adView.setStoreView(store_view);
-		adView.setCallToActionView(install_view);
-
-		// The MediaView will display a video asset if one is present in the ad, and the first image
-		// asset otherwise.
-		MediaView mediaView = (MediaView) adView.findViewById(R.id.native_ad_media);
-		adView.setMediaView(mediaView);
-
-		String headline = nativeAppInstallAd.getHeadline().toString();
-		String body = nativeAppInstallAd.getBody().toString();
-		String btn_action_name = nativeAppInstallAd.getCallToAction().toString();
-
-		// Some assets are guaranteed to be in every NativeAppInstallAd.
-		((TextView) adView.getHeadlineView()).setText(headline);
-		((TextView) adView.getBodyView()).setText(body);
-		((Button) adView.getCallToActionView()).setText(btn_action_name);
-
-		// Apps can check the VideoController's hasVideoContent property to determine if the
-		// NativeAppInstallAd has a video asset.
-        *//*if (vc.hasVideoContent())
-        {
-            mVideoStatus.setText(String.format(Locale.getDefault(),
-                    "Video status: Ad contains a %.2f:1 video asset.",
-                    vc.getAspectRatio()));
-        }
-        else
-        {
-            mRefresh.setEnabled(true);
-            mVideoStatus.setText("Video status: Ad does not contain a video asset.");
-        }*//*
-
-		List<NativeAd.Image> images = nativeAppInstallAd.getImages();
-
-		if (images.size() > 0)
-		{
-			((ImageView) adView.getIconView()).setImageDrawable(images.get(0).getDrawable());
-		}
-
-		// These assets aren't guaranteed to be in every NativeAppInstallAd, so it's important to
-		// check before trying to display them.
-		if (nativeAppInstallAd.getPrice() == null)
-		{
-			adView.getPriceView().setVisibility(View.GONE);
-		}
-		else
-		{
-			adView.getPriceView().setVisibility(View.VISIBLE);
-			((TextView) adView.getPriceView()).setText(nativeAppInstallAd.getPrice());
-		}
-
-		if (nativeAppInstallAd.getStore() == null)
-		{
-			adView.getStoreView().setVisibility(View.GONE);
-		}
-		else
-		{
-			adView.getStoreView().setVisibility(View.VISIBLE);
-			((TextView) adView.getStoreView()).setText(nativeAppInstallAd.getStore());
-		}
-
-		if (nativeAppInstallAd.getStarRating() == null)
-		{
-			adView.getStarRatingView().setVisibility(View.GONE);
-		}
-		else
-		{
-			((RatingBar) adView.getStarRatingView()).setRating(nativeAppInstallAd.getStarRating().floatValue());
-			adView.getStarRatingView().setVisibility(View.VISIBLE);
-		}
-
-		body_view.setVisibility(View.VISIBLE);
-		store_view.setVisibility(View.GONE);
-		price_view.setVisibility(View.GONE);
-
-		// Assign native ad object to the native view.
-		adView.setNativeAd(nativeAppInstallAd);
-	}*/
 }
