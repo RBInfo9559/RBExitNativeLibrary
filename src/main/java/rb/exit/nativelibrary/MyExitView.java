@@ -19,7 +19,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 public class MyExitView extends Application
 {
     static boolean doubleBackToExitPressedOnce = false;
@@ -29,7 +28,6 @@ public class MyExitView extends Application
     {
         mContext = homeActivity;
         Exit_CommonHelper.mActivity = homeActivity;
-
     }
 
     public static void OpenExitScreen(boolean isHideAds,boolean isEEAUser,boolean isConsentSet,boolean isShowNonPersonalize,String nativeAdID)

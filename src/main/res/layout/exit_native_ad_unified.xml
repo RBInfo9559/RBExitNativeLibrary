@@ -105,7 +105,7 @@
                 <ImageView
                     android:id="@+id/ad_image"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="130dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="5dp"
                     android:visibility="gone" />
@@ -113,7 +113,7 @@
                 <com.google.android.gms.ads.formats.MediaView
                     android:id="@+id/ad_media"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="130dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="5dp" />
 

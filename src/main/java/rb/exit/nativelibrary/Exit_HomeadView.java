@@ -109,11 +109,9 @@ public class Exit_HomeadView extends RelativeLayout
             {
                 case 0: // Succeeded
                 {
-
                     try
                     {
                         //--------------------1
-
                         if(array_home_static_left.size() > 0)
                         {
                             rel_home_static_main.setVisibility(View.VISIBLE);
@@ -240,7 +238,8 @@ public class Exit_HomeadView extends RelativeLayout
                         {
                             img_home_static4.setVisibility(View.GONE);
                         }
-                    }catch(Exception e)
+                    }
+                    catch(Exception e)
                     {
                         rel_home_static_main.setVisibility(View.INVISIBLE);
                     }
@@ -259,18 +258,13 @@ public class Exit_HomeadView extends RelativeLayout
                     {
                         Toast.makeText(myContext, e.toString(), Toast.LENGTH_LONG).show();
                     }
-
-
-
                 }
                 break;
-
                 case 1:
                 {
                     try
                     {
                         //--------------------1
-
                         if(array_ad_static_link.size() > 0)
                         {
                             Exit_CommonHelper.static_ad_name = array_ad_static_link.get(0).ad_name.trim();
@@ -281,6 +275,11 @@ public class Exit_HomeadView extends RelativeLayout
                     {
                         // TODO: handle exception
                     }
+                }
+                break;
+                case 99: // Display Message
+                {
+                    Toast.makeText(myContext, "Server Issue!", Toast.LENGTH_LONG).show();
                 }
                 break;
             }
@@ -351,7 +350,7 @@ public class Exit_HomeadView extends RelativeLayout
         if(mobileTimeZone.equals("Asia/Kolkata") || mobileTimeZone.equals("Asia/Calcutta"))
         {
             Log.e("Time Zone :: ", mobileTimeZone);
-            Set_Link = Exit_CommonHelper.home_static_Indai;
+            Set_Link = Exit_CommonHelper.home_static_India;
         }
         else
         {
@@ -668,35 +667,42 @@ public class Exit_HomeadView extends RelativeLayout
                     data_handler.sendMessage(data_handler.obtainMessage(99));
                 }
 
-                JSONArray jsonResultArr = jsonResultObj.optJSONArray("data");
-                if (jsonResultArr == null)
+                if(jsonResultObj.has("data"))
+                {
+                    JSONArray jsonResultArr = jsonResultObj.optJSONArray("data");
+                    if (jsonResultArr == null)
+                    {
+                        data_handler.sendMessage(data_handler.obtainMessage(99));
+                    }
+
+
+                    for (int i = 0; i < jsonResultArr.length(); i++)
+                    {
+
+                        JSONObject jsonObj = jsonResultArr.optJSONObject(i);
+
+                        home_static_left_data = new Exit_HomeStaticClass();
+
+                        String app_name = jsonObj.optString("app_name");
+                        String package_name = jsonObj.optString("package_name");
+                        String icon_url = jsonObj.optString("app_icon");
+
+                        if(!app_package_name.equals(package_name))
+                        {
+                            home_static_left_data.app_name = app_name;
+                            home_static_left_data.app_pakage_name = package_name;
+                            home_static_left_data.app_icon_url = icon_url;
+
+                            array_home_static_left.add(home_static_left_data);
+                        }
+                    }
+
+                    data_handler.sendMessage(data_handler.obtainMessage(0));
+                }
+                else
                 {
                     data_handler.sendMessage(data_handler.obtainMessage(99));
                 }
-
-
-                for (int i = 0; i < jsonResultArr.length(); i++)
-                {
-
-                    JSONObject jsonObj = jsonResultArr.optJSONObject(i);
-
-                    home_static_left_data = new Exit_HomeStaticClass();
-
-                    String app_name = jsonObj.optString("app_name");
-                    String pakage_name = jsonObj.optString("package_name");
-                    String icon_url = jsonObj.optString("app_icon");
-
-                    if(!app_package_name.equals(pakage_name))
-                    {
-                        home_static_left_data.app_name = app_name;
-                        home_static_left_data.app_pakage_name = pakage_name;
-                        home_static_left_data.app_icon_url = icon_url;
-
-                        array_home_static_left.add(home_static_left_data);
-                    }
-                }
-
-                data_handler.sendMessage(data_handler.obtainMessage(0));
             }
         }, new Response.ErrorListener()
         {
@@ -829,29 +835,36 @@ public class Exit_HomeadView extends RelativeLayout
                     data_handler.sendMessage(data_handler.obtainMessage(99));
                 }
 
-                JSONArray jsonResultArr = jsonResultObj.optJSONArray("data");
-                if (jsonResultArr == null)
+                if(jsonResultObj.has("data"))
+                {
+                    JSONArray jsonResultArr = jsonResultObj.optJSONArray("data");
+                    if (jsonResultArr == null)
+                    {
+                        data_handler.sendMessage(data_handler.obtainMessage(99));
+                    }
+
+                    for (int i = 0; i < jsonResultArr.length(); i++)
+                    {
+
+                        JSONObject jsonObj = jsonResultArr.optJSONObject(i);
+
+                        home_ad_left_link = new Exit_AdStaticLink();
+
+                        String get_ad_name = jsonObj.optString("ad_name");
+                        String get_ad_link = jsonObj.optString("ad_link");
+
+                        home_ad_left_link.ad_name = get_ad_name;
+                        home_ad_left_link.ad_link = get_ad_link;
+
+                        array_ad_static_link.add(home_ad_left_link);
+
+                    }
+                    data_handler.sendMessage(data_handler.obtainMessage(1));
+                }
+                else
                 {
                     data_handler.sendMessage(data_handler.obtainMessage(99));
                 }
-
-                for (int i = 0; i < jsonResultArr.length(); i++)
-                {
-
-                    JSONObject jsonObj = jsonResultArr.optJSONObject(i);
-
-                    home_ad_left_link = new Exit_AdStaticLink();
-
-                    String get_ad_name = jsonObj.optString("ad_name");
-                    String get_ad_link = jsonObj.optString("ad_link");
-
-                    home_ad_left_link.ad_name = get_ad_name;
-                    home_ad_left_link.ad_link = get_ad_link;
-
-                    array_ad_static_link.add(home_ad_left_link);
-
-                }
-                data_handler.sendMessage(data_handler.obtainMessage(1));
             }
         }, new Response.ErrorListener()
         {

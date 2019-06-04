@@ -132,177 +132,174 @@ public class Exit_ListActivity extends Activity
 		{
 			switch (message.what)
 			{
-			case 0: // Succeeded
-			{
-				try
+				case 0: // Succeeded
 				{
-					if(array_exit_app_left.size() > 0)
+					try
 					{
-						rel_exit_app_main.setVisibility(View.VISIBLE);
-
-						int max = array_exit_app_left.size();
-						Random generator = new Random();
-						arr = new ArrayList<Integer>();
-						for(int i=0; i<max; i++)
+						if(array_exit_app_left.size() > 0)
 						{
-							int r = generator.nextInt(max);
-							if(!arr.contains(r))
+							rel_exit_app_main.setVisibility(View.VISIBLE);
+
+							int max = array_exit_app_left.size();
+							Random generator = new Random();
+							arr = new ArrayList<Integer>();
+							for(int i=0; i<max; i++)
 							{
-								arr.add(r);
+								int r = generator.nextInt(max);
+								if(!arr.contains(r))
+								{
+									arr.add(r);
+								}
+								else
+								{
+									i--;
+								}
+							}
+
+							Log.e("Left Random No ::", String.valueOf(arr.get(0)));
+
+							static_app_name1 = array_exit_app_left.get(arr.get(0)).app_name.trim();
+							static_app_package1 = array_exit_app_left.get(arr.get(0)).app_pakage_name.trim();
+							static_app_icon_url1 = array_exit_app_left.get(arr.get(0)).app_icon_url.trim();
+
+							txt_exit_app_left1.setText(static_app_name1);
+
+							if(static_app_icon_url1.length() > 0)
+							{
+								rel_exit_app_left1.setVisibility(View.VISIBLE);
+								image_loader.displayImage(static_app_icon_url1, img_exit_app_left1,image_loader_options);
 							}
 							else
 							{
-								i--;
+								rel_exit_app_left1.setVisibility(View.GONE);
 							}
-						}
-
-						Log.e("Left Random No ::", String.valueOf(arr.get(0)));
-
-						static_app_name1 = array_exit_app_left.get(arr.get(0)).app_name.trim();
-						static_app_package1 = array_exit_app_left.get(arr.get(0)).app_pakage_name.trim();
-						static_app_icon_url1 = array_exit_app_left.get(arr.get(0)).app_icon_url.trim();
-
-						txt_exit_app_left1.setText(static_app_name1);
-
-						if(static_app_icon_url1.length() > 0)
-						{
-							rel_exit_app_left1.setVisibility(View.VISIBLE);
-							image_loader.displayImage(static_app_icon_url1, img_exit_app_left1,image_loader_options);
 						}
 						else
 						{
 							rel_exit_app_left1.setVisibility(View.GONE);
 						}
-					}
-					else
-					{
-						rel_exit_app_left1.setVisibility(View.GONE);
-					}
 
-					//--------------------------------2
-					if(array_exit_app_left.size() > 1)
-					{
-						rel_exit_app_main.setVisibility(View.VISIBLE);
-
-						Log.e("Left Random No ::", String.valueOf(arr.get(1)));
-
-						static_app_name2 = array_exit_app_left.get(arr.get(1)).app_name.trim();
-						static_app_package2 = array_exit_app_left.get(arr.get(1)).app_pakage_name.trim();
-						static_app_icon_url2 = array_exit_app_left.get(arr.get(1)).app_icon_url.trim();
-
-						txt_exit_app_left2.setText(static_app_name2);
-
-						if(static_app_icon_url2.length() > 0)
+						//--------------------------------2
+						if(array_exit_app_left.size() > 1)
 						{
-							rel_exit_app_left2.setVisibility(View.VISIBLE);
-							image_loader.displayImage(static_app_icon_url2, img_exit_app_left2,image_loader_options);
+							rel_exit_app_main.setVisibility(View.VISIBLE);
+
+							Log.e("Left Random No ::", String.valueOf(arr.get(1)));
+
+							static_app_name2 = array_exit_app_left.get(arr.get(1)).app_name.trim();
+							static_app_package2 = array_exit_app_left.get(arr.get(1)).app_pakage_name.trim();
+							static_app_icon_url2 = array_exit_app_left.get(arr.get(1)).app_icon_url.trim();
+
+							txt_exit_app_left2.setText(static_app_name2);
+
+							if(static_app_icon_url2.length() > 0)
+							{
+								rel_exit_app_left2.setVisibility(View.VISIBLE);
+								image_loader.displayImage(static_app_icon_url2, img_exit_app_left2,image_loader_options);
+							}
+							else
+							{
+								rel_exit_app_left2.setVisibility(View.GONE);
+							}
 						}
 						else
 						{
 							rel_exit_app_left2.setVisibility(View.GONE);
 						}
-					}
-					else
-					{
-						rel_exit_app_left2.setVisibility(View.GONE);
-					}
-					//--------------------------------
-					//--------------------------------3
-					if(array_exit_app_left.size() > 2)
-					{
-						rel_exit_app_main.setVisibility(View.VISIBLE);
-
-						Log.e("Left Random No ::", String.valueOf(arr.get(2)));
-
-						static_app_name3 = array_exit_app_left.get(arr.get(2)).app_name.trim();
-						static_app_package3 = array_exit_app_left.get(arr.get(2)).app_pakage_name.trim();
-						static_app_icon_url3 = array_exit_app_left.get(arr.get(2)).app_icon_url.trim();
-
-						txt_exit_app_left3.setText(static_app_name3);
-
-						if(static_app_icon_url3.length() > 0)
+						//--------------------------------
+						//--------------------------------3
+						if(array_exit_app_left.size() > 2)
 						{
-							rel_exit_app_left3.setVisibility(View.VISIBLE);
-							image_loader.displayImage(static_app_icon_url3, img_exit_app_left3,image_loader_options);
+							rel_exit_app_main.setVisibility(View.VISIBLE);
+
+							Log.e("Left Random No ::", String.valueOf(arr.get(2)));
+
+							static_app_name3 = array_exit_app_left.get(arr.get(2)).app_name.trim();
+							static_app_package3 = array_exit_app_left.get(arr.get(2)).app_pakage_name.trim();
+							static_app_icon_url3 = array_exit_app_left.get(arr.get(2)).app_icon_url.trim();
+
+							txt_exit_app_left3.setText(static_app_name3);
+
+							if(static_app_icon_url3.length() > 0)
+							{
+								rel_exit_app_left3.setVisibility(View.VISIBLE);
+								image_loader.displayImage(static_app_icon_url3, img_exit_app_left3,image_loader_options);
+							}
+							else
+							{
+								rel_exit_app_left3.setVisibility(View.GONE);
+							}
 						}
 						else
 						{
 							rel_exit_app_left3.setVisibility(View.GONE);
 						}
-					}
-					else
-					{
-						rel_exit_app_left3.setVisibility(View.GONE);
-					}
-					//--------------------------------
+						//--------------------------------
 
-					//--------------------------------4
-					if(array_exit_app_left.size() > 3)
-					{
-						rel_exit_app_main.setVisibility(View.VISIBLE);
-
-						Log.e("Left Random No ::", String.valueOf(arr.get(3)));
-
-						static_app_name4 = array_exit_app_left.get(arr.get(3)).app_name.trim();
-						static_app_package4 = array_exit_app_left.get(arr.get(3)).app_pakage_name.trim();
-						static_app_icon_url4 = array_exit_app_left.get(arr.get(3)).app_icon_url.trim();
-
-						txt_exit_app_left4.setText(static_app_name4);
-
-						if(static_app_icon_url4.length() > 0)
+						//--------------------------------4
+						if(array_exit_app_left.size() > 3)
 						{
-							rel_exit_app_left4.setVisibility(View.VISIBLE);
-							image_loader.displayImage(static_app_icon_url4, img_exit_app_left4,image_loader_options);
+							rel_exit_app_main.setVisibility(View.VISIBLE);
+
+							Log.e("Left Random No ::", String.valueOf(arr.get(3)));
+
+							static_app_name4 = array_exit_app_left.get(arr.get(3)).app_name.trim();
+							static_app_package4 = array_exit_app_left.get(arr.get(3)).app_pakage_name.trim();
+							static_app_icon_url4 = array_exit_app_left.get(arr.get(3)).app_icon_url.trim();
+
+							txt_exit_app_left4.setText(static_app_name4);
+
+							if(static_app_icon_url4.length() > 0)
+							{
+								rel_exit_app_left4.setVisibility(View.VISIBLE);
+								image_loader.displayImage(static_app_icon_url4, img_exit_app_left4,image_loader_options);
+							}
+							else
+							{
+								rel_exit_app_left4.setVisibility(View.GONE);
+							}
 						}
 						else
 						{
 							rel_exit_app_left4.setVisibility(View.GONE);
 						}
-					}
-					else
+					}catch(Exception e)
 					{
-						rel_exit_app_left4.setVisibility(View.GONE);
+						rel_exit_app_main.setVisibility(View.INVISIBLE);
 					}
-				}catch(Exception e)
-				{
-					rel_exit_app_main.setVisibility(View.INVISIBLE);
-				}
-				//--------------------------------
+					//--------------------------------
 
-				try
-				{
-					if(Exit_CommonClass.isOnline(Exit_ListActivity.this))
+					try
 					{
+						if(Exit_CommonClass.isOnline(Exit_ListActivity.this))
+						{
 						/*get_Ad_static_link_task = new GetPrivacyLinkTask();
 						get_Ad_static_link_task.execute();*/
 
-						GetPrivacyLinkVolleyProcess();
+							GetPrivacyLinkVolleyProcess();
+						}
+					}
+					catch(Exception e)
+					{
+						Toast.makeText(Exit_ListActivity.this, e.toString(), Toast.LENGTH_LONG).show();
 					}
 				}
-				catch(Exception e)
+				break;
+				case 1: // Succeeded
 				{
-					Toast.makeText(Exit_ListActivity.this, e.toString(), Toast.LENGTH_LONG).show();
+
+					if(array_ad_static_link.size() > 0)
+					{
+						Exit_CommonHelper.static_ad_name = array_ad_static_link.get(0).ad_name.trim();
+						Exit_CommonHelper.static_ad_link = array_ad_static_link.get(0).ad_link.trim();
+					}
 				}
-
-
-			}
-			break;
-			case 1: // Succeeded
-			{
-
-				if(array_ad_static_link.size() > 0)
+				break;
+				case 99: // Display Message
 				{
-					Exit_CommonHelper.static_ad_name = array_ad_static_link.get(0).ad_name.trim();
-					Exit_CommonHelper.static_ad_link = array_ad_static_link.get(0).ad_link.trim();
+					Toast.makeText(Exit_ListActivity.this, "Server Issue!", Toast.LENGTH_LONG).show();
 				}
-			}
-			break;
-			case 99: // Display Message
-			{
-
-
-			}
-			break;
+				break;
 			}
 		}
 	};
@@ -337,7 +334,7 @@ public class Exit_ListActivity extends Activity
 					.showImageForEmptyUri(R.drawable.exit_sample_loading)
 					.showImageOnFail(R.drawable.exit_sample_loading)
 					.cacheInMemory(true)
-					.cacheOnDisc(true)
+					.cacheOnDisk(true)
 					.considerExifParams(true)
 					.bitmapConfig(Bitmap.Config.RGB_565).build();
 			// Universal Image Loader end //
@@ -357,7 +354,7 @@ public class Exit_ListActivity extends Activity
 			if(mobileTimeZone.equals("Asia/Kolkata") || mobileTimeZone.equals("Asia/Calcutta"))
 			{
 				Log.e("Time Zone :: ", mobileTimeZone);
-				Set_Link = Exit_CommonHelper.home_static_Indai;
+				Set_Link = Exit_CommonHelper.home_static_India;
 			}
 			else
 			{
@@ -441,10 +438,18 @@ public class Exit_ListActivity extends Activity
 	protected void HomeScreen()
 	{
 		// TODO Auto-generated method stub
-		Intent i = new Intent(getApplicationContext(), Exit_CommonHelper.mActivity.getClass());
-		startActivity(i);
-		finish();
-		overridePendingTransition(R.anim.exit_slide_in_right, R.anim.exit_slide_out_left);
+		if(Exit_CommonHelper.mActivity != null)
+		{
+			Intent i = new Intent(getApplicationContext(), Exit_CommonHelper.mActivity.getClass());
+			startActivity(i);
+			finish();
+			overridePendingTransition(R.anim.exit_slide_in_right, R.anim.exit_slide_out_left);
+		}
+		else
+		{
+			finish();
+			overridePendingTransition(R.anim.exit_slide_in_right, R.anim.exit_slide_out_left);
+		}
 	}
 
 	private void setUpAppsLayout()
@@ -612,89 +617,7 @@ public class Exit_ListActivity extends Activity
 		});
 
 		internet_dialog.show();
-
 	}
-
-	/*public class GetPrivacyLinkTask extends AsyncTask<String, Void, String>
-	{
-		protected void onPreExecute()
-		{
-		}
-
-		public String doInBackground(final String... args)
-		{
-			try
-			{
-				array_ad_static_link.clear();
-
-				// Rest Client Start //
-
-				String responseString = null;
-
-				Exit_RestClient client = new Exit_RestClient(Exit_CommonHelper.ad_policy_link);
-				client.execute(0);
-				responseString = client.getResponse();
-				//Log.e(TAG, responseString);
-
-				JSONObject jsonResultObj = null;
-
-				// we assume that the response body contains the error message
-				try
-				{
-					jsonResultObj = new JSONObject(responseString);
-				}
-				catch (Exception e)
-				{
-					Log.e("JSON", e.toString());
-				}
-
-				if (jsonResultObj == null)
-				{
-					data_handler.sendMessage(data_handler.obtainMessage(99));
-				}
-
-				JSONArray jsonResultArr = jsonResultObj.optJSONArray("data");
-				if (jsonResultArr == null)
-				{
-					data_handler.sendMessage(data_handler.obtainMessage(99));
-				}
-
-
-				for (int i = 0; i < jsonResultArr.length(); i++)
-				{
-
-					JSONObject jsonObj = jsonResultArr.optJSONObject(i);
-
-					home_ad_left_link = new Exit_AdStaticLink();
-
-					String get_ad_name = jsonObj.optString("ad_name");
-					String get_ad_link = jsonObj.optString("ad_link");
-
-
-
-					home_ad_left_link.ad_name = get_ad_name;
-					home_ad_left_link.ad_link = get_ad_link;
-
-
-					array_ad_static_link.add(home_ad_left_link);
-
-				}
-				data_handler.sendMessage(data_handler.obtainMessage(1));
-			}
-			catch (final Exception e)
-			{
-				e.printStackTrace();
-			}
-
-			return null;
-		}
-
-		// can use UI thread here
-		protected void onPostExecute(final String result)
-		{
-
-		}
-	}*/
 
 	private void GetPrivacyLinkVolleyProcess()
 	{
@@ -728,28 +651,35 @@ public class Exit_ListActivity extends Activity
 					data_handler.sendMessage(data_handler.obtainMessage(99));
 				}
 
-				JSONArray jsonResultArr = jsonResultObj.optJSONArray("data");
-				if (jsonResultArr == null)
+				if(jsonResultObj.has("data"))
+				{
+					JSONArray jsonResultArr = jsonResultObj.optJSONArray("data");
+					if (jsonResultArr == null)
+					{
+						data_handler.sendMessage(data_handler.obtainMessage(99));
+					}
+
+					for (int i = 0; i < jsonResultArr.length(); i++)
+					{
+						JSONObject jsonObj = jsonResultArr.optJSONObject(i);
+
+						home_ad_left_link = new Exit_AdStaticLink();
+
+						String get_ad_name = jsonObj.optString("ad_name");
+						String get_ad_link = jsonObj.optString("ad_link");
+
+						home_ad_left_link.ad_name = get_ad_name;
+						home_ad_left_link.ad_link = get_ad_link;
+
+						array_ad_static_link.add(home_ad_left_link);
+
+					}
+					data_handler.sendMessage(data_handler.obtainMessage(1));
+				}
+				else
 				{
 					data_handler.sendMessage(data_handler.obtainMessage(99));
 				}
-
-				for (int i = 0; i < jsonResultArr.length(); i++)
-				{
-					JSONObject jsonObj = jsonResultArr.optJSONObject(i);
-
-					home_ad_left_link = new Exit_AdStaticLink();
-
-					String get_ad_name = jsonObj.optString("ad_name");
-					String get_ad_link = jsonObj.optString("ad_link");
-
-					home_ad_left_link.ad_name = get_ad_name;
-					home_ad_left_link.ad_link = get_ad_link;
-
-					array_ad_static_link.add(home_ad_left_link);
-
-				}
-				data_handler.sendMessage(data_handler.obtainMessage(1));
 			}
 		}, new Response.ErrorListener()
 		{
@@ -768,92 +698,6 @@ public class Exit_ListActivity extends Activity
 		//AppController.getInstance().addToRequestQueue(strReq,tag_string_request);
 		requestQueue.add(strReq);
 	}
-
-
-	/*public class GetHomeStaticLeftTask extends AsyncTask<String, Void, String>
-	{
-		protected void onPreExecute()
-		{
-			app_package_name = getApplicationContext().getPackageName().trim();
-		}
-
-		public String doInBackground(final String... args)
-		{
-			try
-			{
-				array_exit_app_left.clear();
-
-				// Rest Client Start //
-
-				String responseString = null;
-
-				Exit_RestClient client = new Exit_RestClient(Set_Link);
-				client.execute(0);
-				responseString = client.getResponse();
-
-				JSONObject jsonResultObj = null;
-
-				// we assume that the response body contains the error message
-				try
-				{
-					jsonResultObj = new JSONObject(responseString);
-				}
-				catch (Exception e)
-				{
-					Log.e("JSON", e.toString());
-				}
-
-				if (jsonResultObj == null)
-				{
-					data_handler.sendMessage(data_handler.obtainMessage(99));
-				}
-
-				JSONArray jsonResultArr = jsonResultObj.optJSONArray("data");
-				if (jsonResultArr == null)
-				{
-					data_handler.sendMessage(data_handler.obtainMessage(99));
-				}
-
-
-				for (int i = 0; i < jsonResultArr.length(); i++)
-				{
-
-					JSONObject jsonObj = jsonResultArr.optJSONObject(i);
-
-					exit_app_left_data = new Exit_ExitAppClass();
-
-					String app_name = jsonObj.optString("app_name");
-					String pakage_name = jsonObj.optString("package_name");
-					String icon_url = jsonObj.optString("app_icon");
-
-					if(!app_package_name.equals(pakage_name))
-					{
-						exit_app_left_data.app_name = app_name;
-						exit_app_left_data.app_pakage_name = pakage_name;
-						exit_app_left_data.app_icon_url = icon_url;
-
-						array_exit_app_left.add(exit_app_left_data);
-					}
-
-				}
-
-				data_handler.sendMessage(data_handler.obtainMessage(0));
-
-			}
-			catch (final Exception e)
-			{
-				e.printStackTrace();
-			}
-
-			return null;
-		}
-
-		// can use UI thread here
-		protected void onPostExecute(final String result)
-		{
-
-		}
-	}*/
 
 	private void GetAppListVolleyProcess()
 	{
@@ -888,36 +732,42 @@ public class Exit_ListActivity extends Activity
 					data_handler.sendMessage(data_handler.obtainMessage(99));
 				}
 
-				JSONArray jsonResultArr = jsonResultObj.optJSONArray("data");
-				if (jsonResultArr == null)
+				if(jsonResultObj.has("data"))
+				{
+					JSONArray jsonResultArr = jsonResultObj.optJSONArray("data");
+					if (jsonResultArr == null)
+					{
+						data_handler.sendMessage(data_handler.obtainMessage(99));
+					}
+
+					for (int i = 0; i < jsonResultArr.length(); i++)
+					{
+
+						JSONObject jsonObj = jsonResultArr.optJSONObject(i);
+
+						exit_app_left_data = new Exit_ExitAppClass();
+
+						String app_name = jsonObj.optString("app_name");
+						String package_name = jsonObj.optString("package_name");
+						String icon_url = jsonObj.optString("app_icon");
+
+						if(!app_package_name.equals(package_name))
+						{
+							exit_app_left_data.app_name = app_name;
+							exit_app_left_data.app_pakage_name = package_name;
+							exit_app_left_data.app_icon_url = icon_url;
+
+							array_exit_app_left.add(exit_app_left_data);
+						}
+
+					}
+
+					data_handler.sendMessage(data_handler.obtainMessage(0));
+				}
+				else
 				{
 					data_handler.sendMessage(data_handler.obtainMessage(99));
 				}
-
-
-				for (int i = 0; i < jsonResultArr.length(); i++)
-				{
-
-					JSONObject jsonObj = jsonResultArr.optJSONObject(i);
-
-					exit_app_left_data = new Exit_ExitAppClass();
-
-					String app_name = jsonObj.optString("app_name");
-					String pakage_name = jsonObj.optString("package_name");
-					String icon_url = jsonObj.optString("app_icon");
-
-					if(!app_package_name.equals(pakage_name))
-					{
-						exit_app_left_data.app_name = app_name;
-						exit_app_left_data.app_pakage_name = pakage_name;
-						exit_app_left_data.app_icon_url = icon_url;
-
-						array_exit_app_left.add(exit_app_left_data);
-					}
-
-				}
-
-				data_handler.sendMessage(data_handler.obtainMessage(0));
 			}
 		}, new Response.ErrorListener()
 		{
@@ -1005,7 +855,7 @@ public class Exit_ListActivity extends Activity
 	protected void onResume()
 	{
 		super.onResume();
-        NativeAdProcess();
+		NativeAdProcess();
 	}
 
 	private void NativeAdProcess()
@@ -1074,7 +924,6 @@ public class Exit_ListActivity extends Activity
 			rel_native_ad = (RelativeLayout)findViewById(R.id.ad_layout);
 			rel_native_ad.setVisibility(View.VISIBLE);
 			LoadUnifiedNativeAd(Exit_CommonHelper.is_show_non_personalize, Exit_CommonHelper.native_ad_id);
-			//DisplayNativeAd(true, Exit_CommonHelper.is_show_non_personalize, Exit_CommonHelper.native_ad_id);
 			//Native Ad End //
 		}
 		catch (Exception e)
@@ -1193,34 +1042,41 @@ public class Exit_ListActivity extends Activity
 
 		// Apps can check the VideoController's hasVideoContent property to determine if the
 		// NativeAppInstallAd has a video asset.
-        /*if (vc.hasVideoContent())
-        {
-            adView.setMediaView(mediaView);
-            mainImageView.setVisibility(View.GONE);
-            Log.e("Native Ad:","Video status: Ad contains a %.2f:1 video asset.");
-        }
-        else
-        {
-            try
-            {
-                adView.setImageView(mainImageView);
-                mediaView.setVisibility(View.GONE);
-
-                // At least one image is guaranteed.
-                List<NativeAd.Image> images = nativeAd.getImages();
-                mainImageView.setImageDrawable(images.get(0).getDrawable());
-                Log.e("Native Ad:","Video status: Ad does not contain a video asset.");
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-        }*/
 
 		// Some assets are guaranteed to be in every UnifiedNativeAd.
-		((TextView) headline_view).setText(nativeAd.getHeadline());
+		/*((TextView) headline_view).setText(nativeAd.getHeadline());
 		((TextView) body_view).setText(nativeAd.getBody());
-		((Button) call_to_action_view).setText(nativeAd.getCallToAction());
+		((Button) call_to_action_view).setText(nativeAd.getCallToAction());*/
+
+		if (nativeAd.getHeadline() == null)
+		{
+			headline_view.setVisibility(View.GONE);
+		}
+		else
+		{
+			((TextView) headline_view).setText(nativeAd.getHeadline());
+			headline_view.setVisibility(View.VISIBLE);
+		}
+
+		if (nativeAd.getBody() == null)
+		{
+			body_view.setVisibility(View.GONE);
+		}
+		else
+		{
+			((TextView) body_view).setText(nativeAd.getBody());
+			body_view.setVisibility(View.VISIBLE);
+		}
+
+		if (nativeAd.getCallToAction() == null)
+		{
+			call_to_action_view.setVisibility(View.GONE);
+		}
+		else
+		{
+			((Button) call_to_action_view).setText(nativeAd.getCallToAction());
+			call_to_action_view.setVisibility(View.VISIBLE);
+		}
 
 		// These assets aren't guaranteed to be in every UnifiedNativeAd, so it's important to
 		// check before trying to display them.
