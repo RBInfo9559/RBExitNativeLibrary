@@ -297,7 +297,7 @@ public class Exit_ListActivity extends Activity
 				break;
 				case 99: // Display Message
 				{
-					Toast.makeText(Exit_ListActivity.this, "Server Issue!", Toast.LENGTH_LONG).show();
+					//Toast.makeText(Exit_ListActivity.this, "Server Issue!", Toast.LENGTH_LONG).show();
 				}
 				break;
 			}

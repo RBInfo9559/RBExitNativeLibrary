@@ -279,7 +279,7 @@ public class Exit_HomeadView extends RelativeLayout
                 break;
                 case 99: // Display Message
                 {
-                    Toast.makeText(myContext, "Server Issue!", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(myContext, "Server Issue!", Toast.LENGTH_LONG).show();
                 }
                 break;
             }
