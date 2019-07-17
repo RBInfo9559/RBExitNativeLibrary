@@ -273,15 +273,12 @@ public class Exit_ListActivity extends Activity
 					{
 						if(Exit_CommonClass.isOnline(Exit_ListActivity.this))
 						{
-						/*get_Ad_static_link_task = new GetPrivacyLinkTask();
-						get_Ad_static_link_task.execute();*/
-
 							GetPrivacyLinkVolleyProcess();
 						}
 					}
 					catch(Exception e)
 					{
-						Toast.makeText(Exit_ListActivity.this, e.toString(), Toast.LENGTH_LONG).show();
+						//Toast.makeText(Exit_ListActivity.this, e.toString(), Toast.LENGTH_LONG).show();
 					}
 				}
 				break;
@@ -309,7 +306,6 @@ public class Exit_ListActivity extends Activity
 	{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-
 		requestWindowFeature(1);
 		getWindow().setFlags(1024, 1024);
 
@@ -384,9 +380,6 @@ public class Exit_ListActivity extends Activity
 
 			if(Exit_CommonClass.isOnline(Exit_ListActivity.this))
 			{
-				/*get_exit_app_left_task = new GetHomeStaticLeftTask();
-				get_exit_app_left_task.execute();*/
-
 				GetAppListVolleyProcess();
 			}
 			else
@@ -630,7 +623,7 @@ public class Exit_ListActivity extends Activity
 			{
 				array_ad_static_link.clear();
 
-				String responseString = null;
+				String responseString = "";
 				responseString = response.toString();
 				//Log.e(TAG, responseString);
 
@@ -640,45 +633,47 @@ public class Exit_ListActivity extends Activity
 				try
 				{
 					jsonResultObj = new JSONObject(responseString);
+
+					if (jsonResultObj == null)
+					{
+						data_handler.sendMessage(data_handler.obtainMessage(99));
+					}
+					else
+					{
+						if(jsonResultObj.has("data"))
+						{
+							JSONArray jsonResultArr = jsonResultObj.optJSONArray("data");
+							if (jsonResultArr == null)
+							{
+								data_handler.sendMessage(data_handler.obtainMessage(99));
+							}
+
+							for (int i = 0; i < jsonResultArr.length(); i++)
+							{
+								JSONObject jsonObj = jsonResultArr.optJSONObject(i);
+
+								home_ad_left_link = new Exit_AdStaticLink();
+
+								String get_ad_name = jsonObj.optString("ad_name");
+								String get_ad_link = jsonObj.optString("ad_link");
+
+								home_ad_left_link.ad_name = get_ad_name;
+								home_ad_left_link.ad_link = get_ad_link;
+
+								array_ad_static_link.add(home_ad_left_link);
+
+							}
+							data_handler.sendMessage(data_handler.obtainMessage(1));
+						}
+						else
+						{
+							data_handler.sendMessage(data_handler.obtainMessage(99));
+						}
+					}
 				}
 				catch (Exception e)
 				{
 					Log.e("JSON", e.toString());
-				}
-
-				if (jsonResultObj == null)
-				{
-					data_handler.sendMessage(data_handler.obtainMessage(99));
-				}
-
-				if(jsonResultObj.has("data"))
-				{
-					JSONArray jsonResultArr = jsonResultObj.optJSONArray("data");
-					if (jsonResultArr == null)
-					{
-						data_handler.sendMessage(data_handler.obtainMessage(99));
-					}
-
-					for (int i = 0; i < jsonResultArr.length(); i++)
-					{
-						JSONObject jsonObj = jsonResultArr.optJSONObject(i);
-
-						home_ad_left_link = new Exit_AdStaticLink();
-
-						String get_ad_name = jsonObj.optString("ad_name");
-						String get_ad_link = jsonObj.optString("ad_link");
-
-						home_ad_left_link.ad_name = get_ad_name;
-						home_ad_left_link.ad_link = get_ad_link;
-
-						array_ad_static_link.add(home_ad_left_link);
-
-					}
-					data_handler.sendMessage(data_handler.obtainMessage(1));
-				}
-				else
-				{
-					data_handler.sendMessage(data_handler.obtainMessage(99));
 				}
 			}
 		}, new Response.ErrorListener()

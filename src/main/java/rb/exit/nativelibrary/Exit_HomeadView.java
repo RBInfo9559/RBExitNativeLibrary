@@ -248,15 +248,12 @@ public class Exit_HomeadView extends RelativeLayout
                     {
                         if(Exit_CommonClass.isOnline(myContext))
                         {
-                            /*get_Ad_static_link_task = new GetAdStaticLinkTask();
-                            get_Ad_static_link_task.execute();*/
-
                             GetPrivacyLinkVolleyProcess();
                         }
                     }
                     catch(Exception e)
                     {
-                        Toast.makeText(myContext, e.toString(), Toast.LENGTH_LONG).show();
+                        //Toast.makeText(myContext, e.toString(), Toast.LENGTH_LONG).show();
                     }
                 }
                 break;
@@ -335,9 +332,6 @@ public class Exit_HomeadView extends RelativeLayout
         Get_Link();
         if(Exit_CommonClass.isOnline(myContext))
         {
-            /*get_home_static_left_task = new GetHomeStaticLeftTask();
-            get_home_static_left_task.execute();*/
-
             GetAppListVolleyProcess();
         }
     }
@@ -550,90 +544,6 @@ public class Exit_HomeadView extends RelativeLayout
 
     }
 
-
-    /*public static class GetHomeStaticLeftTask extends AsyncTask<String, Void, String>
-    {
-        protected void onPreExecute()
-        {
-            app_package_name = myContext.getApplicationContext().getPackageName().trim();
-        }
-
-        public String doInBackground(final String... args)
-        {
-            try
-            {
-                array_home_static_left.clear();
-
-                // Rest Client Start //
-
-                String responseString = null;
-
-                Exit_RestClient client = new Exit_RestClient(Set_Link);
-                client.execute(0);
-                responseString = client.getResponse();
-                //Log.e(TAG, responseString);
-
-                JSONObject jsonResultObj = null;
-
-                // we assume that the response body contains the error message
-                try
-                {
-                    jsonResultObj = new JSONObject(responseString);
-                }
-                catch (Exception e)
-                {
-                    Log.e("JSON", e.toString());
-                }
-
-                if (jsonResultObj == null)
-                {
-                    data_handler.sendMessage(data_handler.obtainMessage(99));
-                }
-
-                JSONArray jsonResultArr = jsonResultObj.optJSONArray("data");
-                if (jsonResultArr == null)
-                {
-                    data_handler.sendMessage(data_handler.obtainMessage(99));
-                }
-
-
-                for (int i = 0; i < jsonResultArr.length(); i++)
-                {
-
-                    JSONObject jsonObj = jsonResultArr.optJSONObject(i);
-
-                    home_static_left_data = new Exit_HomeStaticClass();
-
-                    String app_name = jsonObj.optString("app_name");
-                    String pakage_name = jsonObj.optString("package_name");
-                    String icon_url = jsonObj.optString("app_icon");
-
-                    if(!app_package_name.equals(pakage_name))
-                    {
-                        home_static_left_data.app_name = app_name;
-                        home_static_left_data.app_pakage_name = pakage_name;
-                        home_static_left_data.app_icon_url = icon_url;
-
-                        array_home_static_left.add(home_static_left_data);
-                    }
-                }
-                data_handler.sendMessage(data_handler.obtainMessage(0));
-            }
-            catch (final Exception e)
-            {
-                e.printStackTrace();
-            }
-
-            return null;
-        }
-
-        // can use UI thread here
-        protected void onPostExecute(final String result)
-        {
-
-        }
-    }*/
-
     private void GetAppListVolleyProcess()
     {
         app_package_name = myContext.getApplicationContext().getPackageName().trim();
@@ -646,7 +556,7 @@ public class Exit_HomeadView extends RelativeLayout
             {
                 array_home_static_left.clear();
 
-                String responseString = null;
+                String responseString = "";
                 responseString = response.toString();
                 //Log.e(TAG, responseString);
 
@@ -656,52 +566,53 @@ public class Exit_HomeadView extends RelativeLayout
                 try
                 {
                     jsonResultObj = new JSONObject(responseString);
+
+                    if (jsonResultObj == null)
+                    {
+                        data_handler.sendMessage(data_handler.obtainMessage(99));
+                    }
+                    else
+                    {
+                        if(jsonResultObj.has("data"))
+                        {
+                            JSONArray jsonResultArr = jsonResultObj.optJSONArray("data");
+                            if (jsonResultArr == null)
+                            {
+                                data_handler.sendMessage(data_handler.obtainMessage(99));
+                            }
+
+                            for (int i = 0; i < jsonResultArr.length(); i++)
+                            {
+
+                                JSONObject jsonObj = jsonResultArr.optJSONObject(i);
+
+                                home_static_left_data = new Exit_HomeStaticClass();
+
+                                String app_name = jsonObj.optString("app_name");
+                                String package_name = jsonObj.optString("package_name");
+                                String icon_url = jsonObj.optString("app_icon");
+
+                                if(!app_package_name.equals(package_name))
+                                {
+                                    home_static_left_data.app_name = app_name;
+                                    home_static_left_data.app_pakage_name = package_name;
+                                    home_static_left_data.app_icon_url = icon_url;
+
+                                    array_home_static_left.add(home_static_left_data);
+                                }
+                            }
+
+                            data_handler.sendMessage(data_handler.obtainMessage(0));
+                        }
+                        else
+                        {
+                            data_handler.sendMessage(data_handler.obtainMessage(99));
+                        }
+                    }
                 }
                 catch (Exception e)
                 {
                     Log.e("JSON", e.toString());
-                }
-
-                if (jsonResultObj == null)
-                {
-                    data_handler.sendMessage(data_handler.obtainMessage(99));
-                }
-
-                if(jsonResultObj.has("data"))
-                {
-                    JSONArray jsonResultArr = jsonResultObj.optJSONArray("data");
-                    if (jsonResultArr == null)
-                    {
-                        data_handler.sendMessage(data_handler.obtainMessage(99));
-                    }
-
-
-                    for (int i = 0; i < jsonResultArr.length(); i++)
-                    {
-
-                        JSONObject jsonObj = jsonResultArr.optJSONObject(i);
-
-                        home_static_left_data = new Exit_HomeStaticClass();
-
-                        String app_name = jsonObj.optString("app_name");
-                        String package_name = jsonObj.optString("package_name");
-                        String icon_url = jsonObj.optString("app_icon");
-
-                        if(!app_package_name.equals(package_name))
-                        {
-                            home_static_left_data.app_name = app_name;
-                            home_static_left_data.app_pakage_name = package_name;
-                            home_static_left_data.app_icon_url = icon_url;
-
-                            array_home_static_left.add(home_static_left_data);
-                        }
-                    }
-
-                    data_handler.sendMessage(data_handler.obtainMessage(0));
-                }
-                else
-                {
-                    data_handler.sendMessage(data_handler.obtainMessage(99));
                 }
             }
         }, new Response.ErrorListener()
@@ -721,87 +632,6 @@ public class Exit_HomeadView extends RelativeLayout
         //AppController.getInstance().addToRequestQueue(strReq,tag_string_request);
         requestQueue.add(strReq);
     }
-
-    /*public static class GetAdStaticLinkTask extends AsyncTask<String, Void, String>
-    {
-        protected void onPreExecute()
-        {
-        }
-
-        public String doInBackground(final String... args)
-        {
-            try
-            {
-                array_ad_static_link.clear();
-
-                // Rest Client Start //
-
-                String responseString = null;
-
-                Exit_RestClient client = new Exit_RestClient(Exit_CommonHelper.ad_policy_link);
-                client.execute(0);
-                responseString = client.getResponse();
-                //Log.e(TAG, responseString);
-
-                JSONObject jsonResultObj = null;
-
-                // we assume that the response body contains the error message
-                try
-                {
-                    jsonResultObj = new JSONObject(responseString);
-                }
-                catch (Exception e)
-                {
-                    Log.e("JSON", e.toString());
-                }
-
-                if (jsonResultObj == null)
-                {
-                    data_handler.sendMessage(data_handler.obtainMessage(99));
-                }
-
-                JSONArray jsonResultArr = jsonResultObj.optJSONArray("data");
-                if (jsonResultArr == null)
-                {
-                    data_handler.sendMessage(data_handler.obtainMessage(99));
-                }
-
-
-                for (int i = 0; i < jsonResultArr.length(); i++)
-                {
-
-                    JSONObject jsonObj = jsonResultArr.optJSONObject(i);
-
-                    home_ad_left_link = new Exit_AdStaticLink();
-
-                    String get_ad_name = jsonObj.optString("ad_name");
-                    String get_ad_link = jsonObj.optString("ad_link");
-
-
-
-                    home_ad_left_link.ad_name = get_ad_name;
-                    home_ad_left_link.ad_link = get_ad_link;
-
-
-                    array_ad_static_link.add(home_ad_left_link);
-
-                }
-                data_handler.sendMessage(data_handler.obtainMessage(1));
-            }
-            catch (final Exception e)
-            {
-                e.printStackTrace();
-            }
-
-            return null;
-        }
-
-        // can use UI thread here
-        protected void onPostExecute(final String result)
-        {
-
-        }
-    }*/
 
     public static void GetPrivacyLinkVolleyProcess()
     {
