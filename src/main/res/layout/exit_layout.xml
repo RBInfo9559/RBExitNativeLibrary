@@ -19,7 +19,7 @@
             android:gravity="center_vertical"
             android:text="Exit"
             android:textColor="@color/exit_header_text_color"
-            android:textSize="25sp"
+            android:textSize="@dimen/_16sdp"
             android:textStyle="bold" />
 
         <TextView
@@ -32,7 +32,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:text="Do you want to exit?"
             android:textColor="@color/exit_gray"
-            android:textSize="18sp" />
+            android:textSize="@dimen/_12sdp" />
 
         <RelativeLayout
             android:id="@+id/app_exit_btn_no"
@@ -40,10 +40,9 @@
             android:layout_height="35dp"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/app_exit_lbl_header"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="2dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/exit_button_selector">
+            android:layout_marginRight="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/exit_button_no_selector">
 
             <TextView
                 android:id="@+id/app_exit_lbl_no"
@@ -53,7 +52,7 @@
                 android:layout_centerVertical="true"
                 android:text="No"
                 android:textColor="@color/exit_white"
-                android:textSize="18sp" />
+                android:textSize="@dimen/_12sdp" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -61,9 +60,8 @@
             android:layout_width="80dp"
             android:layout_height="35dp"
             android:layout_below="@+id/app_exit_lbl_header"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="2dp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:layout_toLeftOf="@+id/app_exit_btn_no"
             android:background="@drawable/exit_button_selector">
 
@@ -75,7 +73,7 @@
                 android:layout_centerVertical="true"
                 android:text="Yes"
                 android:textColor="@color/exit_white"
-                android:textSize="18sp" />
+                android:textSize="@dimen/_12sdp" />
         </RelativeLayout>
     </RelativeLayout>
 
@@ -91,9 +89,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="5dip"
-            android:paddingRight="5dip" >
+            android:layout_marginTop="@dimen/_5sdp"
+            android:paddingLeft="@dimen/_5sdp"
+            android:paddingRight="@dimen/_5sdp" >
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -104,9 +102,9 @@
                     android:id="@+id/exit_static_ad_lbl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginLeft="@dimen/_2sdp"
+                    android:layout_marginRight="@dimen/_2sdp"
                     android:gravity="center" >
 
                     <TextView
@@ -114,35 +112,36 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="12dip"
+                        android:layout_centerVertical="true"
                         android:autoLink="web"
                         android:text="@string/exit_ads_footer"
-                        android:textColor="@drawable/exit_app_text_selector"
-                        android:textSize="16sp"
+                        android:textColor="@color/exit_white"
+                        android:textSize="@dimen/_10sdp"
                         android:textStyle="bold" />
 
                     <ImageView
                         android:id="@+id/homestatic_img_footer"
-                        android:layout_width="14dip"
-                        android:layout_height="14dip"
-                        android:layout_marginLeft="8dip"
-                        android:layout_marginTop="17dip"
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/_8sdp"
                         android:layout_toRightOf="@+id/app_exit_lbl_footer"
                         android:autoLink="web"
-                        android:background="@drawable/exit_ad_info_exit" />
+                        android:tint="#fffc00"
+                        android:src="@drawable/exit_ad_info_exit" />
                 </RelativeLayout>
 
                 <LinearLayout
                     android:id="@+id/app_exit_middle_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/exit_static_item_height"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/exit_static_ad_lbl"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginTop="5dip"
-                    android:layout_marginRight="2dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_3sdp"
+                    android:layout_marginLeft="@dimen/_3sdp"
+                    android:layout_marginBottom="@dimen/_2sdp"
                     android:orientation="horizontal"
                     android:weightSum="4" >
 
@@ -174,7 +173,7 @@
                             android:lines="2"
                             android:text="App Name"
                             android:textColor="@color/exit_white"
-                            android:textSize="12sp" />
+                            android:textSize="@dimen/app_name_text_size" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -205,7 +204,7 @@
                             android:lines="2"
                             android:text="App Name"
                             android:textColor="@color/exit_white"
-                            android:textSize="12sp" />
+                            android:textSize="@dimen/app_name_text_size" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -236,7 +235,7 @@
                             android:lines="2"
                             android:text="App Name"
                             android:textColor="@color/exit_white"
-                            android:textSize="12sp" />
+                            android:textSize="@dimen/app_name_text_size" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -267,7 +266,7 @@
                             android:lines="2"
                             android:text="App Name"
                             android:textColor="@color/exit_white"
-                            android:textSize="12sp" />
+                            android:textSize="@dimen/app_name_text_size" />
                     </RelativeLayout>
                 </LinearLayout>
             </RelativeLayout>

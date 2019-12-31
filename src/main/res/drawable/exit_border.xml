@@ -5,10 +5,10 @@
     <solid android:color="@color/exit_transparent" />
 
     <corners
-        android:radius="8dp"/>
+        android:radius="@dimen/_10sdp"/>
 
     <stroke
-        android:width="3dp"
+        android:width="@dimen/_2sdp"
         android:color="@color/exit_button_border_color" />
 
 </shape>

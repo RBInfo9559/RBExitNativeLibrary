@@ -1,5 +1,6 @@
 package rb.exit.nativelibrary;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
@@ -69,9 +70,6 @@ public class Exit_ListActivity extends Activity
 
 	RelativeLayout exit_static_ad_lbl;
 
-	//GetHomeStaticLeftTask get_exit_app_left_task;
-	//GetPrivacyLinkTask get_Ad_static_link_task;
-
 	Exit_ExitAppClass exit_app_left_data;
 	ArrayList<Exit_ExitAppClass> array_exit_app_left = new ArrayList<Exit_ExitAppClass>();
 
@@ -126,8 +124,10 @@ public class Exit_ListActivity extends Activity
 
 	RequestQueue requestQueue;
 
+	@SuppressLint("HandlerLeak")
 	private Handler data_handler = new Handler()
 	{
+		@Override
 		public void handleMessage(Message message)
 		{
 			switch (message.what)
@@ -263,9 +263,10 @@ public class Exit_ListActivity extends Activity
 						{
 							rel_exit_app_left4.setVisibility(View.GONE);
 						}
-					}catch(Exception e)
+					}
+					catch(Exception e)
 					{
-						rel_exit_app_main.setVisibility(View.INVISIBLE);
+						rel_exit_app_main.setVisibility(View.GONE);
 					}
 					//--------------------------------
 
@@ -1031,17 +1032,6 @@ public class Exit_ListActivity extends Activity
 
 		MediaView mediaView = adView.findViewById(R.id.ad_media);
 		adView.setMediaView(mediaView);
-
-		ImageView mainImageView = adView.findViewById(R.id.ad_image);
-		mainImageView.setVisibility(View.GONE);
-
-		// Apps can check the VideoController's hasVideoContent property to determine if the
-		// NativeAppInstallAd has a video asset.
-
-		// Some assets are guaranteed to be in every UnifiedNativeAd.
-		/*((TextView) headline_view).setText(nativeAd.getHeadline());
-		((TextView) body_view).setText(nativeAd.getBody());
-		((Button) call_to_action_view).setText(nativeAd.getCallToAction());*/
 
 		if (nativeAd.getHeadline() == null)
 		{
