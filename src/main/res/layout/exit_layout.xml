@@ -40,7 +40,7 @@
             android:layout_height="35dp"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/app_exit_lbl_header"
-            android:layout_marginRight="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_5sdp"
             android:background="@drawable/exit_button_no_selector">
 

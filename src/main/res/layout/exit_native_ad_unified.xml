@@ -52,7 +52,6 @@
                     android:layout_marginTop="@dimen/_3sdp"
                     android:layout_marginBottom="@dimen/_3sdp" />
 
-
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -154,7 +153,7 @@
         <Button
             android:id="@+id/ad_call_to_action"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_28sdp"
+            android:layout_height="@dimen/_35sdp"
             android:layout_below="@+id/rel_main_data"
             android:background="@drawable/exit_native_install_btn_selector"
             android:gravity="center"
