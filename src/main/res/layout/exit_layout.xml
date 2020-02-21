@@ -14,66 +14,90 @@
             android:id="@+id/app_exit_lbl_header_exit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_20sdp"
             android:gravity="center_vertical"
-            android:text="Exit"
+            android:text="Exit Screen"
             android:textColor="@color/exit_header_text_color"
-            android:textSize="@dimen/_16sdp"
+            android:textSize="@dimen/_18sdp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/app_exit_lbl_header"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/app_exit_rel_message"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/app_exit_lbl_header_exit"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dip"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="Do you want to exit?"
-            android:textColor="@color/exit_gray"
-            android:textSize="@dimen/_12sdp" />
+            android:layout_marginTop="@dimen/_25sdp">
 
-        <RelativeLayout
-            android:id="@+id/app_exit_btn_no"
-            android:layout_width="80dp"
-            android:layout_height="35dp"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/app_exit_lbl_header"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:background="@drawable/exit_button_no_selector">
-
-            <TextView
-                android:id="@+id/app_exit_lbl_no"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <RelativeLayout
+                android:layout_width="@dimen/_250sdp"
+                android:layout_height="@dimen/_120sdp"
                 android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="No"
-                android:textColor="@color/exit_white"
-                android:textSize="@dimen/_12sdp" />
+                android:gravity="center"
+                android:background="@drawable/exit_white_rounded_bg">
+
+                <ImageView android:id="@+id/exit_img_logo"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_exit_logo"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:layout_below="@+id/exit_img_logo"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/exit_message"
+                    android:textColor="@color/exit_black"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold"/>
+            </RelativeLayout>
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/app_exit_btn_yes"
-            android:layout_width="80dp"
-            android:layout_height="35dp"
-            android:layout_below="@+id/app_exit_lbl_header"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_toLeftOf="@+id/app_exit_btn_no"
-            android:background="@drawable/exit_button_selector">
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/app_exit_rel_message">
 
-            <TextView
-                android:id="@+id/app_exit_lbl_yes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="Yes"
-                android:textColor="@color/exit_white"
-                android:textSize="@dimen/_12sdp" />
+            <RelativeLayout
+                android:id="@+id/app_exit_btn_yes"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:background="@drawable/exit_button_selector">
+
+                <TextView
+                    android:id="@+id/app_exit_lbl_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@string/app_name"
+                    android:text="Yes"
+                    android:textColor="@color/exit_white"
+                    android:textSize="@dimen/_12sdp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/app_exit_btn_no"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_toRightOf="@+id/app_exit_btn_yes"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:background="@drawable/exit_button_no_selector">
+
+                <TextView
+                    android:id="@+id/app_exit_lbl_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@string/app_name"
+                    android:text="No"
+                    android:textColor="@color/exit_white"
+                    android:textSize="@dimen/_12sdp" />
+            </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
 
@@ -93,183 +117,6 @@
             android:paddingLeft="@dimen/_5sdp"
             android:paddingRight="@dimen/_5sdp" >
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/exit_border" >
-
-                <RelativeLayout
-                    android:id="@+id/exit_static_ad_lbl"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:layout_marginLeft="@dimen/_2sdp"
-                    android:layout_marginRight="@dimen/_2sdp"
-                    android:gravity="center" >
-
-                    <TextView
-                        android:id="@+id/app_exit_lbl_footer"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:autoLink="web"
-                        android:text="@string/exit_ads_footer"
-                        android:textColor="@color/exit_white"
-                        android:textSize="@dimen/_10sdp"
-                        android:textStyle="bold" />
-
-                    <ImageView
-                        android:id="@+id/homestatic_img_footer"
-                        android:layout_width="@dimen/_10sdp"
-                        android:layout_height="@dimen/_10sdp"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/_8sdp"
-                        android:layout_toRightOf="@+id/app_exit_lbl_footer"
-                        android:autoLink="web"
-                        android:tint="#fffc00"
-                        android:src="@drawable/exit_ad_info_exit" />
-                </RelativeLayout>
-
-                <LinearLayout
-                    android:id="@+id/app_exit_middle_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/exit_static_ad_lbl"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginRight="@dimen/_3sdp"
-                    android:layout_marginLeft="@dimen/_3sdp"
-                    android:layout_marginBottom="@dimen/_2sdp"
-                    android:orientation="horizontal"
-                    android:weightSum="4" >
-
-                    <RelativeLayout
-                        android:id="@+id/app_exit_app_layout_1"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_margin="2dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:background="@drawable/exit_home_static_app_bg_selector" >
-
-                        <ImageView
-                            android:id="@+id/app_exit_img_icon_1"
-                            android:layout_width="@dimen/exit_static_app_icon_width"
-                            android:layout_height="@dimen/exit_static_app_icon_width"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="2dp"
-                            android:src="@drawable/exit_sample_loading" />
-
-                        <TextView
-                            android:id="@+id/app_exit_txt_app_name_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/app_exit_img_icon_1"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="2dp"
-                            android:gravity="center_vertical|center_horizontal"
-                            android:lines="2"
-                            android:text="App Name"
-                            android:textColor="@color/exit_white"
-                            android:textSize="@dimen/app_name_text_size" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/app_exit_app_layout_2"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_margin="2dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:background="@drawable/exit_home_static_app_bg_selector">
-
-                        <ImageView
-                            android:id="@+id/app_exit_img_icon_2"
-                            android:layout_width="@dimen/exit_static_app_icon_width"
-                            android:layout_height="@dimen/exit_static_app_icon_width"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="2dp"
-                            android:src="@drawable/exit_sample_loading" />
-
-                        <TextView
-                            android:id="@+id/app_exit_txt_app_name_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/app_exit_img_icon_2"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="2dp"
-                            android:gravity="center_vertical|center_horizontal"
-                            android:lines="2"
-                            android:text="App Name"
-                            android:textColor="@color/exit_white"
-                            android:textSize="@dimen/app_name_text_size" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/app_exit_app_layout_3"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_margin="2dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:background="@drawable/exit_home_static_app_bg_selector">
-
-                        <ImageView
-                            android:id="@+id/app_exit_img_icon_3"
-                            android:layout_width="@dimen/exit_static_app_icon_width"
-                            android:layout_height="@dimen/exit_static_app_icon_width"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="2dp"
-                            android:src="@drawable/exit_sample_loading" />
-
-                        <TextView
-                            android:id="@+id/app_exit_txt_app_name_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/app_exit_img_icon_3"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="2dp"
-                            android:gravity="center_vertical|center_horizontal"
-                            android:lines="2"
-                            android:text="App Name"
-                            android:textColor="@color/exit_white"
-                            android:textSize="@dimen/app_name_text_size" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/app_exit_app_layout_4"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_margin="2dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:background="@drawable/exit_home_static_app_bg_selector">
-
-                        <ImageView
-                            android:id="@+id/app_exit_img_icon_4"
-                            android:layout_width="@dimen/exit_static_app_icon_width"
-                            android:layout_height="@dimen/exit_static_app_icon_width"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="2dp"
-                            android:src="@drawable/exit_sample_loading" />
-
-                        <TextView
-                            android:id="@+id/app_exit_txt_app_name_4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/app_exit_img_icon_4"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="2dp"
-                            android:gravity="center_vertical|center_horizontal"
-                            android:lines="2"
-                            android:text="App Name"
-                            android:textColor="@color/exit_white"
-                            android:textSize="@dimen/app_name_text_size" />
-                    </RelativeLayout>
-                </LinearLayout>
-            </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
 

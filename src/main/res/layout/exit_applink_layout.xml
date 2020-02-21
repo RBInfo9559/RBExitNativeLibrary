@@ -26,7 +26,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:layout_marginLeft="@dimen/_8sdp"
-                    android:text="@string/exit_ads_heder"
+                    android:text="@string/exit_ads_header"
                     android:textColor="@drawable/exit_text_selector"
                     android:textSize="@dimen/_6sdp" />
 
