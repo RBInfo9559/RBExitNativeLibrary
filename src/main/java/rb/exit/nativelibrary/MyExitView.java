@@ -3,16 +3,12 @@ package rb.exit.nativelibrary;
 
 import android.app.Activity;
 import android.app.Application;
-
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Handler;
-
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -133,14 +129,6 @@ public class MyExitView extends Application
 
         TextView conform_dialog_txt_header = (TextView)conform_dialog.findViewById(R.id.dialog_conform_txt_header);
         TextView conform_dialog_txt_message = (TextView)conform_dialog.findViewById(R.id.dialog_conform_txt_message);
-
-        Typeface font_type = Typeface.createFromAsset(mContext.getAssets(), Exit_AppHelper.roboto_font_path);
-
-        conform_dialog_btn_yes.setTypeface(font_type);
-        conform_dialog_btn_no.setTypeface(font_type);
-
-        conform_dialog_txt_header.setTypeface(font_type);
-        conform_dialog_txt_message.setTypeface(font_type);
 
         conform_dialog_btn_yes.setText("Rate now");
         conform_dialog_btn_no.setText("Cancel");

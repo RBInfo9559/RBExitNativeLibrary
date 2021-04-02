@@ -115,15 +115,16 @@
             android:gravity="center"
             android:layout_marginTop="@dimen/_5sdp"
             android:paddingLeft="@dimen/_5sdp"
-            android:paddingRight="@dimen/_5sdp" >
-
-        </RelativeLayout>
+            android:paddingRight="@dimen/_5sdp" />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/ad_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_220sdp"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
         android:layout_alignParentBottom="true"
         android:visibility="visible">
 
@@ -131,6 +132,7 @@
             android:id="@+id/native_ad_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:visibility="visible" />
     </RelativeLayout>
 </RelativeLayout>

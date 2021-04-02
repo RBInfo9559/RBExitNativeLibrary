@@ -25,8 +25,6 @@ public class Exit_AppClass
 {
 	private static Context mContext;
 
-	public static Typeface font_type;
-	
 	public static boolean is_online;
 
 	public Exit_AppClass(Context ctx)
@@ -197,14 +195,6 @@ public class Exit_AppClass
 
 		conform_dialog_txt_header = (TextView)conform_dialog.findViewById(R.id.dialog_conform_txt_header);
 		conform_dialog_txt_message = (TextView)conform_dialog.findViewById(R.id.dialog_conform_txt_message);
-
-		font_type = Typeface.createFromAsset(mContext.getAssets(), Exit_AppHelper.roboto_font_path);
-
-		conform_dialog_btn_yes.setTypeface(font_type);
-		conform_dialog_btn_no.setTypeface(font_type);
-
-		conform_dialog_txt_header.setTypeface(font_type);
-		conform_dialog_txt_message.setTypeface(font_type);
 
 		conform_dialog_btn_yes.setText("Rate now");
 		conform_dialog_btn_no.setText("Cancel");

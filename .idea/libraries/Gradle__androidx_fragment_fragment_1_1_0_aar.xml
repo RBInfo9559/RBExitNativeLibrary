@@ -6,6 +6,7 @@
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/fragment-1.1.0.aar/d65a5e5c2e6260700561254efc1be277/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/fragment-1.1.0.aar/d65a5e5c2e6260700561254efc1be277/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/fragment-1.1.0.aar/d65a5e5c2e6260700561254efc1be277/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

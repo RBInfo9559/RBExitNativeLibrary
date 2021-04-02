@@ -3,7 +3,6 @@ package rb.exit.nativelibrary;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,12 +18,12 @@ import com.google.ads.mediation.admob.AdMobAdapter;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.VideoController;
+import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.VideoOptions;
-import com.google.android.gms.ads.formats.MediaView;
-import com.google.android.gms.ads.formats.NativeAdOptions;
-import com.google.android.gms.ads.formats.UnifiedNativeAd;
-import com.google.android.gms.ads.formats.UnifiedNativeAdView;
+import com.google.android.gms.ads.nativead.MediaView;
+import com.google.android.gms.ads.nativead.NativeAd;
+import com.google.android.gms.ads.nativead.NativeAdOptions;
+import com.google.android.gms.ads.nativead.NativeAdView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,11 +31,8 @@ import java.util.List;
 
 public class Exit_ListActivity extends Activity
 {
-	String TAG = "Exit_ListActivity";
-
-	Typeface font_type;
-
 	RelativeLayout rel_native_ad;
+	NativeAd ad_mob_native_ad;
 	AdRequest native_ad_request;
 
 	RelativeLayout rel_exit_yes;
@@ -52,17 +48,15 @@ public class Exit_ListActivity extends Activity
 		requestWindowFeature(1);
 		getWindow().setFlags(1024, 1024);
 
-		setview();
+		SetView();
 	}
 
-	private void setview()
+	private void SetView()
 	{
 		// TODO Auto-generated method stub
 		try
 		{
 			setContentView(R.layout.exit_layout);
-
-			font_type = Typeface.createFromAsset(getAssets(), Exit_AppHelper.roboto_font_path);
 
 			rel_exit_yes = (RelativeLayout)findViewById(R.id.app_exit_btn_yes);
 			rel_exit_no = (RelativeLayout)findViewById(R.id.app_exit_btn_no);
@@ -89,14 +83,12 @@ public class Exit_ListActivity extends Activity
 					HomeScreen();
 				}
 			});
-
 		}
 		catch (Exception e)
 		{
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-
 	}
 
 	protected void HomeScreen()
@@ -132,6 +124,16 @@ public class Exit_ListActivity extends Activity
 		overridePendingTransition(R.anim.exit_slide_in_left, R.anim.exit_slide_out_right);
 	}
 
+	public static boolean verifyInstallerId(Context context)
+	{
+		// A list with valid installers package name
+		List<String> validInstallers = new ArrayList<>(Arrays.asList("com.android.vending", "com.google.android.feedback"));
+		// The package name of the app that has installed your app
+		final String installer = context.getPackageManager().getInstallerPackageName(context.getPackageName());
+		// true if your app has been downloaded from Play Store
+		return installer != null && validInstallers.contains(installer);
+	}
+
 	@Override
 	protected void onResume()
 	{
@@ -157,14 +159,12 @@ public class Exit_ListActivity extends Activity
 						}
 						else
 						{
-							rel_native_ad = (RelativeLayout)findViewById(R.id.ad_layout);
-							rel_native_ad.setVisibility(View.GONE);
+							HideViews();
 						}
 					}
 					else
 					{
-						rel_native_ad = (RelativeLayout)findViewById(R.id.ad_layout);
-						rel_native_ad.setVisibility(View.GONE);
+						HideViews();
 					}
 				}
 				else
@@ -176,24 +176,27 @@ public class Exit_ListActivity extends Activity
 					}
 					else
 					{
-						rel_native_ad = (RelativeLayout)findViewById(R.id.ad_layout);
-						rel_native_ad.setVisibility(View.GONE);
+						HideViews();
 					}
 				}
 			}
 			else
 			{
 				// Hide Ads
-				rel_native_ad = (RelativeLayout)findViewById(R.id.ad_layout);
-				rel_native_ad.setVisibility(View.GONE);
+				HideViews();
 			}
 		}
 		else
 		{
 			// Hide Ads
-			rel_native_ad = (RelativeLayout)findViewById(R.id.ad_layout);
-			rel_native_ad.setVisibility(View.GONE);
+			HideViews();
 		}
+	}
+
+	private void HideViews()
+	{
+		rel_native_ad = (RelativeLayout) findViewById(R.id.ad_layout);
+		rel_native_ad.setVisibility(View.GONE);
 	}
 
 	private void LoadAd()
@@ -204,7 +207,8 @@ public class Exit_ListActivity extends Activity
 			//Native Ad Start //
 			rel_native_ad = (RelativeLayout)findViewById(R.id.ad_layout);
 			rel_native_ad.setVisibility(View.VISIBLE);
-			LoadUnifiedNativeAd(Exit_CommonHelper.is_show_non_personalize, Exit_CommonHelper.native_ad_id);
+			//LoadUnifiedNativeAd(Exit_CommonHelper.is_show_non_personalize, Exit_CommonHelper.native_ad_id);
+			LoadAdMobNativeAd(Exit_CommonHelper.is_show_non_personalize, Exit_CommonHelper.native_ad_id);
 			//Native Ad End //
 		}
 		catch (Exception e)
@@ -214,17 +218,169 @@ public class Exit_ListActivity extends Activity
 		}
 	}
 
-	public static boolean verifyInstallerId(Context context)
+	private void LoadAdMobNativeAd(boolean is_show_non_personalize,String native_ad_id)
 	{
-		// A list with valid installers package name
-		List<String> validInstallers = new ArrayList<>(Arrays.asList("com.android.vending", "com.google.android.feedback"));
-		// The package name of the app that has installed your app
-		final String installer = context.getPackageManager().getInstallerPackageName(context.getPackageName());
-		// true if your app has been downloaded from Play Store
-		return installer != null && validInstallers.contains(installer);
+		AdLoader.Builder builder = new AdLoader.Builder(this, native_ad_id);
+		builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener()
+		{
+			@Override
+			public void onNativeAdLoaded(NativeAd nativeAd)
+			{
+				FrameLayout frameLayout = (FrameLayout) findViewById(R.id.native_ad_layout);
+				NativeAdView adView = (NativeAdView) getLayoutInflater().inflate(R.layout.exit_layout_native_ad, null);
+				PopulateAdMobNativeAdView(nativeAd, adView);
+				frameLayout.removeAllViews();
+				frameLayout.addView(adView);
+			}
+		});
+
+		VideoOptions videoOptions = new VideoOptions.Builder()
+				.setStartMuted(true)
+				.build();
+
+		NativeAdOptions adOptions = new NativeAdOptions.Builder()
+				.setVideoOptions(videoOptions)
+				.build();
+
+		builder.withNativeAdOptions(adOptions);
+
+		AdLoader adLoader = builder.withAdListener(new AdListener()
+		{
+			@Override
+			public void onAdFailedToLoad(LoadAdError loadAdError)
+			{
+				super.onAdFailedToLoad(loadAdError);
+				Log.e("Unified Native:", "Failed to load native ad!");
+			}
+		}).build();
+
+		Bundle non_personalize_bundle = new Bundle();
+		non_personalize_bundle.putString("npa", "1");
+
+		if(is_show_non_personalize)
+		{
+			native_ad_request = new AdRequest.Builder().addNetworkExtrasBundle(AdMobAdapter.class, non_personalize_bundle).build();
+		}
+		else
+		{
+			native_ad_request = new AdRequest.Builder().build();
+		}
+
+		adLoader.loadAd(native_ad_request);
 	}
 
-	private void LoadUnifiedNativeAd(boolean is_show_non_personalize,String native_ad_id)
+	private void PopulateAdMobNativeAdView(NativeAd nativeAd, NativeAdView adView)
+	{
+		ad_mob_native_ad = nativeAd;
+
+		View icon_view = adView.findViewById(R.id.ad_app_icon);
+		View headline_view = adView.findViewById(R.id.ad_headline);
+		View body_view = adView.findViewById(R.id.ad_body);
+		View rating_view = adView.findViewById(R.id.ad_stars);
+		View price_view = adView.findViewById(R.id.ad_price);
+		View store_view = adView.findViewById(R.id.ad_store);
+		View advertiser_view = adView.findViewById(R.id.ad_advertiser);
+		View call_to_action_view = adView.findViewById(R.id.ad_call_to_action);
+
+		adView.setIconView(icon_view);
+		adView.setHeadlineView(headline_view);
+		adView.setBodyView(body_view);
+		adView.setStarRatingView(rating_view);
+		adView.setPriceView(price_view);
+		adView.setStoreView(store_view);
+		adView.setAdvertiserView(advertiser_view);
+		adView.setCallToActionView(call_to_action_view);
+
+		MediaView mediaView = adView.findViewById(R.id.ad_media);
+		adView.setMediaView(mediaView);
+
+		((TextView) headline_view).setText(nativeAd.getHeadline());
+		((TextView) body_view).setText(nativeAd.getBody());
+		((Button) call_to_action_view).setText(nativeAd.getCallToAction());
+
+		// check before trying to display them.
+		if (nativeAd.getIcon() == null)
+		{
+			icon_view.setVisibility(View.GONE);
+		}
+		else
+		{
+			((ImageView) icon_view).setImageDrawable(nativeAd.getIcon().getDrawable());
+			icon_view.setVisibility(View.VISIBLE);
+		}
+
+		if (nativeAd.getPrice() == null)
+		{
+			price_view.setVisibility(View.INVISIBLE);
+		}
+		else
+		{
+			price_view.setVisibility(View.VISIBLE);
+			((TextView) price_view).setText(nativeAd.getPrice());
+		}
+
+		if (nativeAd.getStore() == null)
+		{
+			store_view.setVisibility(View.INVISIBLE);
+		}
+		else
+		{
+			store_view.setVisibility(View.VISIBLE);
+			((TextView) store_view).setText(nativeAd.getStore());
+		}
+
+		if (nativeAd.getStarRating() == null)
+		{
+			rating_view.setVisibility(View.INVISIBLE);
+		}
+		else
+		{
+			((RatingBar) rating_view).setRating(nativeAd.getStarRating().floatValue());
+			rating_view.setVisibility(View.VISIBLE);
+		}
+
+		if (nativeAd.getAdvertiser() == null)
+		{
+			advertiser_view.setVisibility(View.INVISIBLE);
+		}
+		else
+		{
+			((TextView) advertiser_view).setText(nativeAd.getAdvertiser());
+			advertiser_view.setVisibility(View.VISIBLE);
+		}
+
+		//mediaView.setVisibility(View.VISIBLE);
+		//mainImageView.setVisibility(View.VISIBLE);
+		body_view.setVisibility(View.GONE);
+		rating_view.setVisibility(View.VISIBLE);
+		advertiser_view.setVisibility(View.VISIBLE);
+		store_view.setVisibility(View.GONE);
+		price_view.setVisibility(View.GONE);
+
+		adView.setNativeAd(nativeAd);
+	}
+
+	@Override
+	protected void onDestroy()
+	{
+		super.onDestroy();
+		if(ad_mob_native_ad != null)
+		{
+			ad_mob_native_ad.destroy();
+		}
+	}
+
+	@Override
+	protected void onPause()
+	{
+		super.onPause();
+		if(ad_mob_native_ad != null)
+		{
+			ad_mob_native_ad.destroy();
+		}
+	}
+
+	/*private void LoadUnifiedNativeAd(boolean is_show_non_personalize,String native_ad_id)
 	{
 		AdLoader.Builder builder = new AdLoader.Builder(this, native_ad_id);
 		builder.forUnifiedNativeAd(new UnifiedNativeAd.OnUnifiedNativeAdLoadedListener()
@@ -409,5 +565,5 @@ public class Exit_ListActivity extends Activity
 		price_view.setVisibility(View.GONE);
 
 		adView.setNativeAd(nativeAd);
-	}
+	}*/
 }

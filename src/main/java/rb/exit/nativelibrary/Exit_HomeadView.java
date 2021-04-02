@@ -45,9 +45,6 @@ public class Exit_HomeadView extends RelativeLayout
 {
     static String TAG = "Exit_HomeADView";
 
-    //static GetHomeStaticLeftTask get_home_static_left_task;
-    //static GetAdStaticLinkTask get_Ad_static_link_task;
-
     static Exit_HomeStaticClass home_static_left_data;
     static ArrayList<Exit_HomeStaticClass> array_home_static_left = new ArrayList<Exit_HomeStaticClass>();
 
@@ -276,7 +273,7 @@ public class Exit_HomeadView extends RelativeLayout
                 break;
                 case 99: // Display Message
                 {
-                    //Toast.makeText(myContext, "Server Issue!", Toast.LENGTH_LONG).show();
+
                 }
                 break;
             }
