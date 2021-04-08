@@ -8,7 +8,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 
-
 public class Exit_CommonClass
 {
 	private static Context mContext;

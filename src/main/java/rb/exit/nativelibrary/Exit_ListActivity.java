@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -32,7 +31,7 @@ import java.util.List;
 public class Exit_ListActivity extends Activity
 {
 	RelativeLayout rel_native_ad;
-	NativeAd ad_mob_native_ad;
+	NativeAd ad_mob_native_ad = null;
 	AdRequest native_ad_request;
 
 	RelativeLayout rel_exit_yes;
@@ -250,7 +249,6 @@ public class Exit_ListActivity extends Activity
 			public void onAdFailedToLoad(LoadAdError loadAdError)
 			{
 				super.onAdFailedToLoad(loadAdError);
-				Log.e("Unified Native:", "Failed to load native ad!");
 			}
 		}).build();
 
@@ -379,191 +377,4 @@ public class Exit_ListActivity extends Activity
 			ad_mob_native_ad.destroy();
 		}
 	}
-
-	/*private void LoadUnifiedNativeAd(boolean is_show_non_personalize,String native_ad_id)
-	{
-		AdLoader.Builder builder = new AdLoader.Builder(this, native_ad_id);
-		builder.forUnifiedNativeAd(new UnifiedNativeAd.OnUnifiedNativeAdLoadedListener()
-		{
-			// OnUnifiedNativeAdLoadedListener implementation.
-			@Override
-			public void onUnifiedNativeAdLoaded(UnifiedNativeAd unifiedNativeAd)
-			{
-				FrameLayout frameLayout = (FrameLayout) findViewById(R.id.native_ad_layout);
-				UnifiedNativeAdView adView = (UnifiedNativeAdView) getLayoutInflater().inflate(R.layout.exit_native_ad_unified, null);
-				PopulateUnifiedNativeAdView(unifiedNativeAd, adView);
-				frameLayout.removeAllViews();
-				frameLayout.addView(adView);
-			}
-		});
-
-		VideoOptions videoOptions = new VideoOptions.Builder()
-				.setStartMuted(true)
-				.build();
-
-		NativeAdOptions adOptions = new NativeAdOptions.Builder()
-				.setVideoOptions(videoOptions)
-				.build();
-
-		builder.withNativeAdOptions(adOptions);
-
-		AdLoader adLoader = builder.withAdListener(new AdListener()
-		{
-			@Override
-			public void onAdFailedToLoad(int errorCode)
-			{
-				Log.e("Unified Native:","Failed to load native ad!");
-			}
-		}).build();
-
-		Bundle non_personalize_bundle = new Bundle();
-		non_personalize_bundle.putString("npa", "1");
-
-		if(is_show_non_personalize)
-		{
-			native_ad_request = new AdRequest.Builder().addNetworkExtrasBundle(AdMobAdapter.class, non_personalize_bundle).build();
-		}
-		else
-		{
-			native_ad_request = new AdRequest.Builder().build();
-		}
-
-		adLoader.loadAd(native_ad_request);
-
-	}
-
-	private void PopulateUnifiedNativeAdView(UnifiedNativeAd nativeAd, UnifiedNativeAdView adView)
-	{
-		// Get the video controller for the ad. One will always be provided, even if the ad doesn't
-		// have a video asset.
-		VideoController vc = nativeAd.getVideoController();
-		vc.mute(true);
-		// Create a new VideoLifecycleCallbacks object and pass it to the VideoController. The
-		// VideoController will call methods on this object when events occur in the video
-		// lifecycle.
-		vc.setVideoLifecycleCallbacks(new VideoController.VideoLifecycleCallbacks()
-		{
-			public void onVideoEnd()
-			{
-				// Publishers should allow native ads to complete video playback before refreshing
-				// or replacing them with another ad in the same UI location.
-				//refresh.setEnabled(true);
-				//videoStatus.setText("Video status: Video playback has ended.");
-				super.onVideoEnd();
-			}
-		});
-
-		View icon_view = adView.findViewById(R.id.ad_app_icon);
-		View headline_view = adView.findViewById(R.id.ad_headline);
-		View body_view = adView.findViewById(R.id.ad_body);
-		View rating_view = adView.findViewById(R.id.ad_stars);
-		View price_view = adView.findViewById(R.id.ad_price);
-		View store_view = adView.findViewById(R.id.ad_store);
-		View advertiser_view = adView.findViewById(R.id.ad_advertiser);
-		View call_to_action_view = adView.findViewById(R.id.ad_call_to_action);
-
-		adView.setIconView(icon_view);
-		adView.setHeadlineView(headline_view);
-		adView.setBodyView(body_view);
-		adView.setStarRatingView(rating_view);
-		adView.setPriceView(price_view);
-		adView.setStoreView(store_view);
-		adView.setAdvertiserView(advertiser_view);
-		adView.setCallToActionView(call_to_action_view);
-
-		MediaView mediaView = adView.findViewById(R.id.ad_media);
-		adView.setMediaView(mediaView);
-
-		if (nativeAd.getHeadline() == null)
-		{
-			headline_view.setVisibility(View.GONE);
-		}
-		else
-		{
-			((TextView) headline_view).setText(nativeAd.getHeadline());
-			headline_view.setVisibility(View.VISIBLE);
-		}
-
-		if (nativeAd.getBody() == null)
-		{
-			body_view.setVisibility(View.GONE);
-		}
-		else
-		{
-			((TextView) body_view).setText(nativeAd.getBody());
-			body_view.setVisibility(View.VISIBLE);
-		}
-
-		if (nativeAd.getCallToAction() == null)
-		{
-			call_to_action_view.setVisibility(View.GONE);
-		}
-		else
-		{
-			((Button) call_to_action_view).setText(nativeAd.getCallToAction());
-			call_to_action_view.setVisibility(View.VISIBLE);
-		}
-
-		// These assets aren't guaranteed to be in every UnifiedNativeAd, so it's important to
-		// check before trying to display them.
-		if (nativeAd.getIcon() == null)
-		{
-			icon_view.setVisibility(View.GONE);
-		}
-		else
-		{
-			((ImageView) icon_view).setImageDrawable(nativeAd.getIcon().getDrawable());
-			icon_view.setVisibility(View.VISIBLE);
-		}
-
-		if (nativeAd.getPrice() == null)
-		{
-			price_view.setVisibility(View.INVISIBLE);
-		}
-		else
-		{
-			price_view.setVisibility(View.VISIBLE);
-			((TextView) price_view).setText(nativeAd.getPrice());
-		}
-
-		if (nativeAd.getStore() == null)
-		{
-			store_view.setVisibility(View.INVISIBLE);
-		}
-		else
-		{
-			store_view.setVisibility(View.VISIBLE);
-			((TextView) store_view).setText(nativeAd.getStore());
-		}
-
-		if (nativeAd.getStarRating() == null)
-		{
-			rating_view.setVisibility(View.INVISIBLE);
-		}
-		else
-		{
-			((RatingBar) rating_view).setRating(nativeAd.getStarRating().floatValue());
-			rating_view.setVisibility(View.VISIBLE);
-		}
-
-		if (nativeAd.getAdvertiser() == null)
-		{
-			advertiser_view.setVisibility(View.INVISIBLE);
-		}
-		else
-		{
-			((TextView) advertiser_view).setText(nativeAd.getAdvertiser());
-			advertiser_view.setVisibility(View.VISIBLE);
-		}
-
-		//mediaView.setVisibility(View.VISIBLE);
-		//mainImageView.setVisibility(View.VISIBLE);
-		body_view.setVisibility(View.VISIBLE);
-		rating_view.setVisibility(View.VISIBLE);
-		advertiser_view.setVisibility(View.VISIBLE);
-		store_view.setVisibility(View.GONE);
-		price_view.setVisibility(View.GONE);
-
-		adView.setNativeAd(nativeAd);
-	}*/
 }

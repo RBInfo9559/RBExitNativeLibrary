@@ -16,7 +16,7 @@ buildscript {
 }
 
 allprojects {
-    version = '1.16'
+    version = '1.17'
     group = 'rb.exit.nativelibrary'
 
     repositories {
@@ -29,10 +29,10 @@ android {
     compileSdkVersion 30
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 17
         targetSdkVersion 30
-        versionCode 16
-        versionName "1.16"
+        versionCode 17
+        versionName "1.17"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 

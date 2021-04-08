@@ -33,7 +33,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="feff79d4-b2bd-4e77-a2ed-dd8006055414" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_0_1_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_asynclayoutinflater_asynclayoutinflater_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_browser_browser_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_coordinatorlayout_coordinatorlayout_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_documentfile_documentfile_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_ui_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_utils_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_service_2_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_print_print_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_room_room_common_2_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_room_room_runtime_2_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_slidingpanelayout_slidingpanelayout_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_sqlite_sqlite_2_0_1_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_sqlite_sqlite_framework_2_0_1_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_swiperefreshlayout_swiperefreshlayout_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_work_work_runtime_2_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_ads_20_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_ads_base_20_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_ads_identifier_17_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_ads_lite_20_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_17_6_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_gass_20_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_measurement_base_18_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_measurement_sdk_api_18_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_tasks_17_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_ump_user_messaging_platform_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_guava_listenablefuture_1_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rb/exit/nativelibrary/Exit_AppHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rb/exit/nativelibrary/Exit_AppHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rb/exit/nativelibrary/Exit_CommonClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rb/exit/nativelibrary/Exit_CommonClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rb/exit/nativelibrary/Exit_ExitAppClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rb/exit/nativelibrary/Exit_HomeStaticClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rb/exit/nativelibrary/Exit_HomeStaticClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rb/exit/nativelibrary/Exit_HomeadView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rb/exit/nativelibrary/Exit_HomeadView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rb/exit/nativelibrary/Exit_ListActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rb/exit/nativelibrary/Exit_ListActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rb/exit/nativelibrary/Exit_MyTextView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rb/exit/nativelibrary/Exit_MyTextView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/exit_native_ad_unified.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,12 +101,14 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android-custom-viewD:/AndroidStudio/StudioSignedWorkspace/RBExitNativeLibrary/src/main/java/rb/exit/nativelibrary/Exit_HomeadView.java_SELECTED" value="Exit_HomeadView" />
+    <property name="android-custom-viewD:/AndroidStudio/StudioSignedWorkspace/RBExitNativeLibrary/src/main/java/rb/exit/nativelibrary/Exit_MyTextView.java_SELECTED" value="Exit_MyTextView" />
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$PROJECT_DIR$/../../../Android/android_sdk" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/res" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../KingsAndQueens/EnglishSpanishTranslator_44" />
     <property name="multi-representation-previewD:/AndroidStudio/StudioSignedWorkspace/RBExitNativeLibrary/src/main/java/rb/exit/nativelibrary/Exit_HomeadView.java_selected" value="Custom views" />
+    <property name="multi-representation-previewD:/AndroidStudio/StudioSignedWorkspace/RBExitNativeLibrary/src/main/java/rb/exit/nativelibrary/Exit_MyTextView.java_selected" value="Custom views" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
@@ -142,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617863226053</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Version 16&#10;AdMob Version 19.8.0">
+      <created>1617863407808</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1617863407808</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -169,30 +215,34 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1617349643334" />
-    <state x="5" y="0" key="CommitChangelistDialog2" timestamp="1617863224422">
+    <state x="5" y="0" key="CommitChangelistDialog2" timestamp="1617863397913">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="5" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1617863224422" />
+    <state x="5" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1617863397913" />
+    <state x="463" y="105" key="FileChooserDialogImpl" timestamp="1617863864870">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1617863864870" />
     <state x="184" y="8" key="SettingsEditor" timestamp="1617862525966">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="8" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1617862525966" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1617863211365">
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1617863415708">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1617863211365" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1617863415708" />
     <state x="492" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617863249380">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="492" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1617863249380" />
-    <state x="390" y="97" width="585" height="534" key="find.popup" timestamp="1617348728520">
+    <state x="390" y="97" width="585" height="534" key="find.popup" timestamp="1617864619554">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="390" y="97" width="585" height="534" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1617348728520" />
-    <state width="399" height="84" key="javadoc.popup.new" timestamp="1617349594705">
+    <state x="390" y="97" width="585" height="534" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1617864619554" />
+    <state width="399" height="84" key="javadoc.popup.new" timestamp="1617864421995">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="399" height="84" key="javadoc.popup.new/0.0.1366.728@0.0.1366.728" timestamp="1617349594705" />
+    <state width="399" height="84" key="javadoc.popup.new/0.0.1366.728@0.0.1366.728" timestamp="1617864421995" />
   </component>
   <component name="masterDetails">
     <states>

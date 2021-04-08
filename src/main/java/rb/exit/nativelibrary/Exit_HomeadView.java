@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -97,9 +98,9 @@ public class Exit_HomeadView extends RelativeLayout
 
     static RequestQueue requestQueue;
 
-    private static Handler data_handler = new Handler()
+    private static Handler data_handler = new Handler(Looper.getMainLooper())
     {
-        @SuppressLint("NewApi")
+        @SuppressLint({"NewApi", "HandlerLeak"})
         public void handleMessage(Message message)
         {
             switch (message.what)
@@ -132,7 +133,7 @@ public class Exit_HomeadView extends RelativeLayout
                             Log.e("Left Random No ::", String.valueOf(arr.get(0)));
 
                             static_app_name1 = array_home_static_left.get(arr.get(0)).app_name.trim();
-                            static_app_package1 = array_home_static_left.get(arr.get(0)).app_pakage_name.trim();
+                            static_app_package1 = array_home_static_left.get(arr.get(0)).app_package_name.trim();
                             static_app_icon_url1 = array_home_static_left.get(arr.get(0)).app_icon_url.trim();
 
                             txt_home_static1.setText(static_app_name1);
@@ -160,7 +161,7 @@ public class Exit_HomeadView extends RelativeLayout
                             Log.e("Right Random No ::", String.valueOf(arr.get(1)));
 
                             static_app_name2 = array_home_static_left.get(arr.get(1)).app_name.trim();
-                            static_app_package2 = array_home_static_left.get(arr.get(1)).app_pakage_name.trim();
+                            static_app_package2 = array_home_static_left.get(arr.get(1)).app_package_name.trim();
                             static_app_icon_url2 = array_home_static_left.get(arr.get(1)).app_icon_url.trim();
 
                             txt_home_static2.setText(static_app_name2);
@@ -188,7 +189,7 @@ public class Exit_HomeadView extends RelativeLayout
                             Log.e("Right Random No ::", String.valueOf(arr.get(2)));
 
                             static_app_name3 = array_home_static_left.get(arr.get(2)).app_name.trim();
-                            static_app_package3 = array_home_static_left.get(arr.get(2)).app_pakage_name.trim();
+                            static_app_package3 = array_home_static_left.get(arr.get(2)).app_package_name.trim();
                             static_app_icon_url3 = array_home_static_left.get(arr.get(2)).app_icon_url.trim();
 
                             txt_home_static3.setText(static_app_name3);
@@ -216,7 +217,7 @@ public class Exit_HomeadView extends RelativeLayout
                             Log.e("Right Random No ::", String.valueOf(arr.get(3)));
 
                             static_app_name4 = array_home_static_left.get(arr.get(3)).app_name.trim();
-                            static_app_package4 = array_home_static_left.get(arr.get(3)).app_pakage_name.trim();
+                            static_app_package4 = array_home_static_left.get(arr.get(3)).app_package_name.trim();
                             static_app_icon_url4 = array_home_static_left.get(arr.get(3)).app_icon_url.trim();
 
                             txt_home_static4.setText(static_app_name4);
@@ -592,7 +593,7 @@ public class Exit_HomeadView extends RelativeLayout
                                 if(!app_package_name.equals(package_name))
                                 {
                                     home_static_left_data.app_name = app_name;
-                                    home_static_left_data.app_pakage_name = package_name;
+                                    home_static_left_data.app_package_name = package_name;
                                     home_static_left_data.app_icon_url = icon_url;
 
                                     array_home_static_left.add(home_static_left_data);
