@@ -23,19 +23,18 @@ public class MyExitView extends Application
     public static void init(Context homeActivity)
     {
         mContext = homeActivity;
-        Exit_CommonHelper.mActivity = homeActivity;
+        ExitCommonHelper.mActivity = homeActivity;
     }
 
     public static void OpenExitScreen(boolean isHideAds,boolean isEEAUser,boolean isConsentSet,boolean isShowNonPersonalize,String nativeAdID)
     {
-        // TODO Auto-generated method stub
-        Exit_CommonHelper.is_hide_ad = isHideAds;
-        Exit_CommonHelper.is_eea_user = isEEAUser;
-        Exit_CommonHelper.is_consent_set = isConsentSet;
-        Exit_CommonHelper.is_show_non_personalize = isShowNonPersonalize;
-        Exit_CommonHelper.native_ad_id = nativeAdID.trim();
+        ExitCommonHelper.is_hide_ad = isHideAds;
+        ExitCommonHelper.is_eea_user = isEEAUser;
+        ExitCommonHelper.is_consent_set = isConsentSet;
+        ExitCommonHelper.is_show_non_personalize = isShowNonPersonalize;
+        ExitCommonHelper.native_ad_id = nativeAdID.trim();
 
-        if(Exit_CommonClass.isOnline(Exit_CommonHelper.mActivity))
+        if(ExitCommonClass.isOnline(ExitCommonHelper.mActivity))
         {
             ExitScreen();
         }
@@ -48,24 +47,23 @@ public class MyExitView extends Application
 
     private static void ExitScreen()
     {
-        // TODO Auto-generated method stub
-        Intent i = new Intent(Exit_CommonHelper.mActivity, Exit_ListActivity.class);
-        Exit_CommonHelper.mActivity.startActivity(i);
-        ((Activity) Exit_CommonHelper.mActivity).finish();
-        ((Activity) Exit_CommonHelper.mActivity).overridePendingTransition(R.anim.exit_slide_in_left, R.anim.exit_slide_out_right);
+        Intent i = new Intent(ExitCommonHelper.mActivity, ExitAppActivity.class);
+        ExitCommonHelper.mActivity.startActivity(i);
+        ((Activity) ExitCommonHelper.mActivity).finish();
+        ((Activity) ExitCommonHelper.mActivity).overridePendingTransition(R.anim.exit_slide_in_left, R.anim.exit_slide_out_right);
     }
 
     private static void OnBackSelect()
     {
         if (doubleBackToExitPressedOnce)
         {
-            ((Activity) Exit_CommonHelper.mActivity).finish();
-            ((Activity) Exit_CommonHelper.mActivity).overridePendingTransition(R.anim.exit_slide_in_left, R.anim.exit_slide_out_right);
+            ((Activity) ExitCommonHelper.mActivity).finish();
+            ((Activity) ExitCommonHelper.mActivity).overridePendingTransition(R.anim.exit_slide_in_left, R.anim.exit_slide_out_right);
             return;
         }
 
         doubleBackToExitPressedOnce = true;
-        Toast.makeText(Exit_CommonHelper.mActivity, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+        Toast.makeText(ExitCommonHelper.mActivity, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
 
         new Handler().postDelayed(new Runnable()
         {
@@ -79,11 +77,10 @@ public class MyExitView extends Application
 
     public static void RateApp(Context ctx)
     {
-        // TODO Auto-generated method stub
         try
         {
             mContext = ctx;
-            String rateUrl = Exit_AppHelper.rate_url + mContext.getPackageName();
+            String rateUrl = ExitAppHelper.rate_url + mContext.getPackageName();
 
             String dialog_header = "Rate App";
             String dialog_message = "Are you sure you want to rate my app?" + "\n" + "Thanks for support!";
@@ -98,12 +95,11 @@ public class MyExitView extends Application
 
     public static void ShareApp(Context ctx)
     {
-        // TODO Auto-generated method stub
         try
         {
             mContext = ctx;
             String app_name = mContext.getResources().getString(R.string.app_name) + " :";
-            String shareUrl = Exit_AppHelper.rate_url + mContext.getPackageName();
+            String shareUrl = ExitAppHelper.rate_url + mContext.getPackageName();
 
             Intent sharingIntent = new Intent(Intent.ACTION_SEND);
             sharingIntent.setType("text/plain");
