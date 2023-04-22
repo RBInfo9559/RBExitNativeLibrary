@@ -3,6 +3,9 @@ package rb.exit.nativelibrary;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.InstallSourceInfo;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -24,10 +27,6 @@ import com.google.android.gms.ads.nativead.NativeAd;
 import com.google.android.gms.ads.nativead.NativeAdOptions;
 import com.google.android.gms.ads.nativead.NativeAdView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class ExitAppActivity extends Activity
 {
 	RelativeLayout rel_native_ad;
@@ -38,6 +37,13 @@ public class ExitAppActivity extends Activity
 	RelativeLayout rel_exit_no;
 	TextView app_exit_lbl_Yes;
 	TextView app_exit_lbl_No;
+
+	private static String google_play_store_package = "com.android.vending";
+	private static String samsung_store_package = "com.sec.android.app.samsungapps";
+	private static String amazon_store_package = "com.amazon.venezia";
+	private static String xiomi_store_package = "com.xiaomi.market";
+	private static String oppo_store_package = "com.oppo.market";
+	private static String vivo_store_package = "com.vivo.appstore";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -55,8 +61,8 @@ public class ExitAppActivity extends Activity
 		{
 			setContentView(R.layout.exit_layout);
 
-			rel_exit_yes = (RelativeLayout)findViewById(R.id.app_exit_btn_yes);
-			rel_exit_no = (RelativeLayout)findViewById(R.id.app_exit_btn_no);
+			rel_exit_yes = findViewById(R.id.app_exit_btn_yes);
+			rel_exit_no = findViewById(R.id.app_exit_btn_no);
 
 			app_exit_lbl_Yes = findViewById(R.id.app_exit_lbl_yes);
 			app_exit_lbl_No = findViewById(R.id.app_exit_lbl_no);
@@ -116,15 +122,67 @@ public class ExitAppActivity extends Activity
 		overridePendingTransition(R.anim.exit_slide_in_left, R.anim.exit_slide_out_right);
 	}
 
-	public static boolean verifyInstallerId(Context context)
+	// Check Play Install Start //
+	public static boolean VerifyInstallerId(Context context)
 	{
-		// A list with valid installers package name
+		/*// A list with valid installers package name
 		List<String> validInstallers = new ArrayList<>(Arrays.asList("com.android.vending", "com.google.android.feedback"));
 		// The package name of the app that has installed your app
 		final String installer = context.getPackageManager().getInstallerPackageName(context.getPackageName());
 		// true if your app has been downloaded from Play Store
-		return installer != null && validInstallers.contains(installer);
+		return installer != null && validInstallers.contains(installer);*/
+
+		return CheckInstalledVia(context);
 	}
+
+	public static boolean CheckInstalledVia(Context ctx)
+	{
+		String installer = GetInstallerPackageName(ctx);
+		if(installer == null)
+		{
+			return false;
+		}
+		else
+		{
+			if(installer.equalsIgnoreCase(google_play_store_package) ||
+					installer.equalsIgnoreCase(samsung_store_package) ||
+					installer.equalsIgnoreCase(amazon_store_package) ||
+					installer.equalsIgnoreCase(xiomi_store_package) ||
+					installer.equalsIgnoreCase(oppo_store_package) ||
+					installer.equalsIgnoreCase(vivo_store_package))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+	}
+
+	private static String GetInstallerPackageName(Context ctx)
+	{
+		try
+		{
+			String packageName = ctx.getPackageName();
+			PackageManager pm = ctx.getPackageManager();
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+			{
+				InstallSourceInfo info = pm.getInstallSourceInfo(packageName);
+				if (info != null)
+				{
+					return info.getInstallingPackageName();
+				}
+			}
+			return pm.getInstallerPackageName(packageName);
+		}
+		catch (PackageManager.NameNotFoundException e)
+		{
+
+		}
+		return "";
+	}
+	// Check Play Install End //
 
 	@Override
 	protected void onResume()
@@ -144,7 +202,7 @@ public class ExitAppActivity extends Activity
 				{
 					if (ExitCommonHelper.is_consent_set)
 					{
-						boolean check_play_store_user = verifyInstallerId(getApplicationContext());
+						boolean check_play_store_user = VerifyInstallerId(getApplicationContext());
 						if(check_play_store_user)
 						{
 							LoadAd();
@@ -161,7 +219,7 @@ public class ExitAppActivity extends Activity
 				}
 				else
 				{
-					boolean check_play_store_user = verifyInstallerId(getApplicationContext());
+					boolean check_play_store_user = VerifyInstallerId(getApplicationContext());
 					if(check_play_store_user)
 					{
 						LoadAd();

@@ -126,7 +126,7 @@ public class MyExitView extends Application
         TextView conform_dialog_txt_header = (TextView)conform_dialog.findViewById(R.id.dialog_conform_txt_header);
         TextView conform_dialog_txt_message = (TextView)conform_dialog.findViewById(R.id.dialog_conform_txt_message);
 
-        conform_dialog_btn_yes.setText("Rate now");
+        conform_dialog_btn_yes.setText("Rate Now");
         conform_dialog_btn_no.setText("Cancel");
 
         String conform_dialog_header = header;

@@ -3,7 +3,6 @@ package rb.exit.nativelibrary;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -11,14 +10,11 @@ import android.net.Uri;
 public class ExitCommonClass
 {
 	private static Context mContext;
-
-	public static Typeface font_type;
 	
 	public static boolean is_online;
 
 	public ExitCommonClass(Context ctx)
 	{
-		// TODO Auto-generated constructor stub
 		mContext = ctx;
 	}
 
@@ -85,7 +81,6 @@ public class ExitCommonClass
 		}
 		catch (Exception e)
 		{
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 	}
@@ -101,11 +96,9 @@ public class ExitCommonClass
 		} 
 		catch (Exception e)
 		{
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 	}
-
 
 	public static boolean isOnline(Context mContext)
 	{
