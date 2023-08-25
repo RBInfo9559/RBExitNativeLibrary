@@ -9,6 +9,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -16,7 +18,6 @@ import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.ads.mediation.admob.AdMobAdapter;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
@@ -48,10 +49,9 @@ public class ExitAppActivity extends Activity
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(1);
-		getWindow().setFlags(1024, 1024);
-
 		SetView();
 	}
 
@@ -87,7 +87,6 @@ public class ExitAppActivity extends Activity
 		}
 		catch (Exception e)
 		{
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 	}
@@ -125,13 +124,6 @@ public class ExitAppActivity extends Activity
 	// Check Play Install Start //
 	public static boolean VerifyInstallerId(Context context)
 	{
-		/*// A list with valid installers package name
-		List<String> validInstallers = new ArrayList<>(Arrays.asList("com.android.vending", "com.google.android.feedback"));
-		// The package name of the app that has installed your app
-		final String installer = context.getPackageManager().getInstallerPackageName(context.getPackageName());
-		// true if your app has been downloaded from Play Store
-		return installer != null && validInstallers.contains(installer);*/
-
 		return CheckInstalledVia(context);
 	}
 
@@ -198,36 +190,14 @@ public class ExitAppActivity extends Activity
 			boolean is_online = ExitCommonClass.isOnline(this);
 			if(is_online)
 			{
-				if(ExitCommonHelper.is_eea_user)
+				boolean check_play_store_user = VerifyInstallerId(getApplicationContext());
+				if(check_play_store_user)
 				{
-					if (ExitCommonHelper.is_consent_set)
-					{
-						boolean check_play_store_user = VerifyInstallerId(getApplicationContext());
-						if(check_play_store_user)
-						{
-							LoadAd();
-						}
-						else
-						{
-							HideViews();
-						}
-					}
-					else
-					{
-						HideViews();
-					}
+					LoadAd();
 				}
 				else
 				{
-					boolean check_play_store_user = VerifyInstallerId(getApplicationContext());
-					if(check_play_store_user)
-					{
-						LoadAd();
-					}
-					else
-					{
-						HideViews();
-					}
+					HideViews();
 				}
 			}
 			else
@@ -256,8 +226,7 @@ public class ExitAppActivity extends Activity
 			//Native Ad Start //
 			rel_native_ad = (RelativeLayout)findViewById(R.id.ad_layout);
 			rel_native_ad.setVisibility(View.VISIBLE);
-			//LoadUnifiedNativeAd(Exit_CommonHelper.is_show_non_personalize, Exit_CommonHelper.native_ad_id);
-			LoadAdMobNativeAd(ExitCommonHelper.is_show_non_personalize, ExitCommonHelper.native_ad_id);
+			LoadAdMobNativeAd(ExitCommonHelper.native_ad_id);
 			//Native Ad End //
 		}
 		catch (Exception e)
@@ -267,7 +236,7 @@ public class ExitAppActivity extends Activity
 		}
 	}
 
-	private void LoadAdMobNativeAd(boolean is_show_non_personalize,String native_ad_id)
+	private void LoadAdMobNativeAd(String native_ad_id)
 	{
 		AdLoader.Builder builder = new AdLoader.Builder(this, native_ad_id);
 		builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener()
@@ -302,18 +271,7 @@ public class ExitAppActivity extends Activity
 			}
 		}).build();
 
-		Bundle non_personalize_bundle = new Bundle();
-		non_personalize_bundle.putString("npa", "1");
-
-		if(is_show_non_personalize)
-		{
-			native_ad_request = new AdRequest.Builder().addNetworkExtrasBundle(AdMobAdapter.class, non_personalize_bundle).build();
-		}
-		else
-		{
-			native_ad_request = new AdRequest.Builder().build();
-		}
-
+		native_ad_request = new AdRequest.Builder().build();
 		adLoader.loadAd(native_ad_request);
 	}
 

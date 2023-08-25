@@ -26,12 +26,9 @@ public class MyExitView extends Application
         ExitCommonHelper.mActivity = homeActivity;
     }
 
-    public static void OpenExitScreen(boolean isHideAds,boolean isEEAUser,boolean isConsentSet,boolean isShowNonPersonalize,String nativeAdID)
+    public static void OpenExitScreen(boolean isHideAds,String nativeAdID)
     {
         ExitCommonHelper.is_hide_ad = isHideAds;
-        ExitCommonHelper.is_eea_user = isEEAUser;
-        ExitCommonHelper.is_consent_set = isConsentSet;
-        ExitCommonHelper.is_show_non_personalize = isShowNonPersonalize;
         ExitCommonHelper.native_ad_id = nativeAdID.trim();
 
         if(ExitCommonClass.isOnline(ExitCommonHelper.mActivity))

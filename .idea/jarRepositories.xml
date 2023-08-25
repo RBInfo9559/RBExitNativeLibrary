@@ -12,24 +12,9 @@
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="D:\Android\android_sdk\extras\google\m2repository" />
-      <option name="name" value="D:\Android\android_sdk\extras\google\m2repository" />
-      <option name="url" value="file:/$PROJECT_DIR$/../../../Android/android_sdk/extras/google/m2repository/" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="D:\Android\android_sdk\extras\android\m2repository" />
-      <option name="name" value="D:\Android\android_sdk\extras\android\m2repository" />
-      <option name="url" value="file:/$PROJECT_DIR$/../../../Android/android_sdk/extras/android/m2repository/" />
-    </remote-repository>
-    <remote-repository>
       <option name="id" value="BintrayJCenter2" />
       <option name="name" value="BintrayJCenter2" />
       <option name="url" value="https://jcenter.bintray.com/" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="D:\Android\android_sdk\extras\m2repository" />
-      <option name="name" value="D:\Android\android_sdk\extras\m2repository" />
-      <option name="url" value="file:/$PROJECT_DIR$/../../../Android/android_sdk/extras/m2repository/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="Google" />
