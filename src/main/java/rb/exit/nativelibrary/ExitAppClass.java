@@ -47,124 +47,6 @@ public class ExitAppClass
 			ex.printStackTrace();
 		}
 	}
-	
-	public static void GoToApp(Context ctx, String appUrl)
-	{
-		try
-		{
-			mContext = ctx;
-
-			Uri uri = Uri.parse(appUrl.trim());
-			Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
-			try
-			{
-				mContext.startActivity(goToMarket);
-			}
-			catch (ActivityNotFoundException e)
-			{
-				e.printStackTrace();
-			}
-		} 
-		catch (Exception ex)
-		{
-			ex.printStackTrace();
-		}
-	}
-
-	public static void ShareApp(Context ctx)
-	{
-		try
-		{
-			mContext = ctx;
-			String app_name = mContext.getResources().getString(R.string.app_name) + " :";
-			String shareUrl = ExitAppHelper.rate_url + mContext.getPackageName();
-
-			Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-			sharingIntent.setType("text/plain");
-			sharingIntent.putExtra(Intent.EXTRA_SUBJECT, app_name);
-			sharingIntent.putExtra(Intent.EXTRA_TEXT,app_name + "\n" + shareUrl);
-			mContext.startActivity(Intent.createChooser(sharingIntent, "Share via"));
-		}
-		catch (Exception e)
-		{
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-	}
-
-	public static void MoreApps(Context ctx)
-	{
-		try
-		{
-			mContext = ctx;
-			Intent more_intent = new Intent(Intent.ACTION_VIEW);
-			more_intent.setData(Uri.parse(ExitAppHelper.more_url));
-			mContext.startActivity(more_intent);
-		} 
-		catch (Exception e)
-		{
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-	}
-
-
-	public static boolean isOnline(Context mContext)
-	{
-		ConnectivityManager cm = (ConnectivityManager)mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo netInfo = cm.getActiveNetworkInfo();
-		if (netInfo != null && netInfo.isConnectedOrConnecting()
-				&& cm.getActiveNetworkInfo().isAvailable()
-				&& cm.getActiveNetworkInfo().isConnected()) 
-		{
-			is_online = true;
-			return is_online;
-		}
-		else
-		{
-			is_online = false;
-			return is_online;
-		}
-	}
-
-	public static SimpleDateFormat df;
-	public static SimpleDateFormat sdf;
-	public static SimpleDateFormat sdt;
-
-	public static Date current_datetime;
-
-	public static String current_date_time;
-	public static String current_date;
-	public static String current_time;
-
-	public static String GetCurrentDateTime()
-	{
-		try
-		{
-			Calendar c = Calendar.getInstance();
-			System.out.println("Current time => " + c.getTime());
-
-
-			df = new SimpleDateFormat("dd-MM-yyyy HH:mm aa");
-			current_date_time = df.format(c.getTime());
-			current_datetime = df.parse(current_date_time);
-
-			sdf = new SimpleDateFormat("dd-MM-yyyy");
-			sdt = new SimpleDateFormat("HH:mm aa");
-
-			current_date = sdf.format(current_datetime);
-			current_time = sdt.format(current_datetime);
-
-			String delegate = "hh:mm aaa";
-			current_time = (String) DateFormat.format(delegate, Calendar.getInstance().getTime());
-		}
-		catch (ParseException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return current_date_time;
-	}
 
 	private static Dialog conform_dialog;
 	private static Button conform_dialog_btn_yes;
@@ -227,7 +109,6 @@ public class ExitAppClass
 		});
 
 		conform_dialog.show();
-
 	}
 	
 }

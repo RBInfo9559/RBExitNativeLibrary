@@ -8,4 +8,11 @@
     <dimen name="exit_static_app_icon_width">@dimen/_40sdp</dimen>
     <dimen name="exit_static_app_icon_height">@dimen/_40sdp</dimen>
 
+
+    <dimen name="exit_lib_dialog_header_text_size">@dimen/_15sdp</dimen>
+    <dimen name="exit_lib_dialog_message_text_size">@dimen/_13sdp</dimen>
+    <dimen name="exit_lib_dialog_button_rel_height">@dimen/_50sdp</dimen>
+    <dimen name="exit_lib_dialog_button_width">@dimen/_90sdp</dimen>
+    <dimen name="exit_lib_dialog_button_height">@dimen/_35sdp</dimen>
+    <dimen name="exit_lib_dialog_button_text_size">@dimen/_13sdp</dimen>
 </resources>

@@ -23,12 +23,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:fontFamily="@font/exit_roboto_bold"
+                android:fontFamily="@font/exit_mulish_bold"
                 android:paddingTop="@dimen/_5sdp"
                 android:paddingBottom="@dimen/_5sdp"
                 android:text="Rate"
                 android:textColor="@color/exit_dialog_header_color"
-                android:textSize="@dimen/_13sdp"/>
+                android:textSize="@dimen/exit_lib_dialog_header_text_size"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -45,16 +45,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lineSpacingExtra="@dimen/_5sdp"
-                android:fontFamily="@font/exit_roboto_regular"
+                android:fontFamily="@font/exit_mulish_regular"
                 android:text="Do you want to rate my app?"
                 android:textColor="@color/exit_dialog_message_color"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/exit_lib_dialog_message_text_size" />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/dialog_conform_button_layout"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_35sdp"
+            android:layout_height="@dimen/exit_lib_dialog_button_rel_height"
             android:layout_below="@+id/dialog_conform_message_layout"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
@@ -64,31 +64,31 @@
             <Button
                 android:id="@+id/dialog_conform_btn_yes"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_30sdp"
+                android:layout_height="@dimen/exit_lib_dialog_button_width"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:background="@drawable/exit_dialog_button_selector"
-                android:fontFamily="@font/exit_roboto_bold"
+                android:fontFamily="@font/exit_mulish_medium"
                 android:padding="@dimen/_5sdp"
                 android:text="Yes"
                 android:textAllCaps="true"
                 android:textColor="@drawable/exit_dialog_button_text_selector"
-                android:textSize="@dimen/_12sdp"/>
+                android:textSize="@dimen/exit_lib_dialog_button_text_size"/>
 
             <Button
                 android:id="@+id/dialog_conform_btn_no"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_30sdp"
+                android:layout_height="@dimen/exit_lib_dialog_button_width"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/_8sdp"
                 android:layout_toLeftOf="@+id/dialog_conform_btn_yes"
                 android:background="@drawable/exit_dialog_button_selector"
-                android:fontFamily="@font/exit_roboto_bold"
+                android:fontFamily="@font/exit_mulish_medium"
                 android:padding="@dimen/_5sdp"
                 android:text="No"
                 android:textAllCaps="true"
                 android:textColor="@drawable/exit_dialog_button_text_selector"
-                android:textSize="@dimen/_12sdp"/>
+                android:textSize="@dimen/exit_lib_dialog_button_text_size"/>
         </RelativeLayout>
     </RelativeLayout>
 </RelativeLayout>

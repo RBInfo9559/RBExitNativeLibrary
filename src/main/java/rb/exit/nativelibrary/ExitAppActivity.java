@@ -98,12 +98,10 @@ public class ExitAppActivity extends Activity
 			Intent i = new Intent(getApplicationContext(), ExitCommonHelper.mActivity.getClass());
 			startActivity(i);
 			finish();
-			overridePendingTransition(R.anim.exit_slide_in_right, R.anim.exit_slide_out_left);
 		}
 		else
 		{
-			finish();
-			overridePendingTransition(R.anim.exit_slide_in_right, R.anim.exit_slide_out_left);
+			finishAffinity();
 		}
 	}
 
@@ -231,7 +229,6 @@ public class ExitAppActivity extends Activity
 		}
 		catch (Exception e)
 		{
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 	}

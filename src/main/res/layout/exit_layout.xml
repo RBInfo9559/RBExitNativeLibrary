@@ -8,38 +8,44 @@
     <RelativeLayout
         android:id="@+id/app_exit_rel_top"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ad_layout">
 
-        <TextView
-            android:id="@+id/app_exit_lbl_header_exit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:gravity="center_vertical"
-            android:text="Exit Screen"
-            android:textColor="@color/exit_header_text_color"
-            android:textSize="@dimen/_18sdp"
-            android:textStyle="bold" />
+        <RelativeLayout
+            android:id="@+id/app_exit_rel_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_alignParentTop="true">
+
+            <TextView
+                android:id="@+id/app_exit_lbl_header_exit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/exit_mulish_bold"
+                android:text="Exit Screen"
+                android:textColor="@color/exit_header_text_color"
+                android:textSize="@dimen/_18sdp" />
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/app_exit_rel_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/app_exit_lbl_header_exit"
-            android:layout_marginTop="@dimen/_25sdp">
+            android:layout_below="@+id/app_exit_rel_header">
 
             <RelativeLayout
                 android:layout_width="@dimen/_250sdp"
                 android:layout_height="@dimen/_120sdp"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:background="@drawable/exit_white_rounded_bg"
                 android:gravity="center">
 
                 <ImageView
                     android:id="@+id/exit_img_logo"
-                    android:layout_width="@dimen/_50sdp"
-                    android:layout_height="@dimen/_50sdp"
+                    android:layout_width="@dimen/_45sdp"
+                    android:layout_height="@dimen/_45sdp"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/ic_exit_logo" />
 
@@ -49,25 +55,25 @@
                     android:layout_below="@+id/exit_img_logo"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/exit_mulish_bold"
                     android:gravity="center"
                     android:text="@string/exit_message"
                     android:textColor="@color/exit_black"
-                    android:textSize="@dimen/_14sdp"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/_14sdp"/>
             </RelativeLayout>
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_height="@dimen/exit_lib_dialog_button_rel_height"
             android:layout_below="@+id/app_exit_rel_message"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/_10sdp">
 
             <RelativeLayout
                 android:id="@+id/app_exit_btn_yes"
-                android:layout_width="@dimen/_90sdp"
-                android:layout_height="@dimen/_30sdp"
+                android:layout_width="@dimen/exit_lib_dialog_button_width"
+                android:layout_height="@dimen/exit_lib_dialog_button_height"
                 android:background="@drawable/exit_button_selector">
 
                 <TextView
@@ -75,16 +81,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:fontFamily="@font/exit_roboto_medium"
+                    android:fontFamily="@font/exit_mulish_medium"
                     android:text="Yes"
                     android:textColor="@color/exit_white"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textSize="@dimen/exit_lib_dialog_button_text_size" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/app_exit_btn_no"
-                android:layout_width="@dimen/_90sdp"
-                android:layout_height="@dimen/_30sdp"
+                android:layout_width="@dimen/exit_lib_dialog_button_width"
+                android:layout_height="@dimen/exit_lib_dialog_button_height"
                 android:layout_marginLeft="@dimen/_20sdp"
                 android:layout_toRightOf="@+id/app_exit_btn_yes"
                 android:background="@drawable/exit_button_no_selector">
@@ -94,35 +100,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:fontFamily="@font/exit_roboto_medium"
+                    android:fontFamily="@font/exit_mulish_medium"
                     android:text="No"
                     android:textColor="@color/exit_white"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textSize="@dimen/exit_lib_dialog_button_text_size" />
             </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/app_exit_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/ad_layout"
-        android:layout_below="@+id/app_exit_rel_top">
-
-        <RelativeLayout
-            android:id="@+id/app_exit_list_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:gravity="center"
-            android:paddingLeft="@dimen/_5sdp"
-            android:paddingRight="@dimen/_5sdp" />
-    </RelativeLayout>
-
-    <RelativeLayout
         android:id="@+id/ad_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_220sdp"
+        android:layout_height="@dimen/_230sdp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="@dimen/_5sdp"
         android:layout_marginRight="@dimen/_5sdp"
