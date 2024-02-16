@@ -9,22 +9,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81ce0c84-a73c-469e-812f-351659d49af0" name="Changes" comment="Version 20">
-      <change afterPath="$PROJECT_DIR$/src/main/res/font/exit_mulish_bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/font/exit_mulish_medium.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/font/exit_mulish_regular.ttf" afterDir="false" />
+    <list default="true" id="81ce0c84-a73c-469e-812f-351659d49af0" name="Changes" comment="Version 21">
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rb/exit/nativelibrary/ExitAppActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rb/exit/nativelibrary/ExitAppActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rb/exit/nativelibrary/ExitAppClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rb/exit/nativelibrary/ExitAppClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rb/exit/nativelibrary/ExitAppHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rb/exit/nativelibrary/ExitAppHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/drawable/native_ad_text_border.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/exit_dialog_rate.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/exit_dialog_rate.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/res/layout/exit_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/exit_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/exit_layout_native_ad.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/exit_layout_native_ad.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/colors.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/dimens.xml" afterDir="false" />
     </list>
@@ -53,17 +43,17 @@
     <option name="showLibraryContents" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "cidr.known.project.marker": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "last_opened_file_path": "G:/AndroidSetup/AllWorkspace/RBWorkspace/RBExitNativeLibrary/src/main/res/layout",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;G:/AndroidSetup/AllWorkspace/RBWorkspace/RBExitNativeLibrary/src/main/res/layout&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="G:\AndroidSetup\AllWorkspace\RBWorkspace\RBExitNativeLibrary\src\main\res\layout" />
@@ -88,7 +78,21 @@
       <option name="project" value="LOCAL" />
       <updated>1692957108921</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Version 21">
+      <created>1705988234177</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1705988234177</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Version 21">
+      <created>1705988260932</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1705988260932</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -104,6 +108,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Version 20" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 20" />
+    <MESSAGE value="Version 21" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 21" />
   </component>
 </project>
