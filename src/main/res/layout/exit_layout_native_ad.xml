@@ -12,11 +12,11 @@
         android:background="@color/exit_white"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <!--<RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:background="@color/exit_native_ad_text_bg_color"
             android:gravity="center">
 
@@ -34,13 +34,16 @@
                 android:textSize="@dimen/_8sdp"
                 android:textStyle="bold"
                 android:visibility="visible" />
-        </RelativeLayout>
+        </RelativeLayout>-->
 
-        <RelativeLayout
-            android:id="@+id/rel_main_data"
+        <androidx.appcompat.widget.AppCompatTextView style="@style/NativeAdAttribution" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/normalPadding"
+            android:paddingRight="@dimen/normalPadding">
 
             <LinearLayout
                 android:id="@+id/lin_main_data"
@@ -91,11 +94,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/lin_main_data"
                 android:paddingBottom="@dimen/_5sdp"
                 android:paddingTop="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:background="@color/exit_native_off_white_color"
                 android:gravity="center_vertical|center"
                 android:orientation="horizontal">
 
@@ -159,13 +160,19 @@
                         android:textSize="@dimen/_8sdp" />
                 </LinearLayout>
             </LinearLayout>
-        </RelativeLayout>
+        </LinearLayout>
 
         <Button
             android:id="@+id/ad_call_to_action"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_35sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
             android:background="@drawable/exit_native_install_btn_selector"
+            android:elevation="0dp"
+            android:fadingEdge="none"
             android:gravity="center"
             android:text=""
             android:textColor="@color/exit_white"

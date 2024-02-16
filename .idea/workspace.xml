@@ -9,14 +9,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81ce0c84-a73c-469e-812f-351659d49af0" name="Changes" comment="Version 21">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/exit_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/exit_layout.xml" afterDir="false" />
+    <list default="true" id="81ce0c84-a73c-469e-812f-351659d49af0" name="Changes" comment="Version 22">
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable/exit_native_install_btn.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable/exit_native_install_btn.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable/exit_native_install_btn_press.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable/exit_native_install_btn_press.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/exit_layout_native_ad.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/exit_layout_native_ad.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/values/exit_native_ad_style.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/exit_native_ad_style.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +90,14 @@
       <option name="project" value="LOCAL" />
       <updated>1705988260932</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Version 22">
+      <created>1708068581547</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1708068581547</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -109,6 +114,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Version 20" />
     <MESSAGE value="Version 21" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 21" />
+    <MESSAGE value="Version 22" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 22" />
   </component>
 </project>

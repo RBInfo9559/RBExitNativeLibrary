@@ -51,9 +51,8 @@
     <color name="exit_native_off_white_color">#eaf3ff</color>
     <color name="exit_native_text_color_title">#333333</color>
     <color name="exit_native_text_color_summery">#666666</color>
-    <color name="exit_native_ad_text_bg">#0072ff</color>
     <color name="exit_native_install_btn_color">#0072ff</color>
-    <color name="exit_native_install_btn_press_color">#005dff</color>
+    <color name="exit_native_install_btn_press_color">#0050b3</color>
     <color name="exit_native_ad_text_bg_color">#FD5151</color>
     <color name="exit_native_border_color">#0d2854</color>
     <color name="exit_native_rating_empty_color">#777777</color>
