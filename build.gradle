@@ -16,7 +16,7 @@ buildscript {
 }
 
 allprojects {
-    version = '1.22'
+    version = '1.24'
     group = 'rb.exit.nativelibrary'
 
     repositories {
@@ -31,8 +31,8 @@ android {
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 33
-        versionCode 23
-        versionName "1.23"
+        versionCode 24
+        versionName "1.24"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 

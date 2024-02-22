@@ -11,6 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="81ce0c84-a73c-469e-812f-351659d49af0" name="Changes" comment="Version 23 Banner Rect Ad">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rb/exit/nativelibrary/ExitAppActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rb/exit/nativelibrary/ExitAppActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708594013699</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Version 23 Banner Rect Ad">
+      <created>1708596367034</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1708596367034</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
