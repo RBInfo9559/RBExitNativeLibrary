@@ -150,7 +150,7 @@ public class ExitAppActivity extends Activity
 		{
 			exit_banner_ad_request = new AdRequest.Builder().build();
 
-			exit_rel_ad_layout = findViewById(R.id.ad_layout);
+			exit_rel_ad_layout = findViewById(R.id.exit_ad_layout);
 			exit_rel_ad_layout.setVisibility(View.VISIBLE);
 
 			AdView adView = new AdView(this);
