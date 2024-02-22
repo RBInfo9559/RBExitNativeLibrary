@@ -12,38 +12,14 @@
         android:background="@color/exit_white"
         android:orientation="vertical">
 
-        <!--<RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_5sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:background="@color/exit_native_ad_text_bg_color"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/ad_attribution"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:paddingLeft="@dimen/_3sdp"
-                android:paddingTop="@dimen/_2sdp"
-                android:paddingBottom="@dimen/_2sdp"
-                android:paddingRight="@dimen/_3sdp"
-                android:text="AD"
-                android:textColor="@color/exit_white"
-                android:textSize="@dimen/_8sdp"
-                android:textStyle="bold"
-                android:visibility="visible" />
-        </RelativeLayout>-->
-
         <androidx.appcompat.widget.AppCompatTextView style="@style/NativeAdAttribution" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="@dimen/normalPadding"
-            android:paddingRight="@dimen/normalPadding">
+            android:paddingLeft="@dimen/exit_normal_padding"
+            android:paddingRight="@dimen/exit_normal_padding">
 
             <LinearLayout
                 android:id="@+id/lin_main_data"
@@ -94,11 +70,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/_5sdp"
-                android:paddingTop="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:gravity="center_vertical|center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_5sdp">
 
                 <ImageView
                     android:id="@+id/ad_app_icon"
@@ -110,8 +86,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/_5sdp"
                     android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
                     android:gravity="center_vertical"
                     android:orientation="vertical"
                     android:padding="@dimen/_1sdp">

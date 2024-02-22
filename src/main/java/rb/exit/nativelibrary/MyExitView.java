@@ -26,10 +26,11 @@ public class MyExitView extends Application
         ExitCommonHelper.mActivity = homeActivity;
     }
 
-    public static void OpenExitScreen(boolean isHideAds,String nativeAdID)
+    public static void OpenExitScreen(boolean isHideAds,boolean isPlayStoreInstall,String adID)
     {
         ExitCommonHelper.is_hide_ad = isHideAds;
-        ExitCommonHelper.native_ad_id = nativeAdID.trim();
+        ExitCommonHelper.is_play_store_install = isPlayStoreInstall;
+        ExitCommonHelper.ad_id = adID.trim();
 
         if(ExitCommonClass.isOnline(ExitCommonHelper.mActivity))
         {
@@ -72,7 +73,7 @@ public class MyExitView extends Application
         }, 2000);
     }
 
-    public static void RateApp(Context ctx)
+    /*public static void RateApp(Context ctx)
     {
         try
         {
@@ -163,5 +164,5 @@ public class MyExitView extends Application
 
         conform_dialog.show();
 
-    }
+    }*/
 }

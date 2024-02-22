@@ -1,50 +1,33 @@
 package rb.exit.nativelibrary;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.InstallSourceInfo;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.VideoOptions;
-import com.google.android.gms.ads.nativead.MediaView;
-import com.google.android.gms.ads.nativead.NativeAd;
-import com.google.android.gms.ads.nativead.NativeAdOptions;
-import com.google.android.gms.ads.nativead.NativeAdView;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 
 public class ExitAppActivity extends Activity
 {
-	RelativeLayout rel_native_ad;
+	/*RelativeLayout rel_native_ad;
 	NativeAd ad_mob_native_ad = null;
-	AdRequest native_ad_request;
+	AdRequest native_ad_request;*/
+
+	RelativeLayout exit_rel_ad_layout;
+	AdRequest exit_banner_ad_request;
 
 	RelativeLayout rel_exit_yes;
 	RelativeLayout rel_exit_no;
 	TextView app_exit_lbl_Yes;
 	TextView app_exit_lbl_No;
 
-	private static String google_play_store_package = "com.android.vending";
-	private static String samsung_store_package = "com.sec.android.app.samsungapps";
-	private static String amazon_store_package = "com.amazon.venezia";
-	private static String xiomi_store_package = "com.xiaomi.market";
-	private static String oppo_store_package = "com.oppo.market";
-	private static String vivo_store_package = "com.vivo.appstore";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -116,82 +99,26 @@ public class ExitAppActivity extends Activity
 	{
 		moveTaskToBack(true);
 		finish();
-		overridePendingTransition(R.anim.exit_slide_in_left, R.anim.exit_slide_out_right);
 	}
-
-	// Check Play Install Start //
-	public static boolean VerifyInstallerId(Context context)
-	{
-		return CheckInstalledVia(context);
-	}
-
-	public static boolean CheckInstalledVia(Context ctx)
-	{
-		String installer = GetInstallerPackageName(ctx);
-		if(installer == null)
-		{
-			return false;
-		}
-		else
-		{
-			if(installer.equalsIgnoreCase(google_play_store_package) ||
-					installer.equalsIgnoreCase(samsung_store_package) ||
-					installer.equalsIgnoreCase(amazon_store_package) ||
-					installer.equalsIgnoreCase(xiomi_store_package) ||
-					installer.equalsIgnoreCase(oppo_store_package) ||
-					installer.equalsIgnoreCase(vivo_store_package))
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
-	}
-
-	private static String GetInstallerPackageName(Context ctx)
-	{
-		try
-		{
-			String packageName = ctx.getPackageName();
-			PackageManager pm = ctx.getPackageManager();
-			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
-			{
-				InstallSourceInfo info = pm.getInstallSourceInfo(packageName);
-				if (info != null)
-				{
-					return info.getInstallingPackageName();
-				}
-			}
-			return pm.getInstallerPackageName(packageName);
-		}
-		catch (PackageManager.NameNotFoundException e)
-		{
-
-		}
-		return "";
-	}
-	// Check Play Install End //
 
 	@Override
 	protected void onResume()
 	{
 		super.onResume();
-		NativeAdProcess();
+		AdProcess();
 	}
 
-	private void NativeAdProcess()
+	private void AdProcess()
 	{
 		if(!ExitCommonHelper.is_hide_ad)
 		{
 			boolean is_online = ExitCommonClass.isOnline(this);
 			if(is_online)
 			{
-				boolean check_play_store_user = VerifyInstallerId(getApplicationContext());
+				boolean check_play_store_user = ExitCommonHelper.is_play_store_install;
 				if(check_play_store_user)
 				{
-					LoadAd();
+					LoadRectangleAd();
 				}
 				else
 				{
@@ -213,18 +140,41 @@ public class ExitAppActivity extends Activity
 
 	private void HideViews()
 	{
-		rel_native_ad = (RelativeLayout) findViewById(R.id.ad_layout);
-		rel_native_ad.setVisibility(View.GONE);
+		exit_rel_ad_layout = findViewById(R.id.exit_ad_layout);
+		exit_rel_ad_layout.setVisibility(View.GONE);
 	}
 
-	private void LoadAd()
+	private void LoadRectangleAd()
+	{
+		try
+		{
+			exit_banner_ad_request = new AdRequest.Builder().build();
+
+			exit_rel_ad_layout = findViewById(R.id.ad_layout);
+			exit_rel_ad_layout.setVisibility(View.VISIBLE);
+
+			AdView adView = new AdView(this);
+			adView.setAdSize(AdSize.MEDIUM_RECTANGLE);
+			adView.setAdUnitId(ExitCommonHelper.ad_id);
+			adView.loadAd(exit_banner_ad_request);
+
+			//Banner Ad Start //
+			exit_rel_ad_layout.addView(adView);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	/*private void LoadAd()
 	{
 		try
 		{
 			//Native Ad Start //
 			rel_native_ad = (RelativeLayout)findViewById(R.id.ad_layout);
 			rel_native_ad.setVisibility(View.VISIBLE);
-			LoadAdMobNativeAd(ExitCommonHelper.native_ad_id);
+			LoadAdMobNativeAd(ExitCommonHelper.ad_id);
 			//Native Ad End //
 		}
 		catch (Exception e)
@@ -381,5 +331,5 @@ public class ExitAppActivity extends Activity
 		{
 			ad_mob_native_ad.destroy();
 		}
-	}
+	}*/
 }

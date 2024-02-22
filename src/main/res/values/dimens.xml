@@ -11,7 +11,9 @@
     <dimen name="exit_ad_native_height">@dimen/_230sdp</dimen>
     <dimen name="exit_ad_side_margin">@dimen/_8sdp</dimen>
     <dimen name="exit_ad_bottom_margin">@dimen/_8sdp</dimen>
-    <dimen name="normalPadding">15dp</dimen>
+    <dimen name="exit_normal_padding">@dimen/_10sdp</dimen>
+
+    <dimen name="exit_ad_rectangle_height">@dimen/_220sdp</dimen>
 
     <dimen name="exit_lib_dialog_header_text_size">@dimen/_15sdp</dimen>
     <dimen name="exit_lib_dialog_message_text_size">@dimen/_13sdp</dimen>

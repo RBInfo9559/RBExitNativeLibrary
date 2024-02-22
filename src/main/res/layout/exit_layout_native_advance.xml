@@ -1,0 +1,18 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ad_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:gravity="bottom"
+    android:visibility="visible">
+
+    <FrameLayout
+        android:id="@+id/native_ad_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/exit_ad_side_margin"
+        android:layout_marginRight="@dimen/exit_ad_side_margin"
+        android:layout_marginBottom="@dimen/exit_ad_bottom_margin"
+        android:minHeight="@dimen/exit_ad_native_height"
+        android:visibility="visible" />
+</RelativeLayout>

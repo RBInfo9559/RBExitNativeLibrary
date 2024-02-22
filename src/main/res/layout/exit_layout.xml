@@ -9,8 +9,8 @@
         android:id="@+id/app_exit_rel_top"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/exit_ad_bottom_margin"
-        android:layout_above="@+id/ad_layout">
+        android:layout_above="@+id/exit_ad_layout"
+        android:layout_marginBottom="@dimen/exit_ad_bottom_margin">
 
         <RelativeLayout
             android:id="@+id/app_exit_rel_header"
@@ -60,7 +60,7 @@
                     android:gravity="center"
                     android:text="@string/exit_message"
                     android:textColor="@color/exit_black"
-                    android:textSize="@dimen/_14sdp"/>
+                    android:textSize="@dimen/_14sdp" />
             </RelativeLayout>
         </RelativeLayout>
 
@@ -109,22 +109,5 @@
         </RelativeLayout>
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/ad_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="bottom"
-        android:visibility="visible">
-
-        <FrameLayout
-            android:id="@+id/native_ad_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/exit_ad_side_margin"
-            android:layout_marginRight="@dimen/exit_ad_side_margin"
-            android:layout_marginBottom="@dimen/exit_ad_bottom_margin"
-            android:minHeight="@dimen/exit_ad_native_height"
-            android:visibility="visible" />
-    </RelativeLayout>
+    <include layout="@layout/exit_layout_rect_banner" />
 </RelativeLayout>
