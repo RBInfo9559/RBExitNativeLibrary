@@ -161,6 +161,7 @@ public class ExitAppActivity extends Activity
 			adView.loadAd(exit_banner_ad_request);
 
 			//Banner Ad Start //
+			exit_rel_ad_layout.removeAllViews();
 			exit_rel_ad_layout.addView(adView);
 		}
 		catch (Exception e)

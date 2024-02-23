@@ -1,119 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/exit_bg"
     android:orientation="vertical">
 
-    <ScrollView
+    <RelativeLayout
+        android:id="@+id/app_exit_rel_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_alignParentTop="true">
+
+        <TextView
+            android:id="@+id/app_exit_lbl_header_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/exit_mulish_bold"
+            android:text="Exit Screen"
+            android:textColor="@color/exit_header_text_color"
+            android:textSize="@dimen/_18sdp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/app_exit_rel_top"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/exit_ad_layout"
-        android:layout_marginBottom="@dimen/exit_ad_bottom_margin"
-        android:fadingEdge="none">
+        android:layout_below="@+id/app_exit_rel_header">
 
-        <RelativeLayout
-            android:id="@+id/app_exit_rel_top"
+        <include layout="@layout/exit_layout_rect_banner_top" />
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:layout_below="@+id/exit_ad_layout"
+            android:layout_marginBottom="@dimen/exit_ad_bottom_margin"
+            android:fadingEdge="none">
 
             <RelativeLayout
-                android:id="@+id/app_exit_rel_header"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_45sdp"
-                android:layout_alignParentTop="true">
-
-                <TextView
-                    android:id="@+id/app_exit_lbl_header_exit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:fontFamily="@font/exit_mulish_bold"
-                    android:text="Exit Screen"
-                    android:textColor="@color/exit_header_text_color"
-                    android:textSize="@dimen/_18sdp" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/app_exit_rel_message"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/app_exit_rel_header">
+                android:layout_height="wrap_content">
 
                 <RelativeLayout
-                    android:layout_width="@dimen/_250sdp"
-                    android:layout_height="@dimen/_120sdp"
+                    android:id="@+id/app_exit_rel_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/app_exit_rel_header">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/_8sdp"
+                        android:paddingBottom="@dimen/_8sdp">
+
+                        <ImageView
+                            android:id="@+id/exit_img_logo"
+                            android:layout_width="@dimen/_45sdp"
+                            android:layout_height="@dimen/_45sdp"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/ic_exit_logo"
+                            android:tint="@color/exit_white"
+                            tools:ignore="UseAppTint" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/exit_img_logo"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/exit_mulish_bold"
+                            android:gravity="center"
+                            android:text="@string/exit_message"
+                            android:textColor="@color/exit_white"
+                            android:textSize="@dimen/_14sdp" />
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/exit_lib_dialog_button_rel_height"
+                    android:layout_below="@+id/app_exit_rel_message"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:background="@drawable/exit_white_rounded_bg"
-                    android:gravity="center">
+                    android:gravity="center_vertical">
 
-                    <ImageView
-                        android:id="@+id/exit_img_logo"
-                        android:layout_width="@dimen/_45sdp"
-                        android:layout_height="@dimen/_45sdp"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/ic_exit_logo" />
+                    <RelativeLayout
+                        android:id="@+id/app_exit_btn_yes"
+                        android:layout_width="@dimen/exit_lib_dialog_button_width"
+                        android:layout_height="@dimen/exit_lib_dialog_button_height"
+                        android:background="@drawable/exit_button_selector">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/exit_img_logo"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:fontFamily="@font/exit_mulish_bold"
-                        android:gravity="center"
-                        android:text="@string/exit_message"
-                        android:textColor="@color/exit_black"
-                        android:textSize="@dimen/_14sdp" />
+                        <TextView
+                            android:id="@+id/app_exit_lbl_yes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:fontFamily="@font/exit_mulish_medium"
+                            android:text="Yes"
+                            android:textColor="@color/exit_white"
+                            android:textSize="@dimen/exit_lib_dialog_button_text_size" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/app_exit_btn_no"
+                        android:layout_width="@dimen/exit_lib_dialog_button_width"
+                        android:layout_height="@dimen/exit_lib_dialog_button_height"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_toRightOf="@+id/app_exit_btn_yes"
+                        android:background="@drawable/exit_button_no_selector">
+
+                        <TextView
+                            android:id="@+id/app_exit_lbl_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:fontFamily="@font/exit_mulish_medium"
+                            android:text="No"
+                            android:textColor="@color/exit_white"
+                            android:textSize="@dimen/exit_lib_dialog_button_text_size" />
+                    </RelativeLayout>
                 </RelativeLayout>
             </RelativeLayout>
+        </ScrollView>
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/exit_lib_dialog_button_rel_height"
-                android:layout_below="@+id/app_exit_rel_message"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/_10sdp">
-
-                <RelativeLayout
-                    android:id="@+id/app_exit_btn_yes"
-                    android:layout_width="@dimen/exit_lib_dialog_button_width"
-                    android:layout_height="@dimen/exit_lib_dialog_button_height"
-                    android:background="@drawable/exit_button_selector">
-
-                    <TextView
-                        android:id="@+id/app_exit_lbl_yes"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:fontFamily="@font/exit_mulish_medium"
-                        android:text="Yes"
-                        android:textColor="@color/exit_white"
-                        android:textSize="@dimen/exit_lib_dialog_button_text_size" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/app_exit_btn_no"
-                    android:layout_width="@dimen/exit_lib_dialog_button_width"
-                    android:layout_height="@dimen/exit_lib_dialog_button_height"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_toRightOf="@+id/app_exit_btn_yes"
-                    android:background="@drawable/exit_button_no_selector">
-
-                    <TextView
-                        android:id="@+id/app_exit_lbl_no"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:fontFamily="@font/exit_mulish_medium"
-                        android:text="No"
-                        android:textColor="@color/exit_white"
-                        android:textSize="@dimen/exit_lib_dialog_button_text_size" />
-                </RelativeLayout>
-            </RelativeLayout>
-        </RelativeLayout>
-    </ScrollView>
-
-    <include layout="@layout/exit_layout_rect_banner" />
+    </RelativeLayout>
 </RelativeLayout>
