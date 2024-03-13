@@ -3,6 +3,7 @@
   <component name="AndroidLayouts">
     <shared>
       <config>
+        <device id="pixel_6" />
         <option name="nonWearDeviceLastStateName" value="Portrait" />
       </config>
     </shared>
@@ -11,12 +12,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81ce0c84-a73c-469e-812f-351659d49af0" name="Changes" comment="Version 25 Banner Rect Ad">
-      <change afterPath="$PROJECT_DIR$/src/main/res/layout/exit_layout_rect_banner_top.xml" afterDir="false" />
+    <list default="true" id="81ce0c84-a73c-469e-812f-351659d49af0" name="Changes" comment="Version 26 Banner Rect Ad On Top">
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rb/exit/nativelibrary/ExitAppActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rb/exit/nativelibrary/ExitAppActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/res/layout/exit_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/exit_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708604915417</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Version 26 Banner Rect Ad On Top">
+      <created>1708682733632</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1708682733632</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -155,6 +166,7 @@
     <MESSAGE value="Version 23 Banner Rect Ad" />
     <MESSAGE value="Version 24 Banner Rect Ad" />
     <MESSAGE value="Version 25 Banner Rect Ad" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 25 Banner Rect Ad" />
+    <MESSAGE value="Version 26 Banner Rect Ad On Top" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 26 Banner Rect Ad On Top" />
   </component>
 </project>

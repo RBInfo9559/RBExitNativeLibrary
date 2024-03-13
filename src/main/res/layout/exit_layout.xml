@@ -20,7 +20,7 @@
             android:fontFamily="@font/exit_mulish_bold"
             android:text="Exit Screen"
             android:textColor="@color/exit_header_text_color"
-            android:textSize="@dimen/_18sdp" />
+            android:textSize="@dimen/_20ssp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -71,13 +71,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/exit_img_logo"
+                            android:lineSpacingExtra="@dimen/_4sdp"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:fontFamily="@font/exit_mulish_bold"
                             android:gravity="center"
                             android:text="@string/exit_message"
                             android:textColor="@color/exit_white"
-                            android:textSize="@dimen/_14sdp" />
+                            android:textSize="@dimen/_16ssp" />
                     </RelativeLayout>
                 </RelativeLayout>
 
@@ -100,7 +101,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
-                            android:fontFamily="@font/exit_mulish_medium"
+                            android:fontFamily="@font/exit_mulish_bold"
                             android:text="Yes"
                             android:textColor="@color/exit_white"
                             android:textSize="@dimen/exit_lib_dialog_button_text_size" />
@@ -119,7 +120,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
-                            android:fontFamily="@font/exit_mulish_medium"
+                            android:fontFamily="@font/exit_mulish_bold"
                             android:text="No"
                             android:textColor="@color/exit_white"
                             android:textSize="@dimen/exit_lib_dialog_button_text_size" />

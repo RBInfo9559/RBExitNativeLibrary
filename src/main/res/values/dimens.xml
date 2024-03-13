@@ -15,10 +15,10 @@
 
     <dimen name="exit_ad_rectangle_height">@dimen/_220sdp</dimen>
 
-    <dimen name="exit_lib_dialog_header_text_size">@dimen/_15sdp</dimen>
-    <dimen name="exit_lib_dialog_message_text_size">@dimen/_13sdp</dimen>
+    <dimen name="exit_lib_dialog_header_text_size">@dimen/_20ssp</dimen>
+    <dimen name="exit_lib_dialog_message_text_size">@dimen/_16ssp</dimen>
     <dimen name="exit_lib_dialog_button_rel_height">@dimen/_50sdp</dimen>
-    <dimen name="exit_lib_dialog_button_width">@dimen/_90sdp</dimen>
-    <dimen name="exit_lib_dialog_button_height">@dimen/_35sdp</dimen>
-    <dimen name="exit_lib_dialog_button_text_size">@dimen/_13sdp</dimen>
+    <dimen name="exit_lib_dialog_button_width">@dimen/_100sdp</dimen>
+    <dimen name="exit_lib_dialog_button_height">@dimen/_38sdp</dimen>
+    <dimen name="exit_lib_dialog_button_text_size">@dimen/_16ssp</dimen>
 </resources>
