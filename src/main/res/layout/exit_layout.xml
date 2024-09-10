@@ -45,8 +45,7 @@
                 <RelativeLayout
                     android:id="@+id/app_exit_rel_message"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/app_exit_rel_header">
+                    android:layout_height="wrap_content">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -71,11 +70,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/exit_img_logo"
-                            android:lineSpacingExtra="@dimen/_4sdp"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:fontFamily="@font/exit_mulish_bold"
                             android:gravity="center"
+                            android:lineSpacingExtra="@dimen/_4sdp"
                             android:text="@string/exit_message"
                             android:textColor="@color/exit_white"
                             android:textSize="@dimen/_16ssp" />
@@ -102,7 +101,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:fontFamily="@font/exit_mulish_bold"
-                            android:text="Yes"
+                            android:text="Exit"
                             android:textColor="@color/exit_white"
                             android:textSize="@dimen/exit_lib_dialog_button_text_size" />
                     </RelativeLayout>
@@ -128,6 +127,5 @@
                 </RelativeLayout>
             </RelativeLayout>
         </ScrollView>
-
     </RelativeLayout>
 </RelativeLayout>

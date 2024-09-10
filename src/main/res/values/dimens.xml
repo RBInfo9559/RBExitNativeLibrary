@@ -1,13 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <dimen name="app_name_text_size">@dimen/_8sdp</dimen>
-
-    <dimen name="exit_home_static_app_icon_width">@dimen/_40sdp</dimen>
-    <dimen name="exit_home_static_app_icon_height">@dimen/_40sdp</dimen>
-
-    <dimen name="exit_static_app_icon_width">@dimen/_40sdp</dimen>
-    <dimen name="exit_static_app_icon_height">@dimen/_40sdp</dimen>
-
     <dimen name="exit_ad_native_height">@dimen/_230sdp</dimen>
     <dimen name="exit_ad_side_margin">@dimen/_8sdp</dimen>
     <dimen name="exit_ad_bottom_margin">@dimen/_8sdp</dimen>
