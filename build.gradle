@@ -16,7 +16,7 @@ buildscript {
 }
 
 allprojects {
-    version = '1.28'
+    version = '1.29'
     group = 'rb.exit.nativelibrary'
 
     repositories {
@@ -34,10 +34,10 @@ android {
     compileSdkVersion 34
 
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 34
-        versionCode 28
-        versionName "1.28"
+        versionCode 29
+        versionName "1.29"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -53,7 +53,6 @@ android {
     repositories {
         jcenter()
     }
-
 }
 
 dependencies {
@@ -66,9 +65,24 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.cardview:cardview:1.0.0'
 
-    implementation 'com.google.android.gms:play-services-ads:23.3.0'
+    implementation 'com.google.android.gms:play-services-ads:24.2.0'
 
     implementation 'com.intuit.sdp:sdp-android:1.1.0'
     implementation 'com.intuit.ssp:ssp-android:1.1.1'
 }
+
+task deleteJar(type: Delete)
+{
+    delete 'libs/rb_exit_lib.jar'
+}
+
+task createJar(type: Copy)
+{
+    from('build/intermediates/bundles/release/')
+    into('libs/')
+    include('classes.jar')
+    rename('classes.jar','rb_exit_lib.jar')
+}
+createJar.dependsOn(deleteJar,build)
+
 //apply plugin: 'com.github.dcendents.android-maven'
